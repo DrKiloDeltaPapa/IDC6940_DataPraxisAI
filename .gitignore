@@ -1,4 +1,19 @@
-.Rproj.user
+# RStudio / R project junk
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+.Rprofile
+
+# Quarto / knitr caches
+*_cache/
+*_files/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Renvironment local state
+renv/library/
+renv/staging/
+

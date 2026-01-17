@@ -17,7 +17,7 @@ fig-align: center
 
 -   **Describe the context in which the research was conducted.**
 
-    According to Ridwan et al. (2024), student attrition presents a plethora of issues for educational institutions, specifically those of higher education. For example, institutions that are plagued by issues with student attrition often face questions on  credibility and quality of education. Further, according to Ridwan et al. (2024), students who drop out of their higher education institutions often face various socioeconomic issues.
+    According to Ridwan et al. (2024), student attrition presents a plethora of issues for educational institutions, specifically those of higher education. For example, institutions that are plagued by issues with student attrition often face questions on credibility and quality of education. Further, according to Ridwan et al. (2024), students who drop out of their higher education institutions often face various socioeconomic issues.
 
 -   **What problem or gap in the existing literature does the paper aim to address?**
 

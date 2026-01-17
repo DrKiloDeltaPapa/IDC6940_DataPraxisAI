@@ -1,0 +1,127 @@
+---
+title: "DataPraxisAI Literature Review: Predicting Students’ Dropout and Academic Success with XGBoost"
+execute:
+  echo: false
+  warning: false
+  message: false
+format:
+  html:
+    embed-resources: true
+    df-print: paged
+    html-math-method: katex
+editor: source
+fig-align: center
+---
+
+#### Background/Motivation:
+
+-   **Describe the context in which the research was conducted.**
+
+    According to Ridwan et al. (2024), student attrition presents a plethora of issues for educational institutions, specifically those of higher education. For example, institutions that are plagued by issues with student attrition often face questions on credibility and quality of education. Further, according to Ridwan et al. (2024), students who drop out of their higher education institutions often face various socioeconomic issues.
+
+-   **What problem or gap in the existing literature does the paper aim to address?**
+
+    Concerning the problem or gap in the existing literature, the authors propose that, while prior studies seek to predict student attrition within the higher education environment, most studies are limited to using specific features, thus limiting the ability to accurately drill down and subsequently predict the root causes of this issue (Ridwan et al., 2024).
+
+-   **Discuss the significance of the research question and why it is important.**
+
+    Ridwan et al. (2024) sought to discover the causes of student attrition in higher education. This question is significant because addressing student attrition is not only relevant to the academic standing of these institutions but can also positively affect income inequality, mortality rates, and other socioeconomic issues people face due to a lack of proper education.
+
+#### Method Used:
+
+-   **Summarize the methodologies employed by the authors.**
+
+    To assess and efficiently predict the causes of student attrition in a higher education setting, Ridwan et al. (2024) utilized a predictive model. Specifically, the authors used XGBoost. The data selected for the evaluation is the Predicting Students’ Dropout and Academic Success  Dataset (Realinho et al., 2021). According to Ridwan et al. (2024), the data set consisted of (n = 4, 423) cases of higher education students from varied socio-economic backgrounds. The target is a dichotomous variable  labeled as Academic Success and Dropout. There are thirty-six features that fall into three separate categories: demographic features, academic and socio-economic (Realinho et al., 2021). Concerning  data
+    preprocessing, there were no missing or null values, however according to Ridwan et al. (2024), normalization was conducted on the set using the StandardScaler. StandardScaler adjust features to achieve a ![](data:image/png;base64,R0lGODlhIgAQAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAABAAhAAwAhAAAAAodMAodWApKfQpKnwpzwD4dWD4dfT5Knz6Y4GkdMGkdWGkdfWlKMGlKWGm7/5FKMJFKWJFzWJHe/7hzMLiYwLje/7j//9uYWNu7fdv///+7ff/en///wP//4AECAwVqICCOZGmanhQM0+m+JFVoGKHBeNkt7d5yhwuA8tApAsikjcQx9BTFTQHgy52AQg+kiEkAOIibtdRsaR+eSAszNSaVYlHV12FcMo5EJT4WyWg2HA4BCRsCLX0kHQ0rFgAbRYljRJJjW5VWIQA7) and ![](data:image/png;base64,R0lGODlhIgAQAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAABAAhAAkAhQAAAAodMAodWApKnwpznwpzwD4dMD4dfT5KMD5KfT5Knz6Y4GkdMGlKMGmY4Gm7n2m7/5FKMJFzWJHe/7hzWLhzfbje/7j//9uYWNuYfdu7fdv///+7ff/en//ewP//wP//4AECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwZaQIBwSCwajx4J5MhsEkGVR2PprDJBEapQgwh4tYAPw0sODDZGrJaisHAWVqda2DlcAB0FOn6cAzgFQhhnRWJlXoRFfhwEGx4McHx9WUIgEgECDpJHGQZeCRNBADs=) by inputting the features through the Z score distribution (see equation below).
+
+    $$
+    z = \frac{x - \mu}{\sigma}, \quad \mu = 0, \quad \sigma = 1
+    $$
+
+    Next, Ridwan et al. (2024) split the data into a training set and a testing set using the train_test_split function from scikit-learn which is a python library for machine learning. The authors used  five different train_test_split variations (i.e., 50:50, 60:40, 70:30 80:20, and 90:10) . Finally once the data where normalized and split, Ridwan et al. (2024), used XGBoost, which is a type of machine learning model built upon Decision Trees (see XGBoost formula below).
+
+    $$
+    \mathcal{L}(\phi) = \sum_{i=1}^{n} l(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k)
+    $$
+
+    Finally, once training and testing were completed, Ridwan et al. (2024) conducted model evaluation to wrap up their machine learning pipeline and recorded their findings. To evaluate the model’s performance (i.e., to see how well it generalized), Ridwan et al. (2024) used accuracy, precision F1 Score and recall.
+
+-   **Explain how these methods are suited to address the research question.**
+
+    The methods used by Ridwan et al. (2024) appropriately answered their research question because they used a real-world data set that was multi-dimensional and utilized a sophisticated machine learning model to derive their outcomes. Furthermore, incorporated various train_test_splits to assess which  ratio produced the most optimal outcome given the data set’s features and target.
+
+-   **Discuss any innovative approaches or techniques that are particularly noteworthy.**
+
+    As mentioned previously, Ridwan et al. (2024) not only used a real-world data set to assess the causes of student attrition, but they also tested their model using a varied train_test_split. This approach afforded the authors the opportunity to gain insights into which factors contribute the most to the prediction of student attrition in higher education (i.e., socio-economic status, admission grade, and course performance).
+
+#### Significance of the Work:
+
+-   **Highlight the key findings and contributions of the paper.**
+
+    The key findings of the paper according to Ridwan et al. (2024), were discovery that the model performed most optimally with a 80:20 train_test_split, with accuracy, precision and F1-Score of 87%, 88% and 8% respectively.
+
+-   Explain why the results are important within the broader context of the field.
+
+    Concerning the broader context of the field, these results are extremely important because they offer a baseline for machine learning methods in predicting student attrition.
+
+-   **Discuss the implications of the findings for future research or practice.**
+
+    While Ridwan et al. (2024) utilized one specific classifier, future research can utilize various classifiers.
+
+#### Connection to Other Work:
+
+-   **Relate the paper to other relevant studies.**
+
+    Conceptually, the work presented by Ridwan et al. (2024) relates to the work of several scholars in the field of student attrition (e.g., Aina et al., 2022; Bargmann et al., 2022; Pek et al., 2023; Veliz Palomino & Ortega, 2023). Methodologically, Ridwan et al. (2024) work concerning the use of real-world data to predict the causes of student attrition connects to the work other scholars (e.g., Barramuno et al., 2022; Delen et al., 2024; Kok et al., 2024; Namoun & Alshanqiti, 202: Parjwal et al., 2024).
+
+-   **How does this paper build on or differ from previous work?**
+
+    As mentioned previously according to Ridwan et al. (2024), previous work on the issue of student attrition primarily focus on individual features whereas their work proports to incorporate multiple dimensions. Methodically, the use of XGBoost, and a varied test_train_split ratios is novel for predicting student attrition.
+
+-   **Identify any references to seminal works or influential papers cited by the authors.**
+
+    Some of the works cited by the authors that influenced their study are listed above. However there are a few more....
+
+#### Relevance to Capstone Project:
+
+-   Discuss how the content of the paper might be relevant to your own capstone project.
+
+    The work of While Ridwan et al. (2024) relates to my capstone project in that I too am interested in predicting the root causes of student attrition by using machine learning. I  will also be using the Predicting Students’ Dropout and Academic Success  Dataset (Realinho et al., 2021).
+
+-   Identify any specific methods, theories, or findings that you might incorporate into your project.
+
+    I will also be utilizing a complete machine learning pipeline for my methodology, similar to the one employed by Ridwan et al. (2024) . To assess the efficacy of my models I will be using accuracy, precision recall and F1-Score metrics. Thus, Ridwan et al. (2024), serves as a solid guide concerning how to implement machine learning in predicting student attrition.
+
+-   Highlight any potential areas where your capstone could expand upon or diverge from the paper’s findings.
+
+    Whereas Ridwan et al. (2024), only used XGBoost to predict student attrition on the feature set, I intend to expand upon this by utilizing various classifiers (e.g., Decision Trees, Random Forest, Logistic Regression, Support Vector Machines and XGBoost). The intent is to develop a machine learning pipeline then train various classifiers on the feature set assessing which classifier produces the highest accuracy. Once a classifier is selected it will be fine tuned and trained on the full feature set and tested on the validation set.
+
+#### 
+
+##                               Reference
+
+Aina, C., Baici, E., Casalone, G., & Pastore, F. (2022). The determinants of university dropout: A review of the *socio-economic literature. Socio-Economic Planning Sciences, 79, Article 101102.* https://doi.org/10.1016/j.seps.2021.101102
+
+Bargmann, C., Thiele, L., & Ksuggrld, S. (2022). Motivation matters: Predicting students’ career decidedness and intention to drop out after the first year in higher education. *Higher Education, 83(4), 845-861.* <https://doi.org/10.1007/s10734-021-00707-6>
+
+Barramuno, M., Meza-Narvaez, C., & Galvez-Garcia, G. (2022). Prediction of student attrition risk using machine learning. *Journal of Applied Research in Higher Education, 14(3), 974-986.* <https://doi.org/10.1108/JARHE-02-2021-0073>
+
+Delen, D., Davazdahemami, B., & Rasouli Dezfouli, E. (2024). Predicting and mitigating freshman student attrition: A local-explainable machine learning framework. Information Systems Frontiers, 26(2), 641-662. <https://doi.org/10.1007/s10796-023-10397-3>
+
+Kok, C. L., Ho, C.K., Chen, L., Koh, Y. Y., & Tian, B. (2024). A novel predictive modeling for student attrition  utilizing machine learning and sustainable big data analytics. *Applied Sciences, 14(21), Article 9633.* <https://doi.org/10.3390/app14219633>*.*
+
+Namoun, A., & Alshanqiti, A. (2020). Predicting  student performance using data mining and learning analytics techniques: A systematic literature review. Applied Science, 11(1), Article 237. <https://doi.org/10.3390/app11010237>
+
+Pek, R.Z., Ozyer, S.T., Elhage, T., Ozyer, T., & Alhajj, R. (2023). The role of machine learning in identifying student at-risk and minimizing failure. *IEEE Access, 11, 1224-1243.* <https://doi.org/10.1109/ACCESS.2022.3232984>
+
+Parjwal, P., L. R., S., & V., K. (2024) Forcasting student attrition using machine learning. In *Proceedings of the 2024 4th Asian Conference on Innovation in Technology (ASIANCON)* (pp.1-7) IEEE.
+
+<https://doi.org/10.1109/ASIANCON62057.2024.10838214>
+
+Ridwan, A., Priyatno, A. M., & Ningsih, L. (2024). Predict Students' Dropout and Academic Success with XGBoost. *Journal of Education and Computer Applications*, *1*(2), 1-8.
+
+Realinho, V., Vieira Martins, M., Machado, J., & Baptista, L. (2021). Predict Students' Dropout and Academic Success \[Dataset\]. UCI Machine Learning Repository. https://doi.org/10.24432/C5MC89.
+
+Veliz Palomino, J.C., & Ortega, A. M. (2023). Dropout intentions in higher education: Systematic literature review. *Journal of Efficacy and Responsibility in Education and Science, 16(2), 149-158.*
+
+<https://doi.org/10.7160/eriesj.2023.160206>

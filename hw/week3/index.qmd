@@ -29,19 +29,88 @@ editor:
 
 -   **Discuss the significance of the research question and why it is important.**
       
-    Realinho et al. (2022) asks, "What are the key factors that lead to student dropout?" Posed in a higher education setting this question is significant to all educational environments to include K-12 as many of factors are interchangeable. Further the issue of predicting the root causes of stundent attrition and then using model results to directly drive changes to pedagogy or intervention is not typically explored (Realinho et al., 2022). 
+    Realinho et al. (2022) asks, "What are the key factors that lead to student dropout?" Posed in a higher education setting this question is significant to all educational environments to include K-12 as many of factors correlate. Further the issue of predicting the root causes of stundent attrition and then using model results to directly drive changes to pedagogy or intervention is not typically explored (Realinho et al., 2022). 
     
 
 #### Method Used:
 
 -   **Summarize the methodologies employed by the authors.**
 
-    As mentioned previously data for the study conducted by Realinho et al. (2022) stemmed for varied sources and were then compiled into one data set. The sources of data were; 
+    As mentioned previously data for the study conducted by Realinho et al. (2022) stemmed for varied sources and were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2.the sytem used for teaching and learning (internal data), 3. annual data from  the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
+   
+    The feautres fell into four main catagories; demographic, socioeconomic, macroeconomic, and academic. The target variable (i.e., dropout, enrolled or graduating), was multi-class. Concerning data preprocessing, Realinho et al. (2022) used a multi-tool approach. For example, initial data ingestion and preprocessing was done using tools such as Microsoft Access Databases, Microsoft's Visual Studio Basic, Microsoft Windows suit, and code processing and development in Python. According to Realinho et al. (2022), detailed data anlysis was done using tools from the Pandas library, Scikit-learn and Bokeh library for visualizations. The outputd of descritpive statitics were listed for all features in the form of tables that were parsed based on the major feature catagories. In conducting desctiptive statistics and assessing collinarity Realinho et al. (2022) did notice that several features, both within and between feature catagories showed high levels of multicolinarity, which they assed by means of a heat map and Pearson correlation coefficent using 0.7 as a cut point.The Pearson correlation coefficient $r$ measures the strength and direction of the linerar relationship between two features. A cut point $|r| \ge 0.07$ is considered a minimal threshold (see formula below).
+$$
+r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}
+{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}} \, \sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}}
+$$
+    
+    
+    Where:
+    * $r$ = The Pearson correlation coefficent, which measures the strength       and direction of the linear relationship between two features
+    * $x_i$ = The observed value of the feature $X$ for the $i$-th               observation
+    * $y_i$ = The observed value of the target $Y$ for the $i$-th                observation
+    * $\bar{x}$ = The  mean of all values of the feature $X$
+    * $\bar{y}$ = The mean of all values of the Target $Y$
+    * $n$ = The total number of paired observations
+    * $\sum_{i=1}^{n}$ = The summation over all observations from $i$ = 1        to $n$
+    * $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation       for the feature $X$
+    * $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation       for the target $Y$
+
+    To assess wich features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
+$$
+PI_j = E_{\text{perm}(j)} - E_{\text{base}}
+$$
+    
+    Where:
+      * $PI_j$ = the permutation importnace score for the feaure $_j$
+      * $E_{\text{base}}$ = the base model error (i.e., the performance            metric) computed on the orginal dataset
+      * $E_{\text{perm}(j)}$ = the model error after random permutation of         the values of feature $_j$
+      * $j$ = the index of the feature being evaluted
+      * $E$ = the prediction error metric used for evaluation (e.g., mean          squared error, log loss or error rate)
+
+    Concerning the target, Realinho et al. (2022) noted that there was significant class imbalnce, for example, the class label "Graduate" at (n = 2,209) represented 50% of the sample, while "Dropout" (n = 1,421) represented 32%, and "Enrolled" (n = 794) represented 18%. Thus to assess the error when conducting permutation Realinho et al. (2022), used F1-score as their metric, which they asserted is most adequate when dealing with an imbalnaced data set. The F1-score measures the accurcy of classification models assessing how well they predict the positive class by balancing both precision and recall. In the context of selecting "important" features, if permutation causes significant decreases in F1-score, then a feature is deemed important (see formula below).
+$$
+F_1 = \frac{2PR}{P + R}
+$$
+    
+     Where:
+      * $F_1$ = The $F1$-score which is the harmonic mean of precision             andreval
+      * $P$ = Precision, which is the prroportion of predicted postives            that are true positives
+      * $R$ = Recall, which is  the ratio of acutal postives that are              correctly predicted
+      * $2$ = The weighting factor that yeilds the harmoic mean and it             penalizes extreme imbalances between $P$ and $R$
+
+      According to Realinho et al. (2022) Permutation Feature Importance was applied to models suggested by the literature on multi-class prediction models, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting(CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their predictiond thus improving model accuracy while reducing overfitting(20)(see RF formula below). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the prevuious tree(21)(see XGBoost formula below). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (22)(see LightGBM formula below). Finally, CatBoost also uses gradient boosting method but is specfically designed to handle catagorical features (23)(see CatBoost formula below).
+      
+    **Random Forest Formula**
+$$
+\hat{y} = \frac{1}{B}\sum_{b=1}^{B} T_b(x)
+$$
+
+    Where:
+      * $\hat{y}$ = The final predicted out of the RF model
+      * $B$ = The total number of decision trees in the RF
+      * $T_b(x)$ = The prediction of $b$-th decision tree for input $x$
+      * $x$ = The feauture vector (i.e., the feature observation)
+      * $\sum_{b=1}^{B}$ = The aggregation accross all trees
+    
+    
+    **Extreme Gradient Boosting Formula**
+$$
+\hat{y}_i = \sum_{k=1}^{K} f_k(x_i), 
+\quad f_k \in \mathcal{F}
+$$
+
+    Where:
+      * 
+      
+      
+    
+      
     
 
-    
-
-
+      
+      
+      
 -   **Explain how these methods are suited to address the research question.**
 
     The methods used by....

@@ -25,20 +25,20 @@ editor:
 
 -   **What problem or gap in the existing literature does the paper aim to address?**
 
-    Concerning the problem or gap in the existing literature on students dropping out of institutes of higher learning prior to completing their degrees Realinho et al. (2022) assert that there is no universal measure of "student dropout". Researchers who are produce work on higher education student attrition often have differing measures drop out, and most measure the phenomena at the macro level, which then creates issues concerning research comparison and understanding the nuances of the phenomena at a micro level (Realinho et al., 2022). To address the issue of disparate measures of student dropout and to better understand the features that contribute to it Realinho et al. (2022) proposed taking a micro perspective in that changes to student degree projection would be looked at regardless of time of occurrence. Further, Realinho et al. (2022) compiled a unique data set that comprised of varied source data which they then used to train machine learning classifiers that predict student drop out and academic success.
+    Concerning the problem or gap in the existing literature on students dropping out of institutes of higher learning prior to completing their degrees Realinho et al. (2022) assert that there is no universal measure of "student dropout". Researchers who produce work on higher education student attrition often have differing measures of what constitutes "dropout", and most measure the phenomena at the macro level, which then creates issues concerning research comparison and understanding the nuances of the phenomena at a micro level (Realinho et al., 2022). To address the issue of disparate measures of student dropout and to better understand the features that contribute to it Realinho et al. (2022) proposed taking a micro perspective in that changes to student degree projection would be looked at regardless of time of occurrence. Further, Realinho et al. (2022) compiled a unique data set that comprised of varied source data which they then used to train machine learning classifiers that predict student drop out and academic success.
 
 -   **Discuss the significance of the research question and why it is important.**
       
-    Realinho et al. (2022) asks, "What are the key factors that lead to student dropout?" Posed in a higher education setting this question is significant to all educational environments to include K-12 as many of factors correlate. Further the issue of predicting the root causes of student attrition and then using model results to directly drive changes to pedagogy or intervention is not typically explored (Realinho et al., 2022).
+    Realinho et al. (2022) asks, "What are the key factors that lead to student dropout?" Posed in a higher education setting this question is significant to all educational environments to include K-12 as many of the factors correlate. Further the issue of predicting the root causes of student attrition and then using model results to directly drive changes to pedagogy or intervention is not typically explored (Realinho et al., 2022).
     
 
 #### Method Used:
 
 -   **Summarize the methodologies employed by the authors.**
 
-    As mentioned previously data for the study conducted by Realinho et al. (2022) stemmed for varied sources and were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2.the sytem used for teaching and learning (internal data), 3. annual data from  the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
+    As mentioned previously data for the study conducted by Realinho et al. (2022) stemmed from varied sources and were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2. the system used for teaching and learning (internal data), 3. annual data from  the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
    
-    The feautres fell into four main catagories; demographic, socioeconomic, macroeconomic, and academic. The target variable (i.e., dropout, enrolled or graduating), was multi-class. Concerning data preprocessing, Realinho et al. (2022) used a multi-tool approach. For example, initial data ingestion and preprocessing was done using tools such as Microsoft Access Databases, Microsoft's Visual Studio Basic, Microsoft Windows suit, and code processing and development in Python. According to Realinho et al. (2022), detailed data anlysis was done using tools from the Pandas library, Scikit-learn and Bokeh library for visualizations. The outputd of descritpive statitics were listed for all features in the form of tables that were parsed based on the major feature catagories. In conducting desctiptive statistics and assessing collinarity Realinho et al. (2022) did notice that several features, both within and between feature catagories showed high levels of multicolinarity, which they assed by means of a heat map and Pearson correlation coefficent using 0.7 as a cut point.The Pearson correlation coefficient $r$ measures the strength and direction of the linerar relationship between two features. A cut point $|r| \ge 0.07$ is considered a minimal threshold (see formula below).
+    The feautres fell into four main catagories; demographic, socioeconomic, macroeconomic, and academic. The target variable (i.e., dropout, enrolled, or graduating), was multi-class. Concerning data preprocessing, Realinho et al. (2022) used a multi-tool approach. For example, initial data ingestion and preprocessing was done using tools such as Microsoft Access Databases, Microsoft's Visual Studio Basic, Microsoft Windows suit, and code processing and development was done in Python. According to Realinho et al. (2022), detailed data anlysis was done using tools from the Pandas library, Scikit-learn and Bokeh library for visualizations. The output of descritpive statitics were listed for all features in the form of tables that were parsed based on the major feature catagories. In conducting descriptive statistics and assessing collinarity Realinho et al. (2022) did notice that several features, both within and between feature catagories showed high levels of multicolinarity, which they assed by means of a heat map and Pearson correlation coefficent using 0.7 as a cut point.The Pearson correlation coefficient $r$ measures the strength and direction of the linerar relationship between two features. A cut point $|r| \ge 0.07$ is considered a minimal threshold (see formula below).
 $$
 r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}
 {\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}} \, \sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}}
@@ -56,30 +56,31 @@ $$
     * $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation       for the feature $X$
     * $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation       for the target $Y$
 
-    To assess wich features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
+    To assess wich features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
 $$
 PI_j = E_{\text{perm}(j)} - E_{\text{base}}
 $$
     
+    
     Where:
       * $PI_j$ = the permutation importnace score for the feaure $_j$
-      * $E_{\text{base}}$ = the base model error (i.e., the performance                       metric) computed on the orginal dataset
-      * $E_{\text{perm}(j)}$ = the model error after random permutation of the values         of feature $_j$
+      * $E_{\text{base}}$ = the base model error (i.e., the performance            metric) computed on the orginal dataset
+      * $E_{\text{perm}(j)}$ = the model error after random permutation of         the values         of feature $_j$
       * $j$ = the index of the feature being evaluted
-      * $E$ = the prediction error metric used for evaluation (e.g., mean                     squared error, log loss or error rate)
+      * $E$ = the prediction error metric used for evaluation (e.g., mean          squared error, log loss or error rate)
 
-    Concerning the target, Realinho et al. (2022) noted that there was significant class imbalnce, for example, the class label "Graduate" at (n = 2,209) represented 50% of the sample, while "Dropout" (n = 1,421) represented 32%, and "Enrolled" (n = 794) represented 18%. Thus to assess the error when conducting permutation Realinho et al. (2022), used F1-score as their metric, which they asserted is most adequate when dealing with an imbalnaced data set. The F1-score measures the accurcy of classification models assessing how well they predict the positive class by balancing both precision and recall. In the context of selecting "important" features, if permutation causes significant decreases in F1-score, then a feature is deemed important (see formula below).
+    Concerning the target, Realinho et al. (2022) noted that there was significant class imbalnce, for example, the class label "Graduate" at (n = 2,209) represented 50% of the sample, while "Dropout" (n = 1,421) represented 32%, and "Enrolled" (n = 794) represented 18%. Thus, to assess the error when conducting permutation Realinho et al. (2022), used F1-score as their metric, which they asserted is most adequate when dealing with an imbalanced data set. The F1-score measures the accurcy of classification models assessing how well they predict the positive class by balancing both precision and recall. In the context of selecting "important" features, if permutation causes significant decreases in F1-score, then a feature is deemed important (see formula below).
 $$
 F_1 = \frac{2PR}{P + R}
 $$
     
      Where:
-      * $F_1$ = The $F1$-score which is the harmonic mean of precision             andreval
-      * $P$ = Precision, which is the prroportion of predicted postives            that are true positives
+      * $F_1$ = The $F1$-score which is the harmonic mean of precision             and recall
+      * $P$ = Precision, which is the proportion of predicted postives            that are true positives
       * $R$ = Recall, which is  the ratio of acutal postives that are              correctly predicted
       * $2$ = The weighting factor that yeilds the harmoic mean and it             penalizes extreme imbalances between $P$ and $R$
 
-      According to Realinho et al. (2022) Permutation Feature Importance was applied to models suggested by the literature on multi-class prediction models, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting (CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their predictiond thus improving model accuracy while reducing overfitting (Ho,1995). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the prevuious tree (Chen & Guestrin, 2016). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (Ke et al., 2017). Finally, CatBoost also uses gradient boosting method but is specfically designed to handle catagorical features (Prokhorenkova et al., 2018). For  formulas of all multi-class classifiers used by Realinho et al. (2022) see below.
+      According to Realinho et al. (2022) Permutation Feature Importance was applied to all models suggested by the literature for multi-class prediction, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting (CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their prediction thus improving model accuracy while reducing overfitting (Ho,1995). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the previous tree (Chen & Guestrin, 2016). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (Ke et al., 2017). Finally, CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features (Prokhorenkova et al., 2018). See below for the formulas of all multi-class classifiers used by Realinho et al. (2022) in their study.
       
     **Random Forest Formula**
 $$
@@ -102,10 +103,10 @@ $$
 
     Where:
       * $\hat{y}_i$ = The pridcited output for the observation $i$
-      * $K$ = The number of trees (i.e., the number of boosting interations)
+      * $K$ = The number of trees (i.e., the number of boosting                    interations)
       * $f_k(x_i)$ = The prediction from the $k-th$ decision tree
       * $x_i$ =  The feature vector for the obeservation $i$
-      * $F$ = The space of all all possible decision trees
+      * $F$ = The space of all possible decision trees
       
      **Light Gradient Boosting Machine Formula**
 $$
@@ -113,11 +114,11 @@ $$
 $$
 
     Where:
-      * $\hat{y}_i^{(t)}$ = The updated oesration $i$ at interation $t$
+      * $\hat{y}_i^{(t)}$ = The updated observation $i$ at interation $t$
       * $\hat{y}_i^{(t-1)}$ = The prediction from the previous boosting intertation
-      * $\eta$ = The learning rate while controlng for the contribution of each new           tree
+      * $\eta$ = The learning rate while controlng for the contribution of         each new tree
       * $f_t(x_i)$ = The prediction of the tree added at interation $t$
-      * $x_i$ = The feature vector of for observation $i$
+      * $x_i$ = The feature vector for observation $i$
       
     **Catagorical Boosting Formula**
 $$
@@ -134,25 +135,25 @@ $$
       
 -   **Explain how these methods are suited to address the research question.**
 
-    The methods used by Realinho et al. (2022) more than adequatly adress their research question. Starting with the data ingestion process, by compiling a data set from both sources native to the universty an external, they assured that features in the data set would afford them the oppurtunity to gain both a macro and micro perspective conerning the phenomena of student drop out and acadmic success. Further, in dealing with class imbalance by utalizing Permutation Feature Importance, Realinho et al. (2022) assured that only features that contributed to the postive predciton of the class would be inlcuded in thier model thus imporvng model fit and accuracy. Finally by incorparting various multi-class calssifieres into their pipeline, Realinho et al. (2022) assured that they would be able to conduct model comparsion and selct the best model for their data set.  
+    The methods used by Realinho et al. (2022) more than adequatly address their research question. Starting with the data ingestion process, by compiling a data set from both sources native to the universty and external, they assured that features in the data set would afford them the oppurtunity to gain both a macro and micro perspective conerning the phenomena of student dropout and acadmic success. Further, in dealing with class imbalance, by utalizing Permutation Feature Importance, Realinho et al. (2022) assured that only features that contributed to the postive predciton of the class would be inlcuded in their model thus imporvng model fit and accuracy. Finally by incorparting various multi-class calssifieres into their pipeline, Realinho et al. (2022) assured that they would be able to conduct model comparison and select the best model for their data set.  
 
 -   **Discuss any innovative approaches or techniques that are particularly noteworthy.**
 
-    Concerning innovative proceesses, I found that compiling the data set from various despirate soruces was innovative. I also found that using Permutation Feature Importance was innovative. When faced with the issue of multi-colinearity Realinho et al. (2022) dealt with it in a manner that both reduced the features, and imporved the potential for the models to perfrom better, a testament to great feature engineering.
+    Concerning innovative processes, I found that compiling the data set from various disparate sources was innovative. I also found that using Permutation Feature Importance was innovative. When faced with the issue of multi-colinearity Realinho et al. (2022) dealt with it in a manner that both reduced the features, and improved the potential for the models to perform better..
 
 #### Significance of the Work:
 
 -   **Highlight the key findings and contributions of the paper.**
 
-    The key findings of the paper was the discovery that all classiferes predicted the same five features as contributing the most to accuratly predicting the postive class. According to Realinho et al. (2022), the five features were 1. Curriculiar  units 2nd semester(approved), 2. Curriculiar units 1st semester (approved), 3. Curricular units 2nd semsister (grade), 4. Course, and 5. Tutuion fees up to date. Concerning the key contributions of the paper produced by Realinho et al. (2022), I found their data collection and data analysis methods offered a grate framework for other resesrchers to follow when exploring the issue of studnet dropout in both the hihger education envrionment and in K-12. 
+    The key findings of the paper was the discovery that all classiferes predicted the same five features as contributing to accuratly predicting the postive class. According to Realinho et al. (2022), the five features were 1. Curricular  units 2nd semsester(approved), 2. Curricular units 1st semsester (approved), 3. Curricular units 2nd semsester (grade), 4. Course, and 5. Tuition fees up to date. Concerning the key contributions of the paper produced by Realinho et al. (2022), I found their data collection and data analysis methods offered a great framework for other researchers to follow when exploring the issue of student dropout in both the higher education environment and in K-12. 
 
 -  **Explain why the results are important within the broader context of the field.**
 
-    The resuts are important in regards to the broader context of the field becasue the five key features that Realinho et al. (2022) found to have the most effect on accuratly predicitng the postive class are ubiqitous to all higher education instituions. Further, all of the features that Realinho et al. (2022) incorparted in their study have parallels in other learning environments such as K-12. Thus, univerally, educationa; researcher regradless of which level of education envrionment can refer to findings put forth by Realinho et al. (2022), as a baseline to their own research.
+    The results are important in regards to the broader context of the field because the five key features that Realinho et al. (2022) found to have the most effect on accuratly predicitng the postive class are ubiquitous to all higher education institutions. Further, all of the features that Realinho et al. (2022) incorporated in their study have parallels in other learning environments such as K-12. Thus, education researchers regradless of which level of education envrionment can refer to the findings put forth by Realinho et al. (2022), as a baseline to their own research.
 
 -   **Discuss the implications of the findings for future research or practice.**
 
-    As previously mentinioned, Realinho et al. (2022) found that five features were most effective in accuratly predicting the postive class which were 1. Curriculiar  units 2nd semester(approved), 2. Curriculiar units 1st semester (approved), 3. Curricular units 2nd semsister (grade), 4. Course, and 5. Tutuion fees up to date. These features are not unique to Realinho et al. (2022), but rather they are ubiqitous to all higher education instituions. The implications for future research and practice is that researchers can adopt a similiar method of data collection but using data native to their own instituions and external sources, apply a similiar machine learning methodolgy and then assess if the same or similiar factors predict the postive class.
+    As previously mentioned, Realinho et al. (2022) found that five features were most effective in accuratly predicting the positive class which were 1. Curricular  units 2nd semester (approved), 2. Curricular units 1st semester (approved), 3. Curricular units 2nd semester (grade), 4. Course, and 5. Tutuion fees up to date. These features are not unique to Realinho et al. (2022), but rather they are ubiquitous to all higher education institutions. The implications for future research and practice is that researchers can adopt a similiar method of data collection but using data native to their own institutions and external sources, apply a similiar machine learning methodolgy and then assess if the same or similiar factors predict the postive class.
 
 #### Connection to Other Work:
 
@@ -162,25 +163,25 @@ $$
 
 -   **How does this paper build on or differ from previous work?**
 
-    This paper builds on previous work concerning predicitng studnet dropout by imlementing a multi-class approach. For example, while Ridwan et al. (2024), approached the topic by adopting a binary classifier (i.e., Academic Success and Dropout), Realinho et al. (2022), used three classes (i.e., dropout, enrolled or graduating) which adds another dimension to the topic. Further while most research on this topic focus on demographic, academic, and socioeconomic features, Realinho et al. (2022) added a feature group that while it did consist of acadmic data the element of time was present (e.g., courses, grades during the 1st and 2nd semester). As the data set used by Realinho et al. (2022), was complied from various data set both internal and external, the features consisted of both micro and macro elements that could be assed to see the effect of student attrition.
+    This paper builds on previous work concerning predicitng student dropout by implementing a multi-class approach. For example, while Ridwan et al. (2024), approached the topic by adopting a binary classifier (i.e., Academic Success and Dropout), Realinho et al. (2022), used three classes (i.e., dropout, enrolled or graduating) which adds another dimension to the topic. Further while most research on this topic focuses on demographic, academic, and socioeconomic features, Realinho et al. (2022) added a feature group that while it did consist of academic data the element of time was present (e.g., courses and grades during the 1st and 2nd semester). As the data set used by Realinho et al. (2022), was complied from various data sets both internal and external, the features consisted of both micro and macro elements that could be assed to see the effect of student attrition.
 
 -   **Identify any references to seminal works or influential papers cited by the authors.**
 
-    Concerning references to seminal and or influential works cited by Realinho et al. (2022), in disucssing the muliti-class classifiers they used in their study, the cited (e.g., Chen & Guestrin, 2016; Ho, 1995; Ke et al., 2017; Prokhorenkova et al., 2018).
+    Concerning references to seminal and or influential works cited by Realinho et al. (2022), in discussing the muliti-class classifiers they used in their study, they cited (e.g., Chen & Guestrin, 2016; Ho, 1995; Ke et al., 2017; Prokhorenkova et al., 2018).
 
 #### Relevance to Capstone Project:
 
 -   **Discuss how the content of the paper might be relevant to your own capstone project.**
 
-    The content of this paper directly realtes to my capstone, I will also be utilizing a complete machine learning pipeline for my methodology, similar to the one employed by Realinho et al. (2022). The data set I intend to use (i.e, [UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)), does have a three classes (i.e., Graduate, Dropout, and Enrolled), the methods I intend to use concering the machine learning classifiers directly correlate to the methods used by Realinho et al. (2022). To assess the efficacy of my models I will be using accuracy, precision recall and F1-Score metrics, however as the data set I am using also has class imbalance, I may explore the Permutation Feature Importance technique. 
+    The content of this paper directly realates to my capstone. I will also be utilizing a complete machine learning pipeline for my methodology, similar to the one employed by Realinho et al. (2022). The data set I intend to use (i.e, [UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)), also has three classes (i.e., Graduate, Dropout, and Enrolled), the methods I intend to use concerning the machine learning classifiers directly correlate to the methods used by Realinho et al. (2022). To assess the efficacy of my models I will be using accuracy, precision, recall and F1-Score metrics, however as the data set I am using also has class imbalance, I may also explore the Permutation Feature Importance technique. 
 
 -   **Identify any specific methods, theories, or findings that you might incorporate into your project.**
 
-    Concerning the specific methods, theories and findings that I intentd to incorporate into my capstone project I intent to use the multi-class classfieres used by Realinho et al. (2022) (i.e., Random Forest, Extreme Gradient Boosting, Light Gradient Boosting Machine, and Catagotical Boosting).
+    Concerning the specific methods, theories and findings that I intend to incorporate into my capstone project I intend to use the multi-class classifiers  used by Realinho et al. (2022) (i.e., Random Forest, Extreme Gradient Boosting, Light Gradient Boosting Machine, and Categorical Boosting).
 
 -   **Highlight any potential areas where your capstone could expand upon or diverge from the paper’s findings.**
 
-    Concerning areas where my capstone could expand upon what was presented by Realinho et al. (2022), I intnent to show compare and report the training, and testing data of each model (i.e., model compaarsion). Then, using the model with the best metrics (i.e, precision, recall, F1-score), I intend to fine tune it and train it on the full feature set and test it on the validation set.
+    Concerning areas where my capstone could expand upon what was presented by Realinho et al. (2022), I intend to compare and report the training, and testing results of each model (i.e., model comparison). Then, using the model with the best metrics (i.e, precision, recall, F1-score), I intend to fine tune it and train it on the full feature set and test it on the validation set.
 
 #### 
 

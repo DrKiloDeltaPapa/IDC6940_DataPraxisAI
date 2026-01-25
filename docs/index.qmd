@@ -1,7 +1,7 @@
 ---
-title: "DataPraxisAI: Literature Review of *Predicting Students’ Dropout and Academic Success with XGBoost*"
-subtitle: "Capstone(Spring 2026):week2_paper_review"
-author: "Kareem D.Piper (Advisor: Dr.Shusen Pu)"
+title: "DataPraxisAI: Literature Review of *Predicting Student Dropout and Academic Success*"
+subtitle: "Capstone(Spring 2026):week3_paper_review"
+author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
 date: today
 date-format: "MMMM D, YYYY"
 format:
@@ -21,83 +21,167 @@ editor:
 
 -   **Describe the context in which the research was conducted.**
 
-    According to Ridwan et al. (2024), student attrition presents a plethora of issues for educational institutions, specifically those of higher education. For example, institutions that are plagued by issues with student attrition often face questions on credibility and quality of education. Further, according to Ridwan et al. (2024), students who drop out of their higher education institutions often face various socioeconomic issues.
+    The research conducted by Realinho et al. (2022) is framed in the higher education setting, specifically, issues with students dropping out and the lack of academic success. According to Realinho et al. (2022) student attrition and academic failure does not only negatively affect the education institutions that students attend, but they create greater adverse societal issues. For example, when students drop out prior to completing a degree program it makes them less competitive concerning the job market, which then leads to economic dificiencies, which can lead to inadequate health care access and subsequent more dire socio-economic issues that often disproportionally affect marginalized demographics (Realinho et al., 2022). 
 
 -   **What problem or gap in the existing literature does the paper aim to address?**
 
-    Concerning the problem or gap in the existing literature, the authors propose that, while prior studies seek to predict student attrition within the higher education environment, most studies are limited to using specific features, thus limiting the ability to accurately drill down and subsequently predict the root causes of this issue (Ridwan et al., 2024).
+    Concerning the problem or gap in the existing literature on students dropping out of institutes of higher learning prior to completing their degrees Realinho et al. (2022) assert that there is no universal measure of "student dropout". Researchers who produce work on higher education student attrition often have differing measures of what constitutes "dropout", and most measure the phenomena at the macro level, which then creates issues concerning research comparison and understanding the nuances of the phenomena at a micro level (Realinho et al., 2022). To address the issue of disparate measures of student dropout and to better understand the features that contribute to it Realinho et al. (2022) proposed taking a micro perspective in that changes to student degree projection would be looked at regardless of time of occurrence. Further, Realinho et al. (2022) compiled a unique data set that comprised of varied source data which they then used to train machine learning classifiers that predict student drop out and academic success.
 
 -   **Discuss the significance of the research question and why it is important.**
-
-    Ridwan et al. (2024) sought to discover the causes of student attrition in higher education. This question is significant because addressing student attrition is not only relevant to the academic standing of these institutions but can also positively affect income inequality, mortality rates, and other socioeconomic issues people face due to a lack of proper education.
+      
+    Realinho et al. (2022) asks, "What are the key factors that lead to student dropout?" Posed in a higher education setting this question is significant to all educational environments to include K-12 as many of the factors correlate. Further the issue of predicting the root causes of student attrition and then using model results to directly drive changes to pedagogy or intervention is not typically explored (Realinho et al., 2022).
+    
 
 #### Method Used:
 
 -   **Summarize the methodologies employed by the authors.**
 
-    To assess and efficiently predict the causes of student attrition in a higher education setting, Ridwan et al. (2024) utilized a predictive model. Specifically, the authors used XGBoost. The data selected for the evaluation is the Predicting Students’ Dropout and Academic Success Dataset (Realinho et al., 2021). According to Ridwan et al. (2024), the data set consisted of (n = 4, 423) cases of higher education students from varied socio-economic backgrounds. The target is a dichotomous variable labeled as Academic Success and Dropout. There are thirty-six features that fall into three separate categories: demographic features, academic and socio-economic (Realinho et al., 2021). Concerning data preprocessing, there were no missing or null values, however according to Ridwan et al. (2024), normalization was conducted on the set using the StandardScaler. StandardScaler adjusts features using Z-score normalization, transforming each feature to have a ( μ = 0 ) and a ( σ = 1 ) by applying the following transformation (see equation below).
+    As mentioned previously data for the study conducted by Realinho et al. (2022) stemmed from varied sources and were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2. the system used for teaching and learning (internal data), 3. annual data from  the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
+   
+    The feautres fell into four main catagories; demographic, socioeconomic, macroeconomic, and academic. The target variable (i.e., dropout, enrolled, or graduating), was multi-class. Concerning data preprocessing, Realinho et al. (2022) used a multi-tool approach. For example, initial data ingestion and preprocessing was done using tools such as Microsoft Access Databases, Microsoft's Visual Studio Basic, Microsoft Windows suit, and code processing and development was done in Python. According to Realinho et al. (2022), detailed data anlysis was done using tools from the Pandas library, Scikit-learn and Bokeh library for visualizations. The output of descritpive statitics were listed for all features in the form of tables that were parsed based on the major feature catagories. In conducting descriptive statistics and assessing collinarity Realinho et al. (2022) did notice that several features, both within and between feature catagories showed high levels of multicolinarity, which they assed by means of a heat map and Pearson correlation coefficent using 0.7 as a cut point.The Pearson correlation coefficient $r$ measures the strength and direction of the linerar relationship between two features. A cut point $|r| \ge 0.07$ is considered a minimal threshold (see formula below).
+$$
+r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}
+{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}} \, \sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}}
+$$
+    
+    
+    Where:
+    * $r$ = The Pearson correlation coefficent, which measures the strength       and direction of the linear relationship between two features
+    * $x_i$ = The observed value of the feature $X$ for the $i$-th               observation
+    * $y_i$ = The observed value of the target $Y$ for the $i$-th                observation
+    * $\bar{x}$ = The  mean of all values of the feature $X$
+    * $\bar{y}$ = The mean of all values of the Target $Y$
+    * $n$ = The total number of paired observations
+    * $\sum_{i=1}^{n}$ = The summation over all observations from $i$ = 1        to $n$
+    * $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation       for the feature $X$
+    * $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation       for the target $Y$
 
-    $$
-    z = \frac{x - \mu}{\sigma}, \quad \mu = 0, \quad \sigma = 1
-    $$
+    To assess wich features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
+$$
+PI_j = E_{\text{perm}(j)} - E_{\text{base}}
+$$
+    
+    
+    Where:
+      * $PI_j$ = the permutation importnace score for the feaure $_j$
+      * $E_{\text{base}}$ = the base model error (i.e., the performance            metric) computed on the orginal dataset
+      * $E_{\text{perm}(j)}$ = the model error after random permutation of         the values         of feature $_j$
+      * $j$ = the index of the feature being evaluted
+      * $E$ = the prediction error metric used for evaluation (e.g., mean          squared error, log loss or error rate)
 
-    Next, Ridwan et al. (2024) split the data into a training set and a testing set using the train_test_split function from scikit-learn which is a python library for machine learning. The authors used five different train_test_split variations (i.e., 50:50, 60:40, 70:30 80:20, and 90:10) . Finally once the data where normalized and split, Ridwan et al. (2024), used XGBoost, which is a type of machine learning model built upon Decision Trees (see XGBoost formula below).
+    Concerning the target, Realinho et al. (2022) noted that there was significant class imbalnce, for example, the class label "Graduate" at (n = 2,209) represented 50% of the sample, while "Dropout" (n = 1,421) represented 32%, and "Enrolled" (n = 794) represented 18%. Thus, to assess the error when conducting permutation Realinho et al. (2022), used F1-score as their metric, which they asserted is most adequate when dealing with an imbalanced data set. The F1-score measures the accurcy of classification models assessing how well they predict the positive class by balancing both precision and recall. In the context of selecting "important" features, if permutation causes significant decreases in F1-score, then a feature is deemed important (see formula below).
+$$
+F_1 = \frac{2PR}{P + R}
+$$
+    
+     Where:
+      * $F_1$ = The $F1$-score which is the harmonic mean of precision             and recall
+      * $P$ = Precision, which is the proportion of predicted postives            that are true positives
+      * $R$ = Recall, which is  the ratio of acutal postives that are              correctly predicted
+      * $2$ = The weighting factor that yeilds the harmoic mean and it             penalizes extreme imbalances between $P$ and $R$
 
-    $$
-    \mathcal{L}(\phi) = \sum_{i=1}^{n} l(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k)
-    $$
+      According to Realinho et al. (2022) Permutation Feature Importance was applied to all models suggested by the literature for multi-class prediction, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting (CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their prediction thus improving model accuracy while reducing overfitting (Ho,1995). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the previous tree (Chen & Guestrin, 2016). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (Ke et al., 2017). Finally, CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features (Prokhorenkova et al., 2018). See below for the formulas of all multi-class classifiers used by Realinho et al. (2022) in their study.
+      
+    **Random Forest Formula**
+$$
+\hat{y} = \frac{1}{B}\sum_{b=1}^{B} T_b(x)
+$$
 
-    Finally, once training and testing were completed, Ridwan et al. (2024) conducted model evaluation to wrap up their machine learning pipeline and recorded their findings. To evaluate the model’s performance (i.e., to see how well it generalized), Ridwan et al. (2024) used accuracy, precision F1 Score and recall.
+    Where:
+      * $\hat{y}$ = The final predicted out of the RF model
+      * $B$ = The total number of decision trees in the RF
+      * $T_b(x)$ = The prediction of $b$-th decision tree for input $x$
+      * $x$ = The feauture vector (i.e., the feature observation)
+      * $\sum_{b=1}^{B}$ = The aggregation accross all trees
+    
+    
+    **Extreme Gradient Boosting Formula**
+$$
+\hat{y}_i = \sum_{k=1}^{K} f_k(x_i), 
+\quad f_k \in \mathcal{F}
+$$
 
+    Where:
+      * $\hat{y}_i$ = The pridcited output for the observation $i$
+      * $K$ = The number of trees (i.e., the number of boosting                    interations)
+      * $f_k(x_i)$ = The prediction from the $k-th$ decision tree
+      * $x_i$ =  The feature vector for the obeservation $i$
+      * $F$ = The space of all possible decision trees
+      
+     **Light Gradient Boosting Machine Formula**
+$$
+\hat{y}_i^{(t)} = \hat{y}_i^{(t-1)} + \eta f_t(x_i)
+$$
+
+    Where:
+      * $\hat{y}_i^{(t)}$ = The updated observation $i$ at interation $t$
+      * $\hat{y}_i^{(t-1)}$ = The prediction from the previous boosting intertation
+      * $\eta$ = The learning rate while controlng for the contribution of         each new tree
+      * $f_t(x_i)$ = The prediction of the tree added at interation $t$
+      * $x_i$ = The feature vector for observation $i$
+      
+    **Catagorical Boosting Formula**
+$$
+\hat{y}_i = \sum_{t=1}^{T} \eta f_t(x_i)
+$$
+
+    Where:
+      * $\hat{y}_i$ = The predicted output for observation $i$
+      * $T$ = The total number of trees (i.e., boosting interations)
+      * $\eta$ = The learning rate
+      * $f_t(x_i)$ = The predcition from the tree at interation $t$
+      * $x_i$ = The input vector including the catgorical variables
+      
+      
 -   **Explain how these methods are suited to address the research question.**
 
-    The methods used by Ridwan et al. (2024) appropriately answered their research question because they used a real-world data set that was multi-dimensional and utilized a sophisticated machine learning model to derive their outcomes. Furthermore, incorporated various train_test_splits to assess which ratio produced the most optimal outcome given the features and the target in the dataset.
+    The methods used by Realinho et al. (2022) more than adequatly address their research question. Starting with the data ingestion process, by compiling a data set from both sources native to the universty and external, they assured that features in the data set would afford them the oppurtunity to gain both a macro and micro perspective conerning the phenomena of student dropout and acadmic success. Further, in dealing with class imbalance, by utalizing Permutation Feature Importance, Realinho et al. (2022) assured that only features that contributed to the postive predciton of the class would be inlcuded in their model thus imporvng model fit and accuracy. Finally by incorparting various multi-class calssifieres into their pipeline, Realinho et al. (2022) assured that they would be able to conduct model comparison and select the best model for their data set.  
 
 -   **Discuss any innovative approaches or techniques that are particularly noteworthy.**
 
-    As mentioned previously, Ridwan et al. (2024) not only used a real-world data set to assess the causes of student attrition, but they also tested their model using a varied train_test_split. This approach afforded the authors the opportunity to gain insights into which factors contribute the most to the prediction of student attrition in higher education (i.e., socio-economic status, admission grade, and course performance).
+    Concerning innovative processes, I found that compiling the data set from various disparate sources was innovative. I also found that using Permutation Feature Importance was innovative. When faced with the issue of multi-colinearity Realinho et al. (2022) dealt with it in a manner that both reduced the features, and improved the potential for the models to perform better..
 
 #### Significance of the Work:
 
 -   **Highlight the key findings and contributions of the paper.**
 
-    The key findings of the paper according to Ridwan et al. (2024), were discovering that the model performed most optimally with a 80:20 train_test_split, with accuracy, precision and F1-Score of 87%, 88% and 8% respectively.
+    The key findings of the paper was the discovery that all classiferes predicted the same five features as contributing to accuratly predicting the postive class. According to Realinho et al. (2022), the five features were 1. Curricular  units 2nd semsester(approved), 2. Curricular units 1st semsester (approved), 3. Curricular units 2nd semsester (grade), 4. Course, and 5. Tuition fees up to date. Concerning the key contributions of the paper produced by Realinho et al. (2022), I found their data collection and data analysis methods offered a great framework for other researchers to follow when exploring the issue of student dropout in both the higher education environment and in K-12. 
 
 -  **Explain why the results are important within the broader context of the field.**
 
-    Concerning the broader context of the field, these results are extremely important because they offer a baseline for machine learning methods in predicting student attrition.
+    The results are important in regards to the broader context of the field because the five key features that Realinho et al. (2022) found to have the most effect on accuratly predicitng the postive class are ubiquitous to all higher education institutions. Further, all of the features that Realinho et al. (2022) incorporated in their study have parallels in other learning environments such as K-12. Thus, education researchers regradless of which level of education envrionment can refer to the findings put forth by Realinho et al. (2022), as a baseline to their own research.
 
 -   **Discuss the implications of the findings for future research or practice.**
 
-    While Ridwan et al. (2024) utilized one specific classifier, future research can utilize various classifiers.
+    As previously mentioned, Realinho et al. (2022) found that five features were most effective in accuratly predicting the positive class which were 1. Curricular  units 2nd semester (approved), 2. Curricular units 1st semester (approved), 3. Curricular units 2nd semester (grade), 4. Course, and 5. Tutuion fees up to date. These features are not unique to Realinho et al. (2022), but rather they are ubiquitous to all higher education institutions. The implications for future research and practice is that researchers can adopt a similiar method of data collection but using data native to their own institutions and external sources, apply a similiar machine learning methodolgy and then assess if the same or similiar factors predict the postive class.
 
 #### Connection to Other Work:
 
 -   **Relate the paper to other relevant studies.**
 
-    Conceptually, the work presented by Ridwan et al. (2024) relates to the work of several scholars in the field of student attrition (e.g., Aina et al., 2022; Bargmann et al., 2022; Pek et al., 2023; Veliz Palomino & Ortega, 2023). Methodologically, Ridwan et al. (2024) work concerning the use of real-world data and machine learnng, to predict the causes of student attrition connects to the work other scholars (e.g., Barramuno et al., 2022; Delen et al., 2024; Kok et al., 2024; Namoun & Alshanqiti, 202: Parjwal et al., 2024).
+    Conceptually, the work presented by Realinho et al. (2022) relates to the work of several scholars in the field of student attrition (e.g., Aina et al., 2022; Bargmann et al., 2022; Pek et al., 2023; Veliz Palomino & Ortega, 2023). Methodologically, Realinho et al. (2022) work concerning the use of multi-class predictors connects to the work other scholars (e.g., Chen & Guestrin, 2016; Ho, 1995; Ke et al., 2017; Prokhorenkova et al., 2018).
 
 -   **How does this paper build on or differ from previous work?**
 
-    As mentioned previously according to Ridwan et al. (2024), previous work on the issue of student attrition primarily focus on individual features whereas their work proports to incorporate multiple dimensions. Methodically, the use of XGBoost, and a varied test_train_split ratios is novel for predicting student attrition.
+    This paper builds on previous work concerning predicitng student dropout by implementing a multi-class approach. For example, while Ridwan et al. (2024), approached the topic by adopting a binary classifier (i.e., Academic Success and Dropout), Realinho et al. (2022), used three classes (i.e., dropout, enrolled or graduating) which adds another dimension to the topic. Further while most research on this topic focuses on demographic, academic, and socioeconomic features, Realinho et al. (2022) added a feature group that while it did consist of academic data the element of time was present (e.g., courses and grades during the 1st and 2nd semester). As the data set used by Realinho et al. (2022), was complied from various data sets both internal and external, the features consisted of both micro and macro elements that could be assed to see the effect of student attrition.
 
 -   **Identify any references to seminal works or influential papers cited by the authors.**
 
-    I identified seminal  works cited by the authors that influenced their study in the "Connection to Other Work" section above. However there are a few more papers that the authors mentioned in their work, specfically on the topic of utalizing machine learning methodologies for analyzing educational data and subesquently predicitng both academic achievement and student attrition (e.g., Andrade-Giron et al., 2023; Duan et al., 202; Huo et al., 2023; Mduma, 2023; Mun & Jo, 2023; Realinho et al., 2022; Yan, 2021).
+    Concerning references to seminal and or influential works cited by Realinho et al. (2022), in discussing the muliti-class classifiers they used in their study, they cited (e.g., Chen & Guestrin, 2016; Ho, 1995; Ke et al., 2017; Prokhorenkova et al., 2018).
 
 #### Relevance to Capstone Project:
 
 -   **Discuss how the content of the paper might be relevant to your own capstone project.**
 
-    The work of While Ridwan et al. (2024) relates to my capstone project in that I too am interested in predicting the root causes of student attrition by using machine learning. I will also be using the Predicting Students’ Dropout and Academic Success Dataset (Realinho et al., 2021).
+    The content of this paper directly realates to my capstone. I will also be utilizing a complete machine learning pipeline for my methodology, similar to the one employed by Realinho et al. (2022). The data set I intend to use (i.e, [UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)), also has three classes (i.e., Graduate, Dropout, and Enrolled), the methods I intend to use concerning the machine learning classifiers directly correlate to the methods used by Realinho et al. (2022). To assess the efficacy of my models I will be using accuracy, precision, recall and F1-Score metrics, however as the data set I am using also has class imbalance, I may also explore the Permutation Feature Importance technique. 
 
 -   **Identify any specific methods, theories, or findings that you might incorporate into your project.**
 
-    I will also be utilizing a complete machine learning pipeline for my methodology, similar to the one employed by Ridwan et al. (2024) . To assess the efficacy of my models I will be using accuracy, precision recall and F1-Score metrics. Thus, Ridwan et al. (2024), serves as a solid guide concerning how to implement machine learning in predicting student attrition.
+    Concerning the specific methods, theories and findings that I intend to incorporate into my capstone project I intend to use the multi-class classifiers  used by Realinho et al. (2022) (i.e., Random Forest, Extreme Gradient Boosting, Light Gradient Boosting Machine, and Categorical Boosting).
 
 -   **Highlight any potential areas where your capstone could expand upon or diverge from the paper’s findings.**
 
-    Whereas Ridwan et al. (2024), only used XGBoost to predict student attrition on the feature set, I intend to expand upon this by utilizing various classifiers (e.g., Decision Trees, Random Forest, Logistic Regression, Support Vector Machines and XGBoost). The intent is to develop a machine learning pipeline then train various classifiers on the feature set assessing which classifier produces the highest accuracy. Once a classifier is selected it will be fine tuned and trained on the full feature set and tested on the validation set.
+    Concerning areas where my capstone could expand upon what was presented by Realinho et al. (2022), I intend to compare and report the training, and testing results of each model (i.e., model comparison). Then, using the model with the best metrics (i.e, precision, recall, F1-score), I intend to fine tune it and train it on the full feature set and test it on the validation set.
 
 #### 
 
@@ -112,11 +196,17 @@ Bargmann, C., Thiele, L., & Ksuggrld, S. (2022). Motivation matters: Predicting 
 
 Barramuno, M., Meza-Narvaez, C., & Galvez-Garcia, G. (2022). Prediction of student attrition risk using machine learning. *Journal of Applied Research in Higher Education, 14(3), 974-986.* https://doi.org/10.1108/JARHE-02-2021-0073
 
+Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 785–794). Association for Computing Machinery. https://doi.org/10.1145/2939672.2939785
+
 Delen, D., Davazdahemami, B., & Rasouli Dezfouli, E. (2024). Predicting and mitigating freshman student attrition: A local-explainable machine learning framework. Information Systems Frontiers, 26(2), 641-662. https://doi.org/10.1007/s10796-023-10397-3
 
 Duan, D., Dai, C., & Tu, r. (2021). Research on the predicion of students' academic performance based on XGBoost. In *Proceedings of the 2021 Tenth International Conference on Educational Innovation through Technology (EITT)* (pp.316-319). IEEE https://doi.org/10.1109/EITT53287.2021.00068
 
+Ho, T. K. (1995). Random decision forests. In Proceedings of the Third International Conference on Document Analysis and Recognition (Vol. 1, pp. 278–282). IEEE. https://doi.org/10.1109/ICDAR.1995.598994
+
 Huo, H. et al. (2023). Predicting dropout for nontraditional undergraduate students: A machine learning approach. *Journal of College Student Retention:Research, Theory & Practice*, 24(4), 1054-1077.https://doi.org/10.1177/1521025120963821
+
+Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., & Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. In I. Guyon et al. (Eds.), *Advances in Neural Information Processing Systems* (Vol. 30, pp. 3147–3155). Curran Associates, Inc. https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html
 
 Kok, C. L., Ho, C.K., Chen, L., Koh, Y. Y., & Tian, B. (2024). A novel predictive modeling for student attrition utilizing machine learning and sustainable big data analytics. *Applied Sciences, 14(21), Article 9633.* https://doi.org/10.3390/app14219633
 
@@ -131,12 +221,15 @@ Pek, R.Z., Ozyer, S.T., Elhage, T., Ozyer, T., & Alhajj, R. (2023). The role of 
 Parjwal, P., L. R., S., & V., K. (2024). Forcasting student attrition using machine learning. In *Proceedings of the 2024 4th Asian Conference on Innovation in Technology (ASIANCON)* (pp.1-7) IEEE.
 https://doi.org/10.1109/ASIANCON62057.2024.10838214
 
+Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., & Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. In *Advances in Neural Information Processing Systems* (Vol. 31, pp. 6638–6648). Curran Associates, Inc. https://proceedings.neurips.cc/paper/2018/hash/14491b756b3a51daac41c24863285549-Abstract.htm
+
 Realinho, V., Machado, J., Baptista, L., & Martins, M. V. (2022). Predicting student dropout and academic success. Data, 7(11), Article 146. https://doi.org/10.3390/data7110146
 
 Ridwan, A., Priyatno, A. M., & Ningsih, L. (2024). Predict Students' Dropout and Academic Success with XGBoost. *Journal of Education and Computer Applications*,*1*(2), 1-8.https://doi.org/10.69693/jeca.v1i2.13
 
 Veliz Palomino, J.C., & Ortega, A. M. (2023). Dropout intentions in higher education: Systematic literature review. *Journal of Efficacy and Responsibility in Education and Science, 16(2), 149-158.*
-
 https://doi.org/10.7160/eriesj.2023.160206
 
 Yan, K. (2021). Student performance prediction using XGBoost method from macro perspective. In *Proceedings of the 2021 2nd International Conference on Computing and DataScience(CDS)*(pp.453-459).IEEE.https://doi.org/10.1109/CDS52072.2021.00084
+
+

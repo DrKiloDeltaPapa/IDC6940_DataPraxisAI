@@ -1,0 +1,193 @@
+---
+title: "DataPraxisAI: Literature Review of *Predicting Student Dropout and Academic Success*"
+subtitle: "Capstone(Spring 2026):week4_paper_review"
+author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
+date: today
+date-format: "MMMM D, YYYY"
+format:
+  html:
+    code-fold: true
+course: Capstone Projects in Data Science
+self-contained: true
+execute: 
+  warning: false
+  message: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+#### Background/Motivation:
+
+-   **Describe the context in which the research was conducted.**
+
+    The research conducted by.. 
+
+-   **What problem or gap in the existing literature does the paper aim to address?**
+
+    Concerning the problem or gap in the existing literature on students dropping out of institutes of higher learning prior to completing their degrees ..
+
+-   **Discuss the significance of the research question and why it is important.**
+    
+      ...
+    
+
+#### Method Used:
+
+-   **Summarize the methodologies employed by the authors.**
+
+    As mentioned previously data for the study conducted by...
+   
+    
+    **Random Forest Formula**
+$$
+\hat{y} = \frac{1}{B}\sum_{b=1}^{B} T_b(x)
+$$
+
+    Where:
+      * $\hat{y}$ = The final predicted out of the RF model
+      * $B$ = The total number of decision trees in the RF
+      * $T_b(x)$ = The prediction of $b$-th decision tree for input $x$
+      * $x$ = The feauture vector (i.e., the feature observation)
+      * $\sum_{b=1}^{B}$ = The aggregation accross all trees
+    
+    
+    **Extreme Gradient Boosting Formula**
+$$
+\hat{y}_i = \sum_{k=1}^{K} f_k(x_i), 
+\quad f_k \in \mathcal{F}
+$$
+
+    Where:
+      * $\hat{y}_i$ = The pridcited output for the observation $i$
+      * $K$ = The number of trees (i.e., the number of boosting                    interations)
+      * $f_k(x_i)$ = The prediction from the $k-th$ decision tree
+      * $x_i$ =  The feature vector for the obeservation $i$
+      * $F$ = The space of all possible decision trees
+      
+     **Light Gradient Boosting Machine Formula**
+$$
+\hat{y}_i^{(t)} = \hat{y}_i^{(t-1)} + \eta f_t(x_i)
+$$
+
+    Where:
+      * $\hat{y}_i^{(t)}$ = The updated observation $i$ at interation $t$
+      * $\hat{y}_i^{(t-1)}$ = The prediction from the previous boosting intertation
+      * $\eta$ = The learning rate while controlng for the contribution of         each new tree
+      * $f_t(x_i)$ = The prediction of the tree added at interation $t$
+      * $x_i$ = The feature vector for observation $i$
+      
+    **Catagorical Boosting Formula**
+$$
+\hat{y}_i = \sum_{t=1}^{T} \eta f_t(x_i)
+$$
+
+    Where:
+      * $\hat{y}_i$ = The predicted output for observation $i$
+      * $T$ = The total number of trees (i.e., boosting interations)
+      * $\eta$ = The learning rate
+      * $f_t(x_i)$ = The predcition from the tree at interation $t$
+      * $x_i$ = The input vector including the catgorical variables
+      
+      
+-   **Explain how these methods are suited to address the research question.**
+
+    The methods used by....
+
+-   **Discuss any innovative approaches or techniques that are particularly noteworthy.**
+
+    Concerning innovative processes, I found that....
+
+#### Significance of the Work:
+
+-   **Highlight the key findings and contributions of the paper.**
+
+    The key findings of the paper was the discovery that all....
+
+-  **Explain why the results are important within the broader context of the field.**
+
+    The results are important in regards to the broader context of the field because... to their own research.
+
+-   **Discuss the implications of the findings for future research or practice.**
+
+    As previously mentioned...
+
+#### Connection to Other Work:
+
+-   **Relate the paper to other relevant studies.**
+
+    Conceptually, the work presented by relates to the work of several scholars in the field of student attrition (e.g.,...). Methodologically,....work concerning the use of .... connects to the work other scholars (e.g.,....).
+
+-   **How does this paper build on or differ from previous work?**
+
+    This paper builds on previous work concerning predicitng student dropout by implementing a....
+
+-   **Identify any references to seminal works or influential papers cited by the authors.**
+
+    Concerning references to seminal and or influential works cited by..... (), in discussing.....they used in their study, they cited (e.g.,....).
+
+#### Relevance to Capstone Project:
+
+-   **Discuss how the content of the paper might be relevant to your own capstone project.**
+
+    The content of this paper directly realates to my capstone. I will also be utilizing a..... 
+
+-   **Identify any specific methods, theories, or findings that you might incorporate into your project.**
+
+    Concerning the specific methods, theories and findings that I intend to incorporate into my capstone project I intend to use.....
+
+-   **Highlight any potential areas where your capstone could expand upon or diverge from the paper’s findings.**
+
+    Concerning areas where my capstone could expand upon what was presented by ... (....), I intend to....
+
+#### 
+
+##                               Reference
+
+Aina, C., Baici, E., Casalone, G., & Pastore, F. (2022). The determinants of university dropout: A review of the *socio-economic literature. Socio-Economic Planning Sciences, 79, Article 101102.* https://doi.org/10.1016/j.seps.2021.101102
+
+Andrade-Giron, D., et al.(2023). Predicting student dropout based on machine learning  and deep learning: A systematic review. *ICST Transaction on Scalable Information Systems, 10(5),1-11.*
+https://doi.org/10.4108/eetsis.3586
+
+Bargmann, C., Thiele, L., & Ksuggrld, S. (2022). Motivation matters: Predicting students’ career decidedness and intention to drop out after the first year in higher education. *Higher Education, 83(4), 845-861.* https://doi.org/10.1007/s10734-021-00707-6
+
+Barramuno, M., Meza-Narvaez, C., & Galvez-Garcia, G. (2022). Prediction of student attrition risk using machine learning. *Journal of Applied Research in Higher Education, 14(3), 974-986.* https://doi.org/10.1108/JARHE-02-2021-0073
+
+Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 785–794). Association for Computing Machinery. https://doi.org/10.1145/2939672.2939785
+
+Delen, D., Davazdahemami, B., & Rasouli Dezfouli, E. (2024). Predicting and mitigating freshman student attrition: A local-explainable machine learning framework. Information Systems Frontiers, 26(2), 641-662. https://doi.org/10.1007/s10796-023-10397-3
+
+Duan, D., Dai, C., & Tu, r. (2021). Research on the predicion of students' academic performance based on XGBoost. In *Proceedings of the 2021 Tenth International Conference on Educational Innovation through Technology (EITT)* (pp.316-319). IEEE https://doi.org/10.1109/EITT53287.2021.00068
+
+Ho, T. K. (1995). Random decision forests. In Proceedings of the Third International Conference on Document Analysis and Recognition (Vol. 1, pp. 278–282). IEEE. https://doi.org/10.1109/ICDAR.1995.598994
+
+Huo, H. et al. (2023). Predicting dropout for nontraditional undergraduate students: A machine learning approach. *Journal of College Student Retention:Research, Theory & Practice*, 24(4), 1054-1077.https://doi.org/10.1177/1521025120963821
+
+Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., & Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. In I. Guyon et al. (Eds.), *Advances in Neural Information Processing Systems* (Vol. 30, pp. 3147–3155). Curran Associates, Inc. https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html
+
+Kok, C. L., Ho, C.K., Chen, L., Koh, Y. Y., & Tian, B. (2024). A novel predictive modeling for student attrition utilizing machine learning and sustainable big data analytics. *Applied Sciences, 14(21), Article 9633.* https://doi.org/10.3390/app14219633
+
+Mduma, N. (2023). Data balancing techniques for predicting student dropout using machine learning. Data, 8(3), Article 49. https://doi.org/10.3390/data8030049
+
+Mun, J., & Jo, M. (2023). Applying machine learning-based models to prevent university student dropouts. *Journal of Educational Evaluation*, 36(2), 289–313. https://doi.org/10.31158/JEEV.2023.36.2.289
+
+Namoun, A., & Alshanqiti, A. (2020). Predicting student performance using data mining and learning analytics techniques: A systematic literature review. Applied Science, 11(1), Article 237. https://doi.org/10.3390/app11010237
+
+Pek, R.Z., Ozyer, S.T., Elhage, T., Ozyer, T., & Alhajj, R. (2023). The role of machine learning in identifying student at-risk and minimizing failure. *IEEE Access, 11, 1224-1243.* https://doi.org/10.1109/ACCESS.2022.3232984
+
+Parjwal, P., L. R., S., & V., K. (2024). Forcasting student attrition using machine learning. In *Proceedings of the 2024 4th Asian Conference on Innovation in Technology (ASIANCON)* (pp.1-7) IEEE.
+https://doi.org/10.1109/ASIANCON62057.2024.10838214
+
+Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., & Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. In *Advances in Neural Information Processing Systems* (Vol. 31, pp. 6638–6648). Curran Associates, Inc. https://proceedings.neurips.cc/paper/2018/hash/14491b756b3a51daac41c24863285549-Abstract.htm
+
+Realinho, V., Machado, J., Baptista, L., & Martins, M. V. (2022). Predicting student dropout and academic success. Data, 7(11), Article 146. https://doi.org/10.3390/data7110146
+
+Ridwan, A., Priyatno, A. M., & Ningsih, L. (2024). Predict Students' Dropout and Academic Success with XGBoost. *Journal of Education and Computer Applications*,*1*(2), 1-8.https://doi.org/10.69693/jeca.v1i2.13
+
+Veliz Palomino, J.C., & Ortega, A. M. (2023). Dropout intentions in higher education: Systematic literature review. *Journal of Efficacy and Responsibility in Education and Science, 16(2), 149-158.*
+https://doi.org/10.7160/eriesj.2023.160206
+
+Yan, K. (2021). Student performance prediction using XGBoost method from macro perspective. In *Proceedings of the 2021 2nd International Conference on Computing and DataScience(CDS)*(pp.453-459).IEEE.https://doi.org/10.1109/CDS52072.2021.00084
+
+
+

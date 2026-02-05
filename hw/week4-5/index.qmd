@@ -1,0 +1,109 @@
+---
+title: "DataPraxisAI : Predicting Student Dropout and Academic Success: Methods + Data + Implementation"
+subtitle: "Capstone(Spring 2026): week4_and_week5 progress report assignment"
+author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
+date: today
+date-format: "MMMM D, YYYY"
+format:
+  html:
+    code-fold: true
+course: Capstone Projects in Data Science
+self-contained: true
+execute: 
+  warning: false
+  message: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+#### Project Goal and Research Questions:
+
+  **Project Goal**
+  
+  
+  **Research Questions**
+  
+  
+#### Expanded Methods (updated from week3 paper review):
+
+  **Methods**
+
+
+#### Dataset and Access:
+
+  **Dataset**
+  
+  **Access**
+  
+### Implementation and Experiments:
+
+  **Implementation**
+  
+  **Experiments**
+  
+### Results (preliminary):
+
+### Issues / Limitations:
+
+### Next Steps:
+
+
+
+
+#### 
+
+##                               Reference
+
+Aina, C., Baici, E., Casalone, G., & Pastore, F. (2022). The determinants of university dropout: A review of the *socio-economic literature. Socio-Economic Planning Sciences, 79, Article 101102.* https://doi.org/10.1016/j.seps.2021.101102
+
+Andrade-Giron, D., et al.(2023). Predicting student dropout based on machine learning  and deep learning: A systematic review. *ICST Transaction on Scalable Information Systems, 10(5),1-11.*
+https://doi.org/10.4108/eetsis.3586
+
+Bargmann, C., Thiele, L., & Ksuggrld, S. (2022). Motivation matters: Predicting students’ career decidedness and intention to drop out after the first year in higher education. *Higher Education, 83(4), 845-861.* https://doi.org/10.1007/s10734-021-00707-6
+
+Barramuno, M., Meza-Narvaez, C., & Galvez-Garcia, G. (2022). Prediction of student attrition risk using machine learning. *Journal of Applied Research in Higher Education, 14(3), 974-986.* https://doi.org/10.1108/JARHE-02-2021-0073
+
+Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 785–794). Association for Computing Machinery. https://doi.org/10.1145/2939672.2939785
+
+Delen, D., Davazdahemami, B., & Rasouli Dezfouli, E. (2024). Predicting and mitigating freshman student attrition: A local-explainable machine learning framework. Information Systems Frontiers, 26(2), 641-662. https://doi.org/10.1007/s10796-023-10397-3
+
+Duan, D., Dai, C., & Tu, r. (2021). Research on the predicion of students' academic performance based on XGBoost. In *Proceedings of the 2021 Tenth International Conference on Educational Innovation through Technology (EITT)* (pp.316-319). IEEE https://doi.org/10.1109/EITT53287.2021.00068
+
+Ho, T. K. (1995). Random decision forests. In Proceedings of the Third International Conference on Document Analysis and Recognition (Vol. 1, pp. 278–282). IEEE. https://doi.org/10.1109/ICDAR.1995.598994
+
+Huo, H. et al. (2023). Predicting dropout for nontraditional undergraduate students: A machine learning approach. *Journal of College Student Retention:Research, Theory & Practice*, 24(4), 1054-1077.https://doi.org/10.1177/1521025120963821
+
+Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., & Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. In I. Guyon et al. (Eds.), *Advances in Neural Information Processing Systems* (Vol. 30, pp. 3147–3155). Curran Associates, Inc. https://proceedings.neurips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html
+
+Kok, C. L., Ho, C.K., Chen, L., Koh, Y. Y., & Tian, B. (2024). A novel predictive modeling for student attrition utilizing machine learning and sustainable big data analytics. *Applied Sciences, 14(21), Article 9633.* https://doi.org/10.3390/app14219633
+
+Mduma, N. (2023). Data balancing techniques for predicting student dropout using machine learning. Data, 8(3), Article 49. https://doi.org/10.3390/data8030049
+
+Mun, J., & Jo, M. (2023). Applying machine learning-based models to prevent university student dropouts. *Journal of Educational Evaluation*, 36(2), 289–313. https://doi.org/10.31158/JEEV.2023.36.2.289
+
+Namoun, A., & Alshanqiti, A. (2020). Predicting student performance using data mining and learning analytics techniques: A systematic literature review. Applied Science, 11(1), Article 237. https://doi.org/10.3390/app11010237
+
+Pek, R.Z., Ozyer, S.T., Elhage, T., Ozyer, T., & Alhajj, R. (2023). The role of machine learning in identifying student at-risk and minimizing failure. *IEEE Access, 11, 1224-1243.* https://doi.org/10.1109/ACCESS.2022.3232984
+
+Parjwal, P., L. R., S., & V., K. (2024). Forcasting student attrition using machine learning. In *Proceedings of the 2024 4th Asian Conference on Innovation in Technology (ASIANCON)* (pp.1-7) IEEE.
+https://doi.org/10.1109/ASIANCON62057.2024.10838214
+
+Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., & Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. In *Advances in Neural Information Processing Systems* (Vol. 31, pp. 6638–6648). Curran Associates, Inc. https://proceedings.neurips.cc/paper/2018/hash/14491b756b3a51daac41c24863285549-Abstract.htm
+
+Raschka, S., Liu, Y. (H.), & Mirjalili, V. (2022). Machine learning with PyTorch and scikit-learn: Develop machine learning and deep learning models with Python. Packt Publishing.
+
+Realinho, V., Machado, J., Baptista, L., & Martins, M. V. (2022). Predicting student dropout and academic success. Data, 7(11), Article 146. https://doi.org/10.3390/data7110146
+
+Ridwan, A., Priyatno, A. M., & Ningsih, L. (2024). Predict Students' Dropout and Academic Success with XGBoost. *Journal of Education and Computer Applications*,*1*(2), 1-8.https://doi.org/10.69693/jeca.v1i2.13
+
+Veliz Palomino, J.C., & Ortega, A. M. (2023). Dropout intentions in higher education: Systematic literature review. *Journal of Efficacy and Responsibility in Education and Science, 16(2), 149-158.*
+https://doi.org/10.7160/eriesj.2023.160206
+
+Yan, K. (2021). Student performance prediction using XGBoost method from macro perspective. In *Proceedings of the 2021 2nd International Conference on Computing and DataScience(CDS)*(pp.453-459).IEEE.https://doi.org/10.1109/CDS52072.2021.00084
+
+
+
+
+
+

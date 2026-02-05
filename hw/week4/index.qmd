@@ -1,6 +1,6 @@
 ---
 title: "DataPraxisAI: Literature Review of *Predicting Student Dropout and Academic Success*"
-subtitle: "Capstone(Spring 2026):week4_paper_review"
+subtitle: "Capstone(Spring 2026): week4_paper_review"
 author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
 date: today
 date-format: "MMMM D, YYYY"
@@ -21,24 +21,128 @@ editor:
 
 -   **Describe the context in which the research was conducted.**
 
-    The research conducted by.. 
+    The research conducted by Mduma (2023) like privious studies that I have summarized for this literature review (e.g., Realinho et al., 2022; Ridwan et al., 2024), relates to predicting student dropout in the higher education setting using machine learning methods. The prediction of student dropout is a particularly challanging issues for education researchers, and according to Mduma (2023), this is due in large part to class imblance. While many scholars pay particuliar attention to feature enigineering methods when using machine learning methodologies to address the issue of predicting student attrion Mduma (2023) assert that class imbalance present limtations concering model accuracy and generalizabiltiy and thus framed their study aorund that issue. Studnet dropout is a phenomena known to negatively affect education insitutions, and present greater sociatal issues (Realinho et al., 2022).
 
 -   **What problem or gap in the existing literature does the paper aim to address?**
 
-    Concerning the problem or gap in the existing literature on students dropping out of institutes of higher learning prior to completing their degrees ..
+    Concerning the problem or gap in the existing literature on students dropping out of institutes of higher learning Mduma (2023) asserts that class imbalance, that is, the number of students enrolled compared to the number of students that dropout in most data sets is often skewed towards the number of students enrolled. The issues of class imbalance according to Mduma (2023) presents challanges for researchers using machine learning methods to predict student dropout for example, poor model generalization, and low accuracy concerning predicting the postive class Mduma (2023). Further according to Mduma (2023), literature that specifically comparing varied data balancing techniques and machine learning methods to assess which imporve student dropout prediction is sparse.
 
 -   **Discuss the significance of the research question and why it is important.**
     
-      ...
+    Mduma (2023), asks "Which data balancing and machine learning methods when paired best improve the prediction of student dropout". This research question is important becuase class imbalance is a problem that affects data sets accross varied real world research domains for example, medicine, finance, telecomunication and web). Thus, by finding the most optimal paring of machine learning methods and data balancing techiniques Mduma (2023) propose that other reserachers can adopt their methodolgies to address class imbalance and imporce the predictablity of models.
     
 
 #### Method Used:
 
 -   **Summarize the methodologies employed by the authors.**
 
-    As mentioned previously data for the study conducted by...
-   
+    Concerning data, Mduma (2023) used two publicly available datasets from developing countries to test their methods. The first data set stemmed from Uwezo an non-governmental organization (NGO) in Tazania, and the second datasetwas dervied from india. The Uwezo dataset consisted information on student learning at the country level gathered from thousands of households Mduma (2023). The Uwezo data set consited on (n = 61,340) cases, and concering the classes 98.4% were in the retained class and 1.6% were in the dropout class. The dataset from India concsited of (n = 11, 257) cases of which 95.1% were in the retained class, and 4.9% were in the dropout class (Mduma, 2023). Both datasets consited of festures that spannded demograhics, acadmics and socioeconomic catagories. Mduma (2023), asserted that they condcuted pre-processing of both sets, specifically, they cleaned the sets for missing values by implementing median and zero imputting where necessary.
     
+    According to Mduma (2023), five data balancing techniques were used on the datasets to address the class imbalance; 1. Random Under Sampleing (RUS), 2. Random Over Sampling (ROS), 3. Synthetic Minority Over Sampling (SMOTE), 4. Synthetic Minority Over Sampling with Edited Nearest Neighbors (SMOTE ENN), and 5. Sythentc Minority Over Sampling with TOMEK Links (SMOTE TOMEK). Concerning RUS, this techniques works by randomly removing observations from the majority class until the classes are approximatley equal. ROS, is the oposite of RUS, and works by randomly duplicating the minority class until the classes are approximatly equaly. SMOTE works by generating a new synthetic minority class, which is done by interporlating the minority class using the nearest neighbor until both the minority and majority class match. SMOTE ENN works the same as SMOTE but adds a cleaning step that removes misclassfied classes due to the nearest neighbor step, this reduces statistical noise and overlap. Finally, SMOTE TOMEK also works the same as SMOTE but uses TOMEK  links, which remove pairs of  nearest neighbors instances from the classes the majority class that are in close proximity to eachother. The decision boundry is cleaned thus reducing statistical noise and improving model performance Mduma (2023). The formulas for all class blancing tehcniues incorparted by Mduma (2023) are below.
+    
+    
+    **Random Over Sampling Formula**
+$$
+\alpha_{us} = \frac{N_{m}}{N_{rM}}
+$$
+
+    Where:
+      * $\alpha_{us}$ = The under sampling ratio
+      * $N_m$ = The number of class samples in the minority 
+      * $N_{rM}$ = The number of majority class samples after under sampling
+      
+    
+    **Random Over Sampling Formula**
+$$
+\alpha_{os} = \frac{N_{r m}}{N_{m}}
+$$
+
+    Where:
+      * $\alpha_{os}$ = Is the oversampling ration
+      * $N_m$ = The orginal number of the minority class samples
+      * $N_{rM}$ = The number of samples in the minority class after over-sampling
+      
+      
+    **Synthetic Minority Oversampling Formula**
+$$
+x_{\text{new}} = x_i + \lambda \left(x_{nn} - x_i\right)
+$$
+
+
+    Where:
+      * $x_{new}$ = The newly generated synthtic minority class sample
+      * $x_i$ = The original minority class instance
+      * $x_{nn}$ = Is on of the $k$-nearest neighbors of $x_i$
+      * $\lambda$ = Is the random interporlation where 0 $\le$ $\lambda$ $\le$ 1
+      * $k$ = The total number of nearest neighbors considered
+      
+      
+      **Synthetic Minority Oversampling with Edited Nearest Neighbors Formula**
+$$
+D^{*} = \text{ENN}\bigl(\text{SMOTE}(D)\bigr)
+$$
+
+
+    Where:
+      * $D$ = The original imbalanced dataset
+      * $SMOTE(D)$ = The dataset after synthetic minority over samples are generated
+      * $ENN(.)$ = The rule that edits the nearest neighbors that may be missclassfied         or ambigious
+      * $D^{*}$ = The final cleaned and balanced dataset
+      
+      
+    **Synthetic Minority Oversampling with TOMEK Links Formula**
+$$
+D^{*} = D_{\text{SMOTE}} \setminus TL
+$$
+
+
+    Where:
+      * $D_SMOTE$ = The dataset after minority synthetic over sampling
+      * $TL$ = The TOMEK link sets between the minority and majority classes
+      * $\backslash$ = The removal operator (i.e.,set subtraction)
+      * $D^{*}$ =  The final balanced dataset after overlapping TOMEK links are               removed
+      
+      
+      
+    In addtion to the five data blancing techniques mentioned above, Mduma (2023), asserted that they also used three seperate classification models (i,e, LR, RF, and MLP) to assess which when paired with a datablancing technique would yeild the most optimal results. Using an experimental methodlogy, the three models were compared and assesed for accuracy in six intances; 1. On the orginal unblanced dataset, 2. on the ROS balnaced dataset, 3. RUS balanced dataset, 4. SMOTE balanced dataset, 5. SMOTE ENN balanced dataset, and 6. SMOTE TOMEK balanced dataset. Concerning model evalution specifically for measures of accuracy, Mduma (2023), asserted that chose 1. Geometric Mean ($G_m$), F-measure ($F_m$), and Adjacent Geometric Mean ($AG_m$). According to Mduma (2023), these measures of model accuracy were choosen as they are particilialry robust against unblanced datasets. The ($G_m$) works by measuring the balance between  sensitivity and specificity and rewards models that perfrom well on both minority and majority classes. The ($F_m$) measures the harmoic mean of precision and recall and rewards models that show a balanced perfromance on the positive class. The ($AG_m$) is an extention of the ($G_m$) and works by adotping class imbalance calculations penalizing poor minority class performance Mduma (2023). Finally, accroding to Mduma (2023), both datasets were split into training, validation and testing sets at 60%, 20% and 20% respectively. For all model formulas and mesures of accuracy formulas used by Mduma (2023) in their study see below.
+    
+    
+    **Logestic Regression Formula**
+$$
+P(y=1 \mid x) = \sigma(w^T x + b)
+$$
+
+    Where The Sigmoid (i.e., the activation function) is:
+$$
+\sigma(z) = \frac{1}{1 + e^{-z}}
+$$
+
+    Where:
+    
+      * $P(y = 1 | x)$ = The probality of a class 1 given the input vector $x$
+      * $\sigma(.)$ = The sigmiod or the logestic function
+      * $w$ = The weight vector
+      * ${w^T x}$ = The dot product between the weights and the features
+      * $x$ = The input fature vector
+      * $b$ = The bias or intercept term
+      * $z$ = Is the ${w^T x}$ + $b$  which = the linear predictor
+      * $e$ = Euler's number which is the base of the logarithim
+      
+    
+    **Multilayer Perceptron Formula**
+$$
+a^{(l)} = \sigma\left(W^{(l)} a^{(l-1)} + b^{(l)}\right)
+$$
+
+    Where:
+      * $a^{(l)}$ = The activation vector or output of layer $l$
+      * $W^{(l)}$ = The weight matrix for layer $l$ which maps inputs from preious            layers
+      * $a^{(l-1)}$ = The acti activation layer from the previous vector ($l$ - 1)
+      * $b^{(l)}$ = The bias vector of layer $l$
+      * $\sigma(.) = The activation function applied element wise (e.g., sigmoid,             ReLU or tanh)
+      * $l$ = The index representing the current layer in the network
+      
+      
     **Random Forest Formula**
 $$
 \hat{y} = \frac{1}{B}\sum_{b=1}^{B} T_b(x)
@@ -52,42 +156,81 @@ $$
       * $\sum_{b=1}^{B}$ = The aggregation accross all trees
     
     
-    **Extreme Gradient Boosting Formula**
+    **Geometric Mean Formula**
 $$
-\hat{y}_i = \sum_{k=1}^{K} f_k(x_i), 
-\quad f_k \in \mathcal{F}
+G_m = \sqrt{\text{TPR} \times \text{TNR}}
 $$
 
     Where:
-      * $\hat{y}_i$ = The pridcited output for the observation $i$
-      * $K$ = The number of trees (i.e., the number of boosting                    interations)
-      * $f_k(x_i)$ = The prediction from the $k-th$ decision tree
-      * $x_i$ =  The feature vector for the obeservation $i$
-      * $F$ = The space of all possible decision trees
+      * $G_m$ = The geometric mean score
+      * $TPR$ = The true positive rate of (i.e.,sensitivity or recall)
+      * $TNR$ = The true negative rate (i.e, specificity)
+    
+    And:
+$$
+\text{TPR} = \frac{TP}{TP + FN}
+$$
+$$
+\text{TNR} = \frac{TN}{TN + FP}
+$$
+
+    Where:
+      * $TP$ = True Positive
+      * $TN$ = True Negative
+      * $FP$ = False Positive
+      * $FN$ = False Negative
       
-     **Light Gradient Boosting Machine Formula**
-$$
-\hat{y}_i^{(t)} = \hat{y}_i^{(t-1)} + \eta f_t(x_i)
-$$
-
-    Where:
-      * $\hat{y}_i^{(t)}$ = The updated observation $i$ at interation $t$
-      * $\hat{y}_i^{(t-1)}$ = The prediction from the previous boosting intertation
-      * $\eta$ = The learning rate while controlng for the contribution of         each new tree
-      * $f_t(x_i)$ = The prediction of the tree added at interation $t$
-      * $x_i$ = The feature vector for observation $i$
       
-    **Catagorical Boosting Formula**
+      **F-Measure Formula**
 $$
-\hat{y}_i = \sum_{t=1}^{T} \eta f_t(x_i)
+F_m = \frac{2PR}{P + R}
 $$
 
     Where:
-      * $\hat{y}_i$ = The predicted output for observation $i$
-      * $T$ = The total number of trees (i.e., boosting interations)
-      * $\eta$ = The learning rate
-      * $f_t(x_i)$ = The predcition from the tree at interation $t$
-      * $x_i$ = The input vector including the catgorical variables
+      * $F_m$ = The F-measure or the F1-Score
+      * $P$ = Precision
+      * $R$ = Recall
+
+
+    And:
+$$
+P = \frac{TP}{TP + FP}
+$$
+$$
+R = \frac{TP}{TP + FN}
+$$
+
+    Where:
+      * $TP$ = True Positive
+      * $FN$ = False Negative
+      * $FP$ = False Positive
+      
+      
+      **Adjusted Geometric Mean Formula**
+$$
+AG_m = \sqrt{\text{TPR} \times \text{TNR} \times (1 - IR)}
+$$
+
+    Where:
+      * $AG_m$ = The adjusted geometric mean
+      * $TPR$ = The true positive rate (i.e., recall)
+      * $TNR$ = The true negative rate (i.e., specificity)
+      * $IR$ = The imbalance ratio
+    
+    And:
+$$
+IR = \frac{N_{\text{min}}}{N_{\text{maj}}}
+$$
+
+    Where:
+      * $IR$ = The imbalanced ratio
+      * $N_{min}$ = The number of samples in the minority class
+      * $N_{maj}$ = The number of samples in the majority class
+
+      
+
+      
+
       
       
 -   **Explain how these methods are suited to address the research question.**
@@ -179,6 +322,8 @@ Parjwal, P., L. R., S., & V., K. (2024). Forcasting student attrition using mach
 https://doi.org/10.1109/ASIANCON62057.2024.10838214
 
 Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., & Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. In *Advances in Neural Information Processing Systems* (Vol. 31, pp. 6638–6648). Curran Associates, Inc. https://proceedings.neurips.cc/paper/2018/hash/14491b756b3a51daac41c24863285549-Abstract.htm
+
+Raschka, S., Liu, Y. (H.), & Mirjalili, V. (2022). Machine learning with PyTorch and scikit-learn: Develop machine learning and deep learning models with Python. Packt Publishing.
 
 Realinho, V., Machado, J., Baptista, L., & Martins, M. V. (2022). Predicting student dropout and academic success. Data, 7(11), Article 146. https://doi.org/10.3390/data7110146
 

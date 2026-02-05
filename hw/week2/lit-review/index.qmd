@@ -31,18 +31,17 @@ fig-align: center
 
 -   **Summarize the methodologies employed by the authors.**
 
-    To assess and efficiently predict the causes of student attrition in a higher education setting, Ridwan et al. (2024) utilized a predictive model. Specifically, the authors used XGBoost. The data selected for the evaluation is the Predicting Students’ Dropout and Academic Success  Dataset (Realinho et al., 2021). According to Ridwan et al. (2024), the data set consisted of (n = 4, 423) cases of higher education students from varied socio-economic backgrounds. The target is a dichotomous variable  labeled as Academic Success and Dropout. There are thirty-six features that fall into three separate categories: demographic features, academic and socio-economic (Realinho et al., 2021). Concerning  data
-    preprocessing, there were no missing or null values, however according to Ridwan et al. (2024), normalization was conducted on the set using the StandardScaler. StandardScaler adjust features to achieve a ![](data:image/png;base64,R0lGODlhIgAQAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAABAAhAAwAhAAAAAodMAodWApKfQpKnwpzwD4dWD4dfT5Knz6Y4GkdMGkdWGkdfWlKMGlKWGm7/5FKMJFKWJFzWJHe/7hzMLiYwLje/7j//9uYWNu7fdv///+7ff/en///wP//4AECAwVqICCOZGmanhQM0+m+JFVoGKHBeNkt7d5yhwuA8tApAsikjcQx9BTFTQHgy52AQg+kiEkAOIibtdRsaR+eSAszNSaVYlHV12FcMo5EJT4WyWg2HA4BCRsCLX0kHQ0rFgAbRYljRJJjW5VWIQA7) and ![](data:image/png;base64,R0lGODlhIgAQAHcAMSH+GlNvZnR3YXJlOiBNaWNyb3NvZnQgT2ZmaWNlACH5BAEAAAAALAAABAAhAAkAhQAAAAodMAodWApKnwpznwpzwD4dMD4dfT5KMD5KfT5Knz6Y4GkdMGlKMGmY4Gm7n2m7/5FKMJFzWJHe/7hzWLhzfbje/7j//9uYWNuYfdu7fdv///+7ff/en//ewP//wP//4AECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwECAwZaQIBwSCwajx4J5MhsEkGVR2PprDJBEapQgwh4tYAPw0sODDZGrJaisHAWVqda2DlcAB0FOn6cAzgFQhhnRWJlXoRFfhwEGx4McHx9WUIgEgECDpJHGQZeCRNBADs=) by inputting the features through the Z score distribution (see equation below).
+    To assess and efficiently predict the causes of student attrition in a higher education setting, Ridwan et al. (2024) utilized a predictive model. Specifically, the authors used XGBoost. The data selected for the evaluation is the Predicting Students’ Dropout and Academic Success  Dataset (Realinho et al., 2021). According to Ridwan et al. (2024), the data set consisted of (n = 4, 423) cases of higher education students from varied socio-economic backgrounds. The target is a dichotomous variable  labeled as Academic Success and Dropout. There are thirty-six features that fall into three separate categories: demographic features, academic and socio-economic (Realinho et al., 2021). Concerning data preprocessing, there were no missing or null values, however according to Ridwan et al. (2024), normalization was conducted on the set using the StandardScaler. StandardScaler adjust features to achieve a mean of 0 and a standard deviation of 1 by inputting the features through the Z score distribution (see equation below).
 
-    $$
+$$
     z = \frac{x - \mu}{\sigma}, \quad \mu = 0, \quad \sigma = 1
-    $$
+$$
 
     Next, Ridwan et al. (2024) split the data into a training set and a testing set using the train_test_split function from scikit-learn which is a python library for machine learning. The authors used  five different train_test_split variations (i.e., 50:50, 60:40, 70:30 80:20, and 90:10) . Finally once the data where normalized and split, Ridwan et al. (2024), used XGBoost, which is a type of machine learning model built upon Decision Trees (see XGBoost formula below).
 
-    $$
+ $$
     \mathcal{L}(\phi) = \sum_{i=1}^{n} l(y_i, \hat{y}_i) + \sum_{k=1}^{K} \Omega(f_k)
-    $$
+ $$
 
     Finally, once training and testing were completed, Ridwan et al. (2024) conducted model evaluation to wrap up their machine learning pipeline and recorded their findings. To evaluate the model’s performance (i.e., to see how well it generalized), Ridwan et al. (2024) used accuracy, precision F1 Score and recall.
 

@@ -64,10 +64,10 @@ $$
     
     Where:
       * $PI_j$ = the permutation importnace score for the feaure $_j$
-      * $E_{\text{base}}$ = the base model error (i.e., the performance            metric) computed on the orginal dataset
-      * $E_{\text{perm}(j)}$ = the model error after random permutation of         the values         of feature $_j$
+      * $E_{\text{base}}$ = the base model error (i.e., the performance                     metric) computed on the orginal dataset
+      * $E_{\text{perm}(j)}$ = the model error after random permutation of         the       values of feature $_j$
       * $j$ = the index of the feature being evaluted
-      * $E$ = the prediction error metric used for evaluation (e.g., mean          squared error, log loss or error rate)
+      * $E$ = the prediction error metric used for evaluation (e.g., mean                     squared error, log loss or error rate)
 
     Concerning the target, Realinho et al. (2022) noted that there was significant class imbalnce, for example, the class label "Graduate" at (n = 2,209) represented 50% of the sample, while "Dropout" (n = 1,421) represented 32%, and "Enrolled" (n = 794) represented 18%. Thus, to assess the error when conducting permutation Realinho et al. (2022), used F1-score as their metric, which they asserted is most adequate when dealing with an imbalanced data set. The F1-score measures the accurcy of classification models assessing how well they predict the positive class by balancing both precision and recall. In the context of selecting "important" features, if permutation causes significant decreases in F1-score, then a feature is deemed important (see formula below).
 $$

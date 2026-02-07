@@ -56,7 +56,7 @@ $$
     * $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation       for the feature $X$
     * $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation       for the target $Y$
 
-    To assess wich features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
+    To assess which features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
 $$
 PI_j = E_{\text{perm}(j)} - E_{\text{base}}
 $$

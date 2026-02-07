@@ -1,6 +1,6 @@
 ---
 title: "DataPraxisAI : Predicting Student Dropout and Academic Success: Methods + Data + Implementation"
-subtitle: "Capstone(Spring 2026): week4_and_week5 progress report assignment"
+subtitle: "Capstone(Spring 2026): Week4_and_Week5 Progress Report Assignment"
 author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
 date: today
 date-format: "MMMM D, YYYY"
@@ -17,7 +17,7 @@ editor:
     wrap: 72
 ---
 
-#### Project Goal and Research Questions:
+## Project Goal and Research Questions:
 
 -   **Project Goal**
     
@@ -26,9 +26,9 @@ editor:
     However, accroding to Mduma (2023), the prediction of student dropout is a particularly challanging issues for education researchers, this is due in large part to class imblance. According to Mduma (2023), many real world datasets conering studnet dropout are largly skewed towards the reatined or enrolled classes. While many scholars pay particuliar attention to feature enigineering methods when using machine learning methodologies to address the issue of predicting student attrion Mduma (2023) asserted that class imbalance present limtations concering model accuracy and generalizabiltiy and thus framed their study aorund that issue. Thus, in this capstone project, I focus on the approproate data preprosing methods, feature egineering methods, and methods to adequalty address class imbalnce. Further, I specifically use machine learning models that have a proven track record in the litertue (e.g., Realinho et al., 2022; Ridwan et al., 2024) conerning their abiltiy to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting (CatBoost).
 
     
--   **Research Questions**
+## Research Questions
   
-    *Primary Research Question* 
+-   **Primary Research Question** 
     
     **RQ1:** Which multi-class machine learning classifier achieves the highest predictive performance as meaured by; accuracy, precesion, and F1-score when applied to the ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data))?
     
@@ -39,13 +39,13 @@ editor:
     **RQ1b:** How does the performance of gradient boosting models compare to tradtional ensable models in multi-class student attrition prediciton?
   
   
-#### Expanded Methods (updated from week3 paper review):
+## Expanded Methods (updated from week3 paper review):
 
--   **Methods**
+-   ***Methods***
   
     As the main research question of my study centers around comparing multi-class machine learning classifiers and addressing class imblance, to accuratly predict student dropout in a higher education setting, methods correlate directly to those used by (e.g., Mduma, 2023; Realinho et al., 2022). The methods outlined by Realinho et al. (2022), builds on previous work concerning predicitng student dropout by implementing a multi-class approach. While, the methods outlined by Mduma (2023) specifically use five varied data balancing technques paried with machine learning clssifiers to determine which pairing most accurately predcited student drop out. Thus the remainder of this methods section is broken down into to parts, 1. Multi-Class Methods and 2. Data Balancing Methods. In the final report for this capstone project, a detailed account of how these methods are incorparted into my project along with full machine learnining pipeline methods will be given.
     
-    **The Multi-Class Methods**
+-   **The Multi-Class Methods**
     
       The study conducted by Realinho et al. (2022) stemmed from varied sources and were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2. the system used for teaching and learning (internal data), 3. annual data from  the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
    
@@ -93,7 +93,7 @@ $$
 
       According to Realinho et al. (2022) Permutation Feature Importance was applied to all models suggested by the literature for multi-class prediction, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting (CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their prediction thus improving model accuracy while reducing overfitting (Ho,1995). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the previous tree (Chen & Guestrin, 2016). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (Ke et al., 2017). Finally, CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features (Prokhorenkova et al., 2018). See below for the formulas of all multi-class classifiers used by Realinho et al. (2022) in their study.
       
-    **Random Forest Formula**
+-   **Random Forest Formula**
 $$
 \hat{y} = \frac{1}{B}\sum_{b=1}^{B} T_b(x)
 $$
@@ -106,7 +106,7 @@ $$
       * $\sum_{b=1}^{B}$ = The aggregation accross all trees
     
     
-    **Extreme Gradient Boosting Formula**
+-   **Extreme Gradient Boosting Formula**
 $$
 \hat{y}_i = \sum_{k=1}^{K} f_k(x_i), 
 \quad f_k \in \mathcal{F}
@@ -119,7 +119,7 @@ $$
       * $x_i$ =  The feature vector for the obeservation $i$
       * $F$ = The space of all possible decision trees
       
-     **Light Gradient Boosting Machine Formula**
+-   **Light Gradient Boosting Machine Formula**
 $$
 \hat{y}_i^{(t)} = \hat{y}_i^{(t-1)} + \eta f_t(x_i)
 $$
@@ -131,7 +131,7 @@ $$
       * $f_t(x_i)$ = The prediction of the tree added at interation $t$
       * $x_i$ = The feature vector for observation $i$
       
-    **Catagorical Boosting Formula**
+-   **Catagorical Boosting Formula**
 $$
 \hat{y}_i = \sum_{t=1}^{T} \eta f_t(x_i)
 $$
@@ -145,14 +145,14 @@ $$
 
     The methods used by Realinho et al. (2022) more than adequatly address their research question. Starting with the data ingestion process, by compiling a data set from both sources native to the universty and external, they assured that features in the data set would afford them the oppurtunity to gain both a macro and micro perspective conerning the phenomena of student dropout and acadmic success. Further, in dealing with class imbalance, by utalizing Permutation Feature Importance, Realinho et al. (2022) assured that only features that contributed to the postive predciton of the class would be inlcuded in their model thus imporvng model fit and accuracy. Finally by incorparting various multi-class calssifieres into their pipeline, Realinho et al. (2022) assured that they would be able to conduct model comparison and select the best model for their data set.  
 
-    **Data Balancing Methods**
+-   **Data Balancing Methods**
     
      Mduma (2023) used two publicly available datasets from developing countries to test their methods. The first data set stemmed from Uwezo an non-governmental organization (NGO) in Tazania, and the second datasetwas dervied from india. The Uwezo dataset consisted information on student learning at the country level gathered from thousands of households Mduma (2023). The Uwezo data set consited on (n = 61,340) cases, and concering the classes 98.4% were in the retained class and 1.6% were in the dropout class. The dataset from India concsited of (n = 11, 257) cases of which 95.1% were in the retained class, and 4.9% were in the dropout class (Mduma, 2023). Both datasets consited of festures that spannded demograhics, acadmics and socioeconomic catagories. Mduma (2023), asserted that they condcuted pre-processing of both sets, specifically, they cleaned the sets for missing values by implementing median and zero imputting where necessary.
     
     According to Mduma (2023), five data balancing techniques were used on the datasets to address the class imbalance; 1. Random Under Sampleing (RUS), 2. Random Over Sampling (ROS), 3. Synthetic Minority Over Sampling (SMOTE), 4. Synthetic Minority Over Sampling with Edited Nearest Neighbors (SMOTE ENN), and 5. Sythentc Minority Over Sampling with TOMEK Links (SMOTE TOMEK). Concerning RUS, this techniques works by randomly removing observations from the majority class until the classes are approximatley equal. ROS, is the oposite of RUS, and works by randomly duplicating the minority class until the classes are approximatly equaly. SMOTE works by generating a new synthetic minority class, which is done by interporlating the minority class using the nearest neighbor until both the minority and majority class match. SMOTE ENN works the same as SMOTE but adds a cleaning step that removes misclassfied classes due to the nearest neighbor step, this reduces statistical noise and overlap. Finally, SMOTE TOMEK also works the same as SMOTE but uses TOMEK  links, which remove pairs of  nearest neighbors instances from the classes the majority class that are in close proximity to eachother. The decision boundry is cleaned thus reducing statistical noise and improving model performance Mduma (2023). The formulas for all class blancing tehcniues incorparted by Mduma (2023) are below.
     
     
-    **Random Over Sampling Formula**
+-   **Random Under Sampling Formula**
 $$
 \alpha_{us} = \frac{N_{m}}{N_{rM}}
 $$
@@ -163,7 +163,7 @@ $$
       * $N_{rM}$ = The number of majority class samples after under sampling
       
     
-    **Random Over Sampling Formula**
+-   **Random Over Sampling Formula**
 $$
 \alpha_{os} = \frac{N_{r m}}{N_{m}}
 $$
@@ -174,7 +174,7 @@ $$
       * $N_{rM}$ = The number of samples in the minority class after over-sampling
       
       
-    **Synthetic Minority Oversampling Formula**
+-   **Synthetic Minority Oversampling Formula**
 $$
 x_{\text{new}} = x_i + \lambda \left(x_{nn} - x_i\right)
 $$
@@ -188,7 +188,7 @@ $$
       * $k$ = The total number of nearest neighbors considered
       
       
-      **Synthetic Minority Oversampling with Edited Nearest Neighbors Formula**
+-   **Synthetic Minority Oversampling with Edited Nearest Neighbors Formula**
 $$
 D^{*} = \text{ENN}\bigl(\text{SMOTE}(D)\bigr)
 $$
@@ -201,7 +201,7 @@ $$
       * $D^{*}$ = The final cleaned and balanced dataset
       
       
-    **Synthetic Minority Oversampling with TOMEK Links Formula**
+-   **Synthetic Minority Oversampling with TOMEK Links Formula**
 $$
 D^{*} = D_{\text{SMOTE}} \setminus TL
 $$
@@ -217,7 +217,7 @@ $$
     In addtion to the five data blancing techniques mentioned above, Mduma (2023), asserted that they also used three seperate classification models (i,e, LR, RF, and MLP) to assess which when paired with a datablancing technique would yeild the most optimal results. Using an experimental methodlogy, the three models were compared and assesed for accuracy in six intances; 1. On the orginal unblanced dataset, 2. on the ROS balnaced dataset, 3. RUS balanced dataset, 4. SMOTE balanced dataset, 5. SMOTE ENN balanced dataset, and 6. SMOTE TOMEK balanced dataset. Concerning model evalution specifically for measures of accuracy, Mduma (2023), asserted that chose 1. Geometric Mean ($G_m$), F-measure ($F_m$), and Adjacent Geometric Mean ($AG_m$). According to Mduma (2023), these measures of model accuracy were choosen as they are particilialry robust against unblanced datasets. The ($G_m$) works by measuring the balance between  sensitivity and specificity and rewards models that perfrom well on both minority and majority classes. The ($F_m$) measures the harmoic mean of precision and recall and rewards models that show a balanced perfromance on the positive class. The ($AG_m$) is an extention of the ($G_m$) and works by adotping class imbalance calculations penalizing poor minority class performance Mduma (2023). Finally, accroding to Mduma (2023), both datasets were split into training, validation and testing sets at 60%, 20% and 20% respectively. For all model formulas and mesures of accuracy formulas used by Mduma (2023) in their study see below.
     
     
-    **Logestic Regression Formula**
+-   **Logestic Regression Formula**
 $$
 P(y=1 \mid x) = \sigma(w^T x + b)
 $$
@@ -239,7 +239,7 @@ $$
       * $e$ = Euler's number which is the base of the logarithim
       
     
-    **Multilayer Perceptron Formula**
+-   **Multilayer Perceptron Formula**
 $$
 a^{(l)} = \sigma\left(W^{(l)} a^{(l-1)} + b^{(l)}\right)
 $$
@@ -253,20 +253,7 @@ $$
       * $l$ = The index representing the current layer in the network
       
       
-    **Random Forest Formula**
-$$
-\hat{y} = \frac{1}{B}\sum_{b=1}^{B} T_b(x)
-$$
-
-    Where:
-      * $\hat{y}$ = The final predicted out of the RF model
-      * $B$ = The total number of decision trees in the RF
-      * $T_b(x)$ = The prediction of $b$-th decision tree for input $x$
-      * $x$ = The feauture vector (i.e., the feature observation)
-      * $\sum_{b=1}^{B}$ = The aggregation accross all trees
-    
-    
-    **Geometric Mean Formula**
+-   **Geometric Mean Formula**
 $$
 G_m = \sqrt{\text{TPR} \times \text{TNR}}
 $$
@@ -291,7 +278,7 @@ $$
       * $FN$ = False Negative
       
       
-      **F-Measure Formula**
+-   **F-Measure Formula**
 $$
 F_m = \frac{2PR}{P + R}
 $$
@@ -316,7 +303,7 @@ $$
       * $FP$ = False Positive
       
       
-      **Adjusted Geometric Mean Formula**
+-   **Adjusted Geometric Mean Formula**
 $$
 AG_m = \sqrt{\text{TPR} \times \text{TNR} \times (1 - IR)}
 $$
@@ -339,26 +326,24 @@ $$
 
 
 
-#### Dataset and Access:
+## Dataset and Access
 
--   **Dataset Characteristics**
+-   ***Dataset Characteristics***
 
     As mentioned previously the dataset I am using is the The data can be accessed by downloading it directly from the kaggle link, or also directly downloading it from 
 
   
+##  Implementation and Experiments
+
+### Implementation
   
-#### Implementation and Experiments:
-
--   **Implementation**
+### Experiments
   
--   **Experiments**
-  
-#### Results (preliminary):
+##  Results (preliminary)
 
-#### Issues / Limitations:
+##  Issues and Limitations
 
-#### Next Steps:
-
+##  Next Steps
 
 
 

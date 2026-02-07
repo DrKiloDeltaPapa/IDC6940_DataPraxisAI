@@ -330,10 +330,43 @@ $$
 
 -   ***Dataset Characteristics***
 
-    As mentioned previously the dataset I am using is the The data can be accessed by downloading it directly from the kaggle link, or also directly downloading it from 
+    As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and it is called "Predecting Students' Dropout and Academic Success"(Realinho et al., 2021). Realinho et al. (2021) characterise the dataset as tubular, meant for the social sciences, and spefically classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to Realinho et al. (2021) concist of real, catagorical and integers. According to Realinho et al. (2021) the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three catagories (i.e., dropout, enrolled and graduate). According to Realinho et al. (2021) the dataset was rigorously  preprocessed and consist of no null or missing values. 
+    
+-   ***Dataset Access***
+    
+    The dataset can be accessed here : ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data))
 
-  
+
 ##  Implementation and Experiments
+
+```{python}
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+from matplotlib.ticker import MaxNLocator
+from sklearn.feature_selection import mutual_info_classif
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+import seaborn as sns
+from math import ceil
+
+from xgboost import XGBClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from lightgbm import LGBMClassifier
+from catboost import CatBoostClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, make_scorer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score
+```
+```{python}
+
+```
+```{python}
+
+```
+
 
 ### Implementation
   

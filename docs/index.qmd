@@ -1,6 +1,7 @@
 ---
-title: "DataPraxisAI: Literature Review of *Predicting Student Dropout and Academic Success*"
-subtitle: "Capstone(Spring 2026):week3_paper_review"
+title: "DataPraxisAI : Predicting Student Dropout and Academic Success: Methods + Data + Implementation"
+jupyter: idc-venv
+subtitle: "Capstone(Spring 2026): Week4_and_Week5 Progress Report Assignment"
 author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
 date: today
 date-format: "MMMM D, YYYY"
@@ -17,26 +18,37 @@ editor:
     wrap: 72
 ---
 
-#### Background/Motivation:
+## Project Goal and Research Questions:
 
--   **Describe the context in which the research was conducted.**
-
-    The research conducted by Realinho et al. (2022) is framed in the higher education setting, specifically, issues with students dropping out and the lack of academic success. According to Realinho et al. (2022) student attrition and academic failure does not only negatively affect the education institutions that students attend, but they create greater adverse societal issues. For example, when students drop out prior to completing a degree program it makes them less competitive concerning the job market, which then leads to economic dificiencies, which can lead to inadequate health care access and subsequent more dire socio-economic issues that often disproportionally affect marginalized demographics (Realinho et al., 2022). 
-
--   **What problem or gap in the existing literature does the paper aim to address?**
-
-    Concerning the problem or gap in the existing literature on students dropping out of institutes of higher learning prior to completing their degrees Realinho et al. (2022) assert that there is no universal measure of "student dropout". Researchers who produce work on higher education student attrition often have differing measures of what constitutes "dropout", and most measure the phenomena at the macro level, which then creates issues concerning research comparison and understanding the nuances of the phenomena at a micro level (Realinho et al., 2022). To address the issue of disparate measures of student dropout and to better understand the features that contribute to it Realinho et al. (2022) proposed taking a micro perspective in that changes to student degree projection would be looked at regardless of time of occurrence. Further, Realinho et al. (2022) compiled a unique data set that comprised of varied source data which they then used to train machine learning classifiers that predict student drop out and academic success.
-
--   **Discuss the significance of the research question and why it is important.**
-      
-    Realinho et al. (2022) asks, "What are the key factors that lead to student dropout?" Posed in a higher education setting this question is significant to all educational environments to include K-12 as many of the factors correlate. Further the issue of predicting the root causes of student attrition and then using model results to directly drive changes to pedagogy or intervention is not typically explored (Realinho et al., 2022).
+-   **Project Goal**
     
+    The goal of this capstone project is to test, assess and report the results various multi-class machine learning prediction models on their ability to accuratly predict student dropout in the higher edcation setting. According to Realinho et al. (2022) student attrition and academic failure  not only negatively affect the education institutions that students attend, but create greater  societal issues. For example, when students dropout prior to completing a degree program it makes them less competitive concerning the job market, which then leads to economic deficiencies, which can lead to inadequate health care access and subsequent more dire socio-economic issues that often disproportionally affect marginalized demographics (Realinho et al., 2022). 
+    
+    However, according to Mduma (2023), the prediction of student dropout is a particularly challanging issues for education researchers, this is due in large part to class imblance. According to Mduma (2023), many real world datasets concerning studnet dropout are largly skewed towards the reatined or enrolled classes. Many scholars pay particuliar attention to feature enigineering methods when using machine learning methodologies to address the issue of predicting student attrition. However, Mduma (2023) asserted that class imbalance presents limtations concerning model accuracy and generalizabiltiy and thus framed their study aorund that issue. Thus, in this capstone project, I focus on the appropriate data preprocessing methods, feature engineering methods, and methods to adequatly address class imbalnce. Further, I specifically use machine learning models that have a proven track record in the literature (e.g., Realinho et al., 2022; Ridwan et al., 2024) concerning their abiltiy to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagorical Boosting (CatBoost).
 
-#### Method Used:
+    
+## Research Questions
+  
+-   **Primary Research Question** 
+    
+    **RQ1:** Which multi-class machine learning classifier achieves the highest predictive performance as meaured by; accuracy, precesion, and F1-score when applied to the ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data))?
+    
+    To inform the primary research question of this study I asked the following sub-research questions:
+    
+    **RQ1a:** How do methods of addressing class imbalance affect the predictive performance of multi-class machine learning classfiers?
+    
+    **RQ1b:** How does the performance of gradient boosting models compare to tradtional ensable models in multi-class student attrition prediciton?
+  
+  
+## Expanded Methods (updated from week3 paper review):
 
--   **Summarize the methodologies employed by the authors.**
-
-    As mentioned previously data for the study conducted by Realinho et al. (2022) stemmed from varied sources and were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2. the system used for teaching and learning (internal data), 3. annual data from  the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
+-   ***Methods***
+  
+    As the main research question of my study centers around comparing multi-class machine learning classifiers and addressing class imblance, to accuratly predict student dropout in a higher education setting. The methods I intend to use correlate directly to those used by (e.g., Mduma, 2023; Realinho et al., 2022). The methods outlined by Realinho et al. (2022), builds on previous work concerning predicitng student dropout by implementing a multi-class approach. While, the methods outlined by Mduma (2023) specifically use five varied data balancing techniques paired with machine learning clssifiers to determine which pairing most accurately predcited student drop out. Thus, the remainder of this methods section is broken down into to parts, 1. Multi-Class Methods and 2. Data Balancing Methods. In the final report for this capstone project, I will provide a detailed account of how these methods are incorparted into my project along with an account of the full machine learnining pipeline methods I use.
+    
+-   **The Multi-Class Methods**
+    
+      The study conducted by Realinho et al. (2022) used data that stemmed from varied sources which were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2. the system used for teaching and learning (internal data), 3. annual data from the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
    
     The feautres fell into four main catagories; demographic, socioeconomic, macroeconomic, and academic. The target variable (i.e., dropout, enrolled, or graduating), was multi-class. Concerning data preprocessing, Realinho et al. (2022) used a multi-tool approach. For example, initial data ingestion and preprocessing was done using tools such as Microsoft Access Databases, Microsoft's Visual Studio Basic, Microsoft Windows suit, and code processing and development was done in Python. According to Realinho et al. (2022), detailed data anlysis was done using tools from the Pandas library, Scikit-learn and Bokeh library for visualizations. The output of descritpive statitics were listed for all features in the form of tables that were parsed based on the major feature catagories. In conducting descriptive statistics and assessing collinarity Realinho et al. (2022) did notice that several features, both within and between feature catagories showed high levels of multicolinarity, which they assed by means of a heat map and Pearson correlation coefficent using 0.7 as a cut point.The Pearson correlation coefficient $r$ measures the strength and direction of the linerar relationship between two features. A cut point $|r| \ge 0.07$ is considered a minimal threshold (see formula below).
 $$
@@ -46,17 +58,17 @@ $$
     
     
     Where:
-    * $r$ = The Pearson correlation coefficent, which measures the strength       and direction of the linear relationship between two features
-    * $x_i$ = The observed value of the feature $X$ for the $i$-th               observation
-    * $y_i$ = The observed value of the target $Y$ for the $i$-th                observation
+    * $r$ = The Pearson correlation coefficent, which measures the strength and             direction of the linear relationship between two features
+    * $x_i$ = The observed value of the feature $X$ for the $i$-th                          observation
+    * $y_i$ = The observed value of the target $Y$ for the $i$-th                           observation
     * $\bar{x}$ = The  mean of all values of the feature $X$
     * $\bar{y}$ = The mean of all values of the Target $Y$
     * $n$ = The total number of paired observations
-    * $\sum_{i=1}^{n}$ = The summation over all observations from $i$ = 1        to $n$
-    * $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation       for the feature $X$
-    * $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation       for the target $Y$
+    * $\sum_{i=1}^{n}$ = The summation over all observations from $i$ = 1 to $n$
+    * $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation for the          feature $X$
+    * $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation for the          target $Y$
 
-    To assess wich features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
+    To assess which features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
 $$
 PI_j = E_{\text{perm}(j)} - E_{\text{base}}
 $$
@@ -64,8 +76,8 @@ $$
     
     Where:
       * $PI_j$ = the permutation importnace score for the feaure $_j$
-      * $E_{\text{base}}$ = the base model error (i.e., the performance                     metric) computed on the orginal dataset
-      * $E_{\text{perm}(j)}$ = the model error after random permutation of         the       values of feature $_j$
+      * $E_{\text{base}}$ = the base model error (i.e., the performance                       metric) computed on the orginal dataset
+      * $E_{\text{perm}(j)}$ = the model error after random permutation of the values         of feature $_j$
       * $j$ = the index of the feature being evaluted
       * $E$ = the prediction error metric used for evaluation (e.g., mean                     squared error, log loss or error rate)
 
@@ -75,14 +87,14 @@ F_1 = \frac{2PR}{P + R}
 $$
     
      Where:
-      * $F_1$ = The $F1$-score which is the harmonic mean of precision             and recall
-      * $P$ = Precision, which is the proportion of predicted postives            that are true positives
-      * $R$ = Recall, which is  the ratio of acutal postives that are              correctly predicted
-      * $2$ = The weighting factor that yeilds the harmoic mean and it             penalizes extreme imbalances between $P$ and $R$
+      * $F_1$ = The $F1$-score which is the harmonic mean of precision and recall
+      * $P$ = Precision, which is the proportion of predicted postivesthat are true           positives
+      * $R$ = Recall, which is  the ratio of acutal postives that are                         correctly predicted
+      * $2$ = The weighting factor that yeilds the harmoic mean and it                        penalizes extreme imbalances between $P$ and $R$
 
-      According to Realinho et al. (2022) Permutation Feature Importance was applied to all models suggested by the literature for multi-class prediction, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting (CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their prediction thus improving model accuracy while reducing overfitting (Ho,1995). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the previous tree (Chen & Guestrin, 2016). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (Ke et al., 2017). Finally, CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features (Prokhorenkova et al., 2018). See below for the formulas of all multi-class classifiers used by Realinho et al. (2022) in their study.
+      According to Realinho et al. (2022) Permutation Feature Importance was applied to all models suggested by the literature for multi-class prediction, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagorical Boosting (CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their prediction thus improving model accuracy while reducing overfitting (Ho,1995). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the previous tree (Chen & Guestrin, 2016). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (Ke et al., 2017). Finally, CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features (Prokhorenkova et al., 2018). See below for the formulas of all multi-class classifiers used by Realinho et al. (2022) in their study.
       
-    **Random Forest Formula**
+-   **Random Forest Formula**
 $$
 \hat{y} = \frac{1}{B}\sum_{b=1}^{B} T_b(x)
 $$
@@ -95,7 +107,7 @@ $$
       * $\sum_{b=1}^{B}$ = The aggregation accross all trees
     
     
-    **Extreme Gradient Boosting Formula**
+-   **Extreme Gradient Boosting Formula**
 $$
 \hat{y}_i = \sum_{k=1}^{K} f_k(x_i), 
 \quad f_k \in \mathcal{F}
@@ -103,12 +115,12 @@ $$
 
     Where:
       * $\hat{y}_i$ = The pridcited output for the observation $i$
-      * $K$ = The number of trees (i.e., the number of boosting                    interations)
+      * $K$ = The number of trees (i.e., the number of boosting                               interations)
       * $f_k(x_i)$ = The prediction from the $k-th$ decision tree
       * $x_i$ =  The feature vector for the obeservation $i$
       * $F$ = The space of all possible decision trees
       
-     **Light Gradient Boosting Machine Formula**
+-   **Light Gradient Boosting Machine Formula**
 $$
 \hat{y}_i^{(t)} = \hat{y}_i^{(t-1)} + \eta f_t(x_i)
 $$
@@ -116,11 +128,11 @@ $$
     Where:
       * $\hat{y}_i^{(t)}$ = The updated observation $i$ at interation $t$
       * $\hat{y}_i^{(t-1)}$ = The prediction from the previous boosting intertation
-      * $\eta$ = The learning rate while controlng for the contribution of         each new tree
+      * $\eta$ = The learning rate while controlng for the contribution of                    each new tree
       * $f_t(x_i)$ = The prediction of the tree added at interation $t$
       * $x_i$ = The feature vector for observation $i$
       
-    **Catagorical Boosting Formula**
+-   **Catagorical Boosting Formula**
 $$
 \hat{y}_i = \sum_{t=1}^{T} \eta f_t(x_i)
 $$
@@ -131,57 +143,653 @@ $$
       * $\eta$ = The learning rate
       * $f_t(x_i)$ = The predcition from the tree at interation $t$
       * $x_i$ = The input vector including the catgorical variables
+
+    The methods used by Realinho et al. (2022) more than adequatly address their research question. Starting with the data ingestion process, by compiling a data set from both sources native to the universty and external, they assured that features in the data set would afford them the oppurtunity to gain both a macro and micro perspective conerning the phenomena of student dropout and acadmic success. Further, in dealing with class imbalance, by utalizing Permutation Feature Importance, Realinho et al. (2022) assured that only features that contributed to the postive predciton of the class would be included in their model thus improving model fit and accuracy. Finally by incorparting various multi-class calssifieres into their pipeline, Realinho et al. (2022) assured that they would be able to conduct model comparison and select the best model for their data set.  
+
+-   **Data Balancing Methods**
+    
+     Mduma (2023) used two publicly available datasets from developing countries to test their methods. The first data set stemmed from Uwezo an non-governmental organization (NGO) in Tazania, and the second dataset was dervied from india. The Uwezo dataset consisted information on student learning at the country level gathered from thousands of households Mduma (2023). The Uwezo data set consited on (n = 61,340) cases, and concering the classes 98.4% were in the retained class and 1.6% were in the dropout class. The dataset from India concsited of (n = 11, 257) cases of which 95.1% were in the retained class, and 4.9% were in the dropout class (Mduma, 2023). Both datasets consited of features that spannded demograhics, academics and socioeconomic catagories. Mduma (2023), asserted that they conducted pre-processing of both sets, specifically, they cleaned the sets for missing values by implementing median and zero imputting where necessary.
+    
+    According to Mduma (2023), five data balancing techniques were used on the datasets to address the class imbalance; 1. Random Under Sampling (RUS), 2. Random Over Sampling (ROS), 3. Synthetic Minority Over Sampling (SMOTE), 4. Synthetic Minority Over Sampling with Edited Nearest Neighbors (SMOTE ENN), and 5. Sythentc Minority Over Sampling with TOMEK Links (SMOTE TOMEK). Concerning RUS, this technique works by randomly removing observations from the majority class until the classes are approximatley equal. ROS, is the oposite of RUS, and works by randomly duplicating the minority class until the classes are approximatly equaly. SMOTE works by generating a new synthetic minority class, which is done by interporlating the minority class using the nearest neighbor until both the minority and majority class match. SMOTE ENN works the same as SMOTE but adds a cleaning step that removes missclassfied classes due to the nearest neighbor step, this reduces statistical noise and overlap. Finally, SMOTE TOMEK also works the same as SMOTE but uses TOMEK  links, which remove pairs of  nearest neighbors instances from the majority class that are in close proximity to eachother. The decision boundry is cleaned thus reducing statistical noise and improving model performance Mduma (2023). The formulas for all class balancing techniques incorparted by Mduma (2023) are below.
+    
+    
+-   **Random Under Sampling Formula**
+$$
+\alpha_{us} = \frac{N_{m}}{N_{rM}}
+$$
+
+    Where:
+      * $\alpha_{us}$ = The under sampling ratio
+      * $N_m$ = The number of class samples in the minority 
+      * $N_{rM}$ = The number of majority class samples after under sampling
+      
+    
+-   **Random Over Sampling Formula**
+$$
+\alpha_{os} = \frac{N_{r m}}{N_{m}}
+$$
+
+    Where:
+      * $\alpha_{os}$ = Is the oversampling ration
+      * $N_m$ = The orginal number of the minority class samples
+      * $N_{rM}$ = The number of samples in the minority class after over-sampling
       
       
--   **Explain how these methods are suited to address the research question.**
+-   **Synthetic Minority Oversampling Formula**
+$$
+x_{\text{new}} = x_i + \lambda \left(x_{nn} - x_i\right)
+$$
 
-    The methods used by Realinho et al. (2022) more than adequatly address their research question. Starting with the data ingestion process, by compiling a data set from both sources native to the universty and external, they assured that features in the data set would afford them the oppurtunity to gain both a macro and micro perspective conerning the phenomena of student dropout and acadmic success. Further, in dealing with class imbalance, by utalizing Permutation Feature Importance, Realinho et al. (2022) assured that only features that contributed to the postive predciton of the class would be inlcuded in their model thus imporvng model fit and accuracy. Finally by incorparting various multi-class calssifieres into their pipeline, Realinho et al. (2022) assured that they would be able to conduct model comparison and select the best model for their data set.  
 
--   **Discuss any innovative approaches or techniques that are particularly noteworthy.**
+    Where:
+      * $x_{new}$ = The newly generated synthtic minority class sample
+      * $x_i$ = The original minority class instance
+      * $x_{nn}$ = Is on of the $k$-nearest neighbors of $x_i$
+      * $\lambda$ = Is the random interporlation where 0 $\le$ $\lambda$ $\le$ 1
+      * $k$ = The total number of nearest neighbors considered
+      
+      
+-   **Synthetic Minority Oversampling with Edited Nearest Neighbors Formula**
+$$
+D^{*} = \text{ENN}\bigl(\text{SMOTE}(D)\bigr)
+$$
 
-    Concerning innovative processes, I found that compiling the data set from various disparate sources was innovative. I also found that using Permutation Feature Importance was innovative. When faced with the issue of multi-colinearity Realinho et al. (2022) dealt with it in a manner that both reduced the features, and improved the potential for the models to perform better..
 
-#### Significance of the Work:
+    Where:
+      * $D$ = The original imbalanced dataset
+      * $SMOTE(D)$ = The dataset after synthetic minority over samples are generated
+      * $ENN(.)$ = The rule that edits the nearest neighbors that may be missclassfied         or ambigious
+      * $D^{*}$ = The final cleaned and balanced dataset
+      
+      
+-   **Synthetic Minority Oversampling with TOMEK Links Formula**
+$$
+D^{*} = D_{\text{SMOTE}} \setminus TL
+$$
 
--   **Highlight the key findings and contributions of the paper.**
 
-    The key findings of the paper was the discovery that all classiferes predicted the same five features as contributing to accuratly predicting the postive class. According to Realinho et al. (2022), the five features were 1. Curricular  units 2nd semsester(approved), 2. Curricular units 1st semsester (approved), 3. Curricular units 2nd semsester (grade), 4. Course, and 5. Tuition fees up to date. Concerning the key contributions of the paper produced by Realinho et al. (2022), I found their data collection and data analysis methods offered a great framework for other researchers to follow when exploring the issue of student dropout in both the higher education environment and in K-12. 
+    Where:
+      * $D_SMOTE$ = The dataset after minority synthetic over sampling
+      * $TL$ = The TOMEK link sets between the minority and majority classes
+      * $\backslash$ = The removal operator (i.e.,set subtraction)
+      * $D^{*}$ =  The final balanced dataset after overlapping TOMEK links are               removed
+      
+      
+    In addtion to the five data blancing techniques mentioned above, Mduma (2023), asserted that they also used three seperate classification models (i,e, LR, RF, and MLP) to assess which when paired with a datablancing technique would yeild the most optimal results. Using an experimental methodlogy, the three models were compared and assesed for accuracy in six intances; 1. On the orginal unbalanced dataset, 2. on the ROS balanced dataset, 3. RUS balanced dataset, 4. SMOTE balanced dataset, 5. SMOTE ENN balanced dataset, and 6. SMOTE TOMEK balanced dataset. Concerning model evaluation specifically for measures of accuracy, Mduma (2023), asserted that they chose 1. Geometric Mean ($G_m$), F-measure ($F_m$), and Adjacent Geometric Mean ($AG_m$). According to Mduma (2023), these measures of model accuracy were choosen as they are particularly robust against unbalanced datasets. The ($G_m$) works by measuring the balance between sensitivity and specificity and rewards models that perfrom well on both minority and majority classes. The ($F_m$) measures the harmonic mean of precision and recall and rewards models that show a balanced perfromance on the positive class. The ($AG_m$) is an extention of the ($G_m$) and works by adotping class imbalance calculations penalizing poor minority class performance Mduma (2023). Finally, accroding to Mduma (2023), both datasets were split into training, validation and testing sets at 60%, 20% and 20% respectively. For all model formulas and measures of accuracy formulas used by Mduma (2023) in their study see below.
+    
+    
+-   **Logistic Regression Formula**
+$$
+P(y=1 \mid x) = \sigma(w^T x + b)
+$$
 
--  **Explain why the results are important within the broader context of the field.**
+    Where The Sigmoid (i.e., the activation function) is:
+$$
+\sigma(z) = \frac{1}{1 + e^{-z}}
+$$
 
-    The results are important in regards to the broader context of the field because the five key features that Realinho et al. (2022) found to have the most effect on accuratly predicitng the postive class are ubiquitous to all higher education institutions. Further, all of the features that Realinho et al. (2022) incorporated in their study have parallels in other learning environments such as K-12. Thus, education researchers regradless of which level of education envrionment can refer to the findings put forth by Realinho et al. (2022), as a baseline to their own research.
+    Where:
+    
+      * $P(y = 1 | x)$ = The probality of a class 1 given the input vector $x$
+      * $\sigma(.)$ = The sigmiod or the logestic function
+      * $w$ = The weight vector
+      * ${w^T x}$ = The dot product between the weights and the features
+      * $x$ = The input fature vector
+      * $b$ = The bias or intercept term
+      * $z$ = Is the ${w^T x}$ + $b$  which = the linear predictor
+      * $e$ = Euler's number which is the base of the logarithim
+      
+    
+-   **Multilayer Perceptron Formula**
+$$
+a^{(l)} = \sigma\left(W^{(l)} a^{(l-1)} + b^{(l)}\right)
+$$
 
--   **Discuss the implications of the findings for future research or practice.**
+    Where:
+      * $a^{(l)}$ = The activation vector or output of layer $l$
+      * $W^{(l)}$ = The weight matrix for layer $l$ which maps inputs from preious            layers
+      * $a^{(l-1)}$ = The acti activation layer from the previous vector ($l$ - 1)
+      * $b^{(l)}$ = The bias vector of layer $l$
+      * $\sigma(.) = The activation function applied element wise (e.g., sigmoid,             ReLU or tanh)
+      * $l$ = The index representing the current layer in the network
+      
+      
+-   **Geometric Mean Formula**
+$$
+G_m = \sqrt{\text{TPR} \times \text{TNR}}
+$$
 
-    As previously mentioned, Realinho et al. (2022) found that five features were most effective in accuratly predicting the positive class which were 1. Curricular  units 2nd semester (approved), 2. Curricular units 1st semester (approved), 3. Curricular units 2nd semester (grade), 4. Course, and 5. Tutuion fees up to date. These features are not unique to Realinho et al. (2022), but rather they are ubiquitous to all higher education institutions. The implications for future research and practice is that researchers can adopt a similiar method of data collection but using data native to their own institutions and external sources, apply a similiar machine learning methodolgy and then assess if the same or similiar factors predict the postive class.
+    Where:
+      * $G_m$ = The geometric mean score
+      * $TPR$ = The true positive rate of (i.e.,sensitivity or recall)
+      * $TNR$ = The true negative rate (i.e, specificity)
+    
+    And:
+$$
+\text{TPR} = \frac{TP}{TP + FN}
+$$
+$$
+\text{TNR} = \frac{TN}{TN + FP}
+$$
 
-#### Connection to Other Work:
+    Where:
+      * $TP$ = True Positive
+      * $TN$ = True Negative
+      * $FP$ = False Positive
+      * $FN$ = False Negative
+      
+      
+-   **F-Measure Formula**
+$$
+F_m = \frac{2PR}{P + R}
+$$
 
--   **Relate the paper to other relevant studies.**
+    Where:
+      * $F_m$ = The F-measure or the F1-Score
+      * $P$ = Precision
+      * $R$ = Recall
 
-    Conceptually, the work presented by Realinho et al. (2022) relates to the work of several scholars in the field of student attrition (e.g., Aina et al., 2022; Bargmann et al., 2022; Pek et al., 2023; Veliz Palomino & Ortega, 2023). Methodologically, Realinho et al. (2022) work concerning the use of multi-class predictors connects to the work other scholars (e.g., Chen & Guestrin, 2016; Ho, 1995; Ke et al., 2017; Prokhorenkova et al., 2018).
 
--   **How does this paper build on or differ from previous work?**
+    And:
+$$
+P = \frac{TP}{TP + FP}
+$$
+$$
+R = \frac{TP}{TP + FN}
+$$
 
-    This paper builds on previous work concerning predicitng student dropout by implementing a multi-class approach. For example, while Ridwan et al. (2024), approached the topic by adopting a binary classifier (i.e., Academic Success and Dropout), Realinho et al. (2022), used three classes (i.e., dropout, enrolled or graduating) which adds another dimension to the topic. Further while most research on this topic focuses on demographic, academic, and socioeconomic features, Realinho et al. (2022) added a feature group that while it did consist of academic data the element of time was present (e.g., courses and grades during the 1st and 2nd semester). As the data set used by Realinho et al. (2022), was complied from various data sets both internal and external, the features consisted of both micro and macro elements that could be assed to see the effect of student attrition.
+    Where:
+      * $TP$ = True Positive
+      * $FN$ = False Negative
+      * $FP$ = False Positive
+      
+      
+-   **Adjusted Geometric Mean Formula**
+$$
+AG_m = \sqrt{\text{TPR} \times \text{TNR} \times (1 - IR)}
+$$
 
--   **Identify any references to seminal works or influential papers cited by the authors.**
+    Where:
+      * $AG_m$ = The adjusted geometric mean
+      * $TPR$ = The true positive rate (i.e., recall)
+      * $TNR$ = The true negative rate (i.e., specificity)
+      * $IR$ = The imbalance ratio
+    
+    And:
+$$
+IR = \frac{N_{\text{min}}}{N_{\text{maj}}}
+$$
 
-    Concerning references to seminal and or influential works cited by Realinho et al. (2022), in discussing the muliti-class classifiers they used in their study, they cited (e.g., Chen & Guestrin, 2016; Ho, 1995; Ke et al., 2017; Prokhorenkova et al., 2018).
+    Where:
+      * $IR$ = The imbalanced ratio
+      * $N_{min}$ = The number of samples in the minority class
+      * $N_{maj}$ = The number of samples in the majority class
 
-#### Relevance to Capstone Project:
 
--   **Discuss how the content of the paper might be relevant to your own capstone project.**
 
-    The content of this paper directly realates to my capstone. I will also be utilizing a complete machine learning pipeline for my methodology, similar to the one employed by Realinho et al. (2022). The data set I intend to use (i.e, [UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)), also has three classes (i.e., Graduate, Dropout, and Enrolled), the methods I intend to use concerning the machine learning classifiers directly correlate to the methods used by Realinho et al. (2022). To assess the efficacy of my models I will be using accuracy, precision, recall and F1-Score metrics, however as the data set I am using also has class imbalance, I may also explore the Permutation Feature Importance technique. 
+## Dataset and Access
 
--   **Identify any specific methods, theories, or findings that you might incorporate into your project.**
+-   ***Dataset Characteristics***
 
-    Concerning the specific methods, theories and findings that I intend to incorporate into my capstone project I intend to use the multi-class classifiers  used by Realinho et al. (2022) (i.e., Random Forest, Extreme Gradient Boosting, Light Gradient Boosting Machine, and Categorical Boosting).
+    As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and it is called "Predecting Students' Dropout and Academic Success"(Realinho et al., 2021). Realinho et al. (2021) characterize the dataset as tubular, and state that it is meant for the social sciences, spefically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to Realinho et al. (2021) consist of real, catagorical and integers based feautres. According to Realinho et al. (2021) the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three catagories (i.e., dropout, enrolled and graduate). According to Realinho et al. (2021) the dataset was rigorously  preprocessed and consist of no null or missing values. 
+    
+-   ***Dataset Access***
+    
+    The dataset can be accessed here : ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data))
 
--   **Highlight any potential areas where your capstone could expand upon or diverge from the paper’s findings.**
 
-    Concerning areas where my capstone could expand upon what was presented by Realinho et al. (2022), I intend to compare and report the training, and testing results of each model (i.e., model comparison). Then, using the model with the best metrics (i.e, precision, recall, F1-score), I intend to fine tune it and train it on the full feature set and test it on the validation set.
+##  Implementation and Experiments
+
+-   **Exploratory Data Analysis**
+    
+    Below I perform some exploritory data analysis (EDA) on the UCI Student Drop Out Dataset. My goal is to gain a deeper understanding of the datasets' features, their realtionship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitaitons concerning the chosen methods.
+
+```{python}
+import os
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+from matplotlib.ticker import MaxNLocator
+import seaborn as sns
+from math import ceil
+
+from sklearn.feature_selection import mutual_info_classif
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, make_scorer
+
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from xgboost import XGBClassifier
+from lightgbm import LGBMClassifier
+from catboost import CatBoostClassifier
+```
+
+```{python}
+import os
+from pathlib import Path
+import pandas as pd
+
+# Start from the directory containing the current QMD
+qmd_path = os.environ.get("QUARTO_DOCUMENT_PATH")
+start_dir = Path(qmd_path).resolve().parent if qmd_path else Path.cwd()
+
+# Walk upwards until we find a 'data' directory
+repo_root = None
+for p in [start_dir] + list(start_dir.parents):
+    if (p / "data").is_dir():
+        repo_root = p
+        break
+
+if repo_root is None:
+    raise FileNotFoundError(
+        f"Could not find a 'data/' folder by searching upward from: {start_dir}"
+    )
+
+data_dir = repo_root / "data"
+train_path = data_dir / "train.csv"
+test_path  = data_dir / "test.csv"
+
+print("Start dir:", start_dir)
+print("Repo root:", repo_root)
+print("Train exists:", train_path.exists(), train_path)
+print("Test exists:", test_path.exists(), test_path)
+
+train_data = pd.read_csv(train_path)
+test_data  = pd.read_csv(test_path)
+
+print("Train shape:", train_data.shape)
+print("Test shape:", test_data.shape)
+```
+```{python}
+# Show all columns
+pd.set_option('display.max_columns', None)
+train_data.head()
+```
+
+```{python}
+train_data.describe()
+```
+```{python}
+train_data.info()
+```
+```{python}
+test_data.info()
+```
+```{python}
+tg_cnts = train_data.Target.value_counts()
+tg_cnts_sum = tg_cnts.sum()
+tg_cnts_pct = (tg_cnts / tg_cnts_sum) * 100
+
+# Plot
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+
+plt.bar(tg_cnts.index, tg_cnts_pct, color=colors)
+plt.xlabel('Categories')
+plt.ylabel('Percentage')
+plt.title('Target Distribution')
+
+# Percentages on bars
+for i, pct in enumerate(tg_cnts_pct):
+    plt.text(i, pct + 1, f'{pct:.1f}%', ha='center', va='bottom')
+
+plt.show()
+```
+
+```{python}
+# Feature Cardinality Check
+feature_count = (
+    train_data.drop(columns=['Target'])
+    .nunique()
+    .reset_index()
+    .rename(columns={'index': 'feature', 0: 'unique_count'})
+    .sort_values(by='unique_count')
+)
+
+feature_count
+```
+
+```{python}
+# Target Distribution by Gender
+crosstab_gender = pd.crosstab(train_data['Gender'], train_data['Target'])
+crosstab_gender = crosstab_gender.div(crosstab_gender.sum(axis=1), axis=0) * 100
+
+# Plot
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+ax_gender = crosstab_gender.plot(kind='bar', stacked=True, color=colors)
+plt.xlabel('Gender (0 = Female, 1 = Male)')
+plt.ylabel('Percentage')
+plt.title('Distribution of Target Based on Gender')
+plt.legend(title='Target')
+plt.xticks(rotation=0)
+
+for p in ax_gender.patches:
+    width = p.get_width()
+    height = p.get_height()
+    x, y = p.get_xy()
+    ax_gender.annotate(
+        f'{height:.1f}%',
+        (x + width / 2, y + height / 2),
+        ha='center',
+        va='center',
+        fontsize=10,
+        color='white'
+    )
+
+plt.show()
+```
+
+```{python}
+# Create a crosstab to count the occurrences of each Target value for each Scholarship status
+crosstab_ss = pd.crosstab(train_data['Scholarship holder'], train_data['Target'])
+
+# Normalize the crosstab counts to percentages
+crosstab_ss = crosstab_ss.div(crosstab_ss.sum(axis=1), axis=0) * 100
+
+# Plot the data
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+ax_ss = crosstab_ss.plot(kind='bar', stacked=True, color=colors)
+plt.xlabel('Scholarship (0 = No Scholarship, 1 = Scholarship Holder)')
+plt.ylabel('Percentage')
+plt.title('Distribution of Target Based on Scholarship Holder')
+plt.legend(title='Target')
+plt.xticks(rotation=0)
+
+# Annotate the percentage labels on each bar
+for p in ax_ss.patches:
+    width = p.get_width()
+    height = p.get_height()
+    x, y = p.get_xy()
+    ax_ss.annotate(
+        f'{height:.1f}%',
+        (x + width / 2, y + height / 2),
+        ha='center',
+        va='center',
+        fontsize=10,
+        color='white'
+    )
+
+plt.show()
+```
+
+```{python}
+# Create a crosstab to count the occurrences of each Target value for each Scholarship status
+crosstab_ss = pd.crosstab(train_data['Scholarship holder'], train_data['Target'])
+
+# Normalize the crosstab counts to percentages
+crosstab_ss = crosstab_ss.div(crosstab_ss.sum(axis=1), axis=0) * 100
+
+# Plot the data
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+ax_ss = crosstab_ss.plot(kind='bar', stacked=True, color=colors)
+plt.xlabel('Scholarship (0 = No Scholarship, 1 = Scholarship Holder)')
+plt.ylabel('Percentage')
+plt.title('Distribution of Target Based on Scholarship Holder')
+plt.legend(title='Target')
+plt.xticks(rotation=0)
+
+# Annotate the percentage labels on each bar
+for p in ax_ss.patches:
+    width = p.get_width()
+    height = p.get_height()
+    x, y = p.get_xy()
+    ax_ss.annotate(
+        f'{height:.1f}%',
+        (x + width / 2, y + height / 2),
+        ha='center',
+        va='center',
+        fontsize=10,
+        color='white'
+    )
+
+plt.show()
+```
+  
+```{python}
+# Create a crosstab to count the occurrences of each Target value for each Debtor status
+crosstab_debtor = pd.crosstab(train_data['Debtor'], train_data['Target'])
+
+# Normalize the crosstab counts to percentages
+crosstab_debtor = crosstab_debtor.div(crosstab_debtor.sum(axis=1), axis=0) * 100
+
+# Plot the data
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+ax_debtor = crosstab_debtor.plot(kind='bar', stacked=True, color=colors)
+plt.xlabel('Debtor (0 = No Debt, 1 = Debtor)')
+plt.ylabel('Percentage')
+plt.title('Distribution of Target Based on Debt Holder')
+plt.legend(title='Target')
+plt.xticks(rotation=0)
+
+# Annotate the percentage labels on each bar
+for p in ax_debtor.patches:
+    width = p.get_width()
+    height = p.get_height()
+    x, y = p.get_xy()
+    ax_debtor.annotate(
+        f'{height:.1f}%',
+        (x + width / 2, y + height / 2),
+        ha='center',
+        va='center',
+        fontsize=10,
+        color='white'
+    )
+
+plt.show()
+```
+
+```{python}
+### Age Distribution by Target (ECDF)
+
+plt.figure(figsize=(10, 6))
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+plot = sns.ecdfplot(data=train_data, x='Age at enrollment', hue='Target', palette=colors)
+plt.xlabel('Age at enrollment')
+plt.ylabel('Proportion')
+plt.title('Cumulative Distribution of Age by Target')
+plot.xaxis.set_major_locator(ticker.MaxNLocator(integer=True))
+
+mean_value = train_data['Age at enrollment'].mean()
+plt.axvline(mean_value, color='grey', linestyle='--', label=f'Mean: {mean_value:.1f}')
+
+plt.legend(title='Target')
+plt.show()
+```
+
+```{python}
+### Approved 2nd Semester Units by Target (ECDF)
+
+plt.figure(figsize=(10, 6))
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+plot = sns.ecdfplot(
+    data=train_data,
+    x='Curricular units 2nd sem (approved)',
+    hue='Target',
+    palette=colors
+)
+
+plt.xlabel('Curricular units 2nd sem (approved)')
+plt.ylabel('Proportion')
+plt.title('Cumulative Distribution of Curricular Units 2nd Sem (approved) by Target')
+plot.xaxis.set_major_locator(ticker.MaxNLocator(integer=True))
+
+mean_value = train_data['Curricular units 2nd sem (approved)'].mean()
+plt.axvline(mean_value, color='grey', linestyle='--', label=f'Mean: {mean_value:.1f}')
+
+plt.legend(title='Target')
+plt.show()
+```
+ 
+```{python}
+### 2nd Semester Grade Distribution by Target (ECDF)
+
+plt.figure(figsize=(10, 6))
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+plot = sns.ecdfplot(
+    data=train_data,
+    x='Curricular units 2nd sem (grade)',
+    hue='Target',
+    palette=colors
+)
+
+plt.xlabel('Curricular units 2nd sem (grade)')
+plt.ylabel('Proportion')
+plt.title('Cumulative Distribution of Curricular Units 2nd Sem (grade) by Target')
+
+mean_value = train_data['Curricular units 2nd sem (grade)'].mean()
+plt.axvline(mean_value, color='grey', linestyle='--', label=f'Mean: {mean_value:.1f}')
+
+plt.legend(title='Target')
+plt.show()
+```
+
+```{python}
+### Identification of Categorical Features
+
+# Identify categorical columns based on low cardinality
+cat_cols = [
+    col for col in train_data.columns
+    if col != 'Target' and train_data[col].nunique() <= 8
+]
+
+# Convert to categorical dtype (for CatBoost compatibility later)
+for col in cat_cols:
+    train_data[col] = train_data[col].astype('category')
+    test_data[col] = test_data[col].astype('category')
+
+print("Categorical columns:")
+print(cat_cols)
+
+```
+
+```{python}
+# Categorical feature distributions
+n_cols = 4
+n_rows = int(np.ceil(len(cat_cols) / n_cols))
+
+fig, axs = plt.subplots(n_rows, n_cols, figsize=(11, 2.2 * n_rows))
+axs = np.array(axs).ravel()
+
+# Define a cyberpunk color palette
+cyberpunk_palette = sns.color_palette('magma', n_colors=8)
+
+for ax, col in zip(axs, cat_cols):
+    vc = train_data[col].value_counts(normalize=True).sort_index()
+    # Use the color palette for bars, cycling through it if more categories than colors
+    ax.bar(vc.index.astype(str), vc, color=cyberpunk_palette[:len(vc)])
+    ax.set_title(col, fontsize=10)
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x:.0%}'))
+    ax.tick_params(axis='x', labelrotation=45)
+
+# Turn off any unused axes
+for ax in axs[len(cat_cols):]:
+    ax.set_visible(False)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+### Continuous Feature Distributions
+
+# Float feature distributions
+float_cols = [
+    col for col in train_data.columns
+    if col != 'Target' and train_data[col].dtype == 'float64'
+]
+
+n_cols = 3
+n_rows = int(np.ceil(len(float_cols) / n_cols))
+
+fig, axs = plt.subplots(n_rows, n_cols, figsize=(11, 2.5 * n_rows))
+axs = np.array(axs).ravel()
+
+for ax, col in zip(axs, float_cols):
+    ax.hist(train_data[col], bins=50, density=True, color='#00FFFF') # Neon blue
+    ax.set_title(col, fontsize=10)
+
+# Turn off unused axes
+for ax in axs[len(float_cols):]:
+    ax.axis('off')
+
+plt.suptitle('Float Variables Distribution', fontsize=13, y=1.02)
+plt.tight_layout()
+plt.show()
+```
+  
+```{python}
+# Integer feature distributions
+int_cols = [
+    col for col in train_data.columns
+    if col != 'Target' and train_data[col].dtype == 'int64'
+]
+
+n_cols = 4
+n_rows = int(np.ceil(len(int_cols) / n_cols))
+
+fig, axs = plt.subplots(n_rows, n_cols, figsize=(11, 2.2 * n_rows))
+axs = np.array(axs).ravel()
+
+for ax, col in zip(axs, int_cols):
+    vc = train_data[col].value_counts(normalize=True).sort_index()
+    ax.bar(vc.index, vc, color='#00FF00') # Lime green
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x:.0%}'))
+    ax.set_title(col, fontsize=10)
+
+# Turn off unused axes
+for ax in axs[len(int_cols):]:
+    ax.axis('off')
+
+plt.suptitle('Integer Variables Distribution', fontsize=13, y=1.02)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+### Spearman Correlation Analysis
+
+# Select numeric features only (exclude Target)
+numeric_cols = train_data.select_dtypes(include=['int64', 'float64']).columns
+numeric_cols = [col for col in numeric_cols if col != 'Target']
+
+plt.figure(figsize=(20, 15))
+sns.heatmap(
+    train_data[numeric_cols].corr(method='spearman'),
+    cmap='magma',
+    annot=True,
+    fmt='.1f',
+    linewidths=0.5
+)
+plt.title('Spearman Correlation Matrix (Numeric Features)')
+plt.show()
+```
+
+##  Results 
+
+-   **Preliminary Results From Exploratory Data Analysis (EDA)** 
+
+    The dataset did display significant class imblance with the Graduate class reprsenting 49.9% of the distribution followed by the Dropout Catagory class at 32.1% and finally the Enrolled class at 17.9%. I observed several meaniful relationships accross the feature groups (i.e., demographic, financial and academic). For example, demographic and financial feautres displayed strong correlations to the target. When I ran the crosstab on the gender feature, it showed that males were more likely to dropout and females more likely to graduate. Those students who held scholarships also showed higher graduation rates compared to non-scholarship students, and were less likely to drop out. Further, those students who were in financial distress as indicated by be coded as debtors had lower graduation rates than those coded as non-debters. Concerning academic features, second-semester grades and approved curricular units showed clear dispersion between the target classes, which may indicate importance pertaining to class prediction.
+
+##  Issues and Limitations
+
+-   **Potential Issues and Limitations Based on EDA** 
+
+    As mentioned the dataset does display significant class imblance. This class imbalance if left un-checked can lead to model bias towards the majority class. I also noticed that many of the  catagorical features were encoded as intergers which may lead to false interpretation when conducting correlation analysis if not addressed. Another limitation that this data presents is its lack of temporal features. As the data represents a snapshot in time, models may not be able to capture the full complexity of predicting student dropout due to the lack of dynamic changes over time. Finally, as this data stems from a single institution, the findings may present limitation concerning genralizability. Though I am not as concerned with this as the purpose of this study is to test which model and data balancing techniques when paired has the highest accuracy.
+    
+
+##  Next Steps
+
+-   **Full Machine Learning Pipeline** 
+
+    Concerning the next steps in this project, I will be implementing the full machine learning pipeline to test and evaluate multi-class classifiers and class blancing techniqies. I will be conducting all experimentation in google colabs using a jupter notebook. The first step in the pipeline would be to split the dataset into training and testing sets using a 80:20 train_test_split and stratification. All numeric and catagorical features will be preprocessed by imputation and one-hot encoding.
+    
+    After the data is preporcessed I will implement the class imbalancing techniques into the pipeline (i.e., RUS, ROS,SMOTE, SMOTE-ENN and SMOTE-Tomek) on the traing set. Once the dataset is blanaced, it will be used to train the multi-class classifiers (i.e., RF, XGBoost, LightGBM, and CatBoost). All models will be evaluted with multi-class metrics however F1-score will be the primary metric. Finally the best model will be evalauted by a confusion matrix and finally permuation feature importance will be used to identify those factors that best predict student dropout and academic success.
+
+
 
 #### 
 
@@ -223,6 +831,8 @@ https://doi.org/10.1109/ASIANCON62057.2024.10838214
 
 Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., & Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. In *Advances in Neural Information Processing Systems* (Vol. 31, pp. 6638–6648). Curran Associates, Inc. https://proceedings.neurips.cc/paper/2018/hash/14491b756b3a51daac41c24863285549-Abstract.htm
 
+Raschka, S., Liu, Y. (H.), & Mirjalili, V. (2022). Machine learning with PyTorch and scikit-learn: Develop machine learning and deep learning models with Python. Packt Publishing.
+
 Realinho, V., Machado, J., Baptista, L., & Martins, M. V. (2022). Predicting student dropout and academic success. Data, 7(11), Article 146. https://doi.org/10.3390/data7110146
 
 Ridwan, A., Priyatno, A. M., & Ningsih, L. (2024). Predict Students' Dropout and Academic Success with XGBoost. *Journal of Education and Computer Applications*,*1*(2), 1-8.https://doi.org/10.69693/jeca.v1i2.13
@@ -231,5 +841,9 @@ Veliz Palomino, J.C., & Ortega, A. M. (2023). Dropout intentions in higher educa
 https://doi.org/10.7160/eriesj.2023.160206
 
 Yan, K. (2021). Student performance prediction using XGBoost method from macro perspective. In *Proceedings of the 2021 2nd International Conference on Computing and DataScience(CDS)*(pp.453-459).IEEE.https://doi.org/10.1109/CDS52072.2021.00084
+
+
+
+
 
 

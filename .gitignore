@@ -17,3 +17,9 @@ Thumbs.db
 renv/library/
 renv/staging/
 
+
+# Python virtual environments
+.venv/
+venv/
+ENV/
+env/

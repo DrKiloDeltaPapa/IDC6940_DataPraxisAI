@@ -2662,7 +2662,7 @@ IR = \frac{N_{\text{min}}}{N_{\text{maj}}}
 <li><p><strong>Exploratory Data Analysis</strong></p>
 <p>Below I perform some exploritory data analysis (EDA) on the UCI Student Drop Out Dataset. My goal is to gain a deeper understanding of the datasets’ features, their realtionship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitaitons concerning the chosen methods.</p></li>
 </ul>
-<div id="0320501e" class="cell" data-execution_count="1">
+<div id="17a30697" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
@@ -2689,7 +2689,7 @@ IR = \frac{N_{\text{min}}}{N_{\text{maj}}}
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> catboost <span class="im">import</span> CatBoostClassifier</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="1981c2c6" class="cell" data-execution_count="2">
+<div id="954d060a" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
@@ -2736,7 +2736,7 @@ Train shape: (3539, 37)
 Test shape: (885, 37)</code></pre>
 </div>
 </div>
-<div id="9bacb627" class="cell" data-execution_count="3">
+<div id="d9c9bd4a" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show all columns</span></span>
@@ -2997,7 +2997,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="d9acaf13" class="cell" data-execution_count="4">
+<div id="39bd19d9" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>train_data.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -3367,7 +3367,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="5503e4d2" class="cell" data-execution_count="5">
+<div id="9c488cd0" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -3419,7 +3419,7 @@ dtypes: float64(7), int64(29), str(1)
 memory usage: 1023.1 KB</code></pre>
 </div>
 </div>
-<div id="7ab949b0" class="cell" data-execution_count="6">
+<div id="985ea91b" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>test_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -3471,7 +3471,7 @@ dtypes: float64(7), int64(29), str(1)
 memory usage: 255.9 KB</code></pre>
 </div>
 </div>
-<div id="342be2f8" class="cell" data-execution_count="7">
+<div id="b45caa22" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tg_cnts <span class="op">=</span> train_data.Target.value_counts()</span>
@@ -3500,7 +3500,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="1fa06642" class="cell" data-execution_count="8">
+<div id="dafbc3d1" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature Cardinality Check</span></span>
@@ -3713,7 +3713,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="925b9d64" class="cell" data-execution_count="9">
+<div id="2c29cfd5" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Target Distribution by Gender</span></span>
@@ -3752,7 +3752,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="6a4144e1" class="cell" data-execution_count="10">
+<div id="dd056fc1" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Scholarship status</span></span>
@@ -3794,7 +3794,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="7e539914" class="cell" data-execution_count="11">
+<div id="3de19528" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Scholarship status</span></span>
@@ -3836,7 +3836,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="f1a41e8c" class="cell" data-execution_count="12">
+<div id="79e25691" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Debtor status</span></span>
@@ -3878,7 +3878,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="97613c48" class="cell" data-execution_count="13">
+<div id="2b5a003e" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Age Distribution by Target (ECDF)</span></span>
@@ -3905,7 +3905,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="bebe5c81" class="cell" data-execution_count="14">
+<div id="5f28d3ef" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Approved 2nd Semester Units by Target (ECDF)</span></span>
@@ -3938,7 +3938,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="9ae760ea" class="cell" data-execution_count="15">
+<div id="a70a022d" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 2nd Semester Grade Distribution by Target (ECDF)</span></span>
@@ -3970,7 +3970,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="538e4fe0" class="cell" data-execution_count="16">
+<div id="435699ee" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Identification of Categorical Features</span></span>
@@ -3994,7 +3994,7 @@ memory usage: 255.9 KB</code></pre>
 [&#39;Marital status&#39;, &#39;Application order&#39;, &#39;Daytime/evening attendance&#39;, &#39;Displaced&#39;, &#39;Educational special needs&#39;, &#39;Debtor&#39;, &#39;Tuition fees up to date&#39;, &#39;Gender&#39;, &#39;Scholarship holder&#39;, &#39;International&#39;]</code></pre>
 </div>
 </div>
-<div id="fd746bc8" class="cell" data-execution_count="17">
+<div id="f5e4ed51" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical feature distributions</span></span>
@@ -4029,7 +4029,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="c569d196" class="cell" data-execution_count="18">
+<div id="8ea92119" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Continuous Feature Distributions</span></span>
@@ -4066,7 +4066,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="89c54057" class="cell" data-execution_count="19">
+<div id="5c6c3cc9" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer feature distributions</span></span>
@@ -4104,7 +4104,7 @@ memory usage: 255.9 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="658566aa" class="cell" data-execution_count="20">
+<div id="71735ec7" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Spearman Correlation Analysis</span></span>

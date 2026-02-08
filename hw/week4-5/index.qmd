@@ -1,5 +1,6 @@
 ---
 title: "DataPraxisAI : Predicting Student Dropout and Academic Success: Methods + Data + Implementation"
+jupyter: idc-venv
 subtitle: "Capstone(Spring 2026): Week4_and_Week5 Progress Report Assignment"
 author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
 date: today
@@ -23,7 +24,7 @@ editor:
     
     The goal of this capstone project is to test, assess and report the results various multi-class machine learning prediction models on their ability to accuratly predict student dropout in the higher edcation setting. According to Realinho et al. (2022) student attrition and academic failure  not only negatively affect the education institutions that students attend, but create greater  societal issues. For example, when students dropout prior to completing a degree program it makes them less competitive concerning the job market, which then leads to economic deficiencies, which can lead to inadequate health care access and subsequent more dire socio-economic issues that often disproportionally affect marginalized demographics (Realinho et al., 2022). 
     
-    However, accroding to Mduma (2023), the prediction of student dropout is a particularly challanging issues for education researchers, this is due in large part to class imblance. According to Mduma (2023), many real world datasets concerning studnet dropout are largly skewed towards the reatined or enrolled classes. Many scholars pay particuliar attention to feature enigineering methods when using machine learning methodologies to address the issue of predicting student attrion. However, Mduma (2023) asserted that class imbalance present limtations concering model accuracy and generalizabiltiy and thus framed their study aorund that issue. Thus, in this capstone project, I focus on the appropriate data preprocessing methods, feature engineering methods, and methods to adequatly address class imbalnce. Further, I specifically use machine learning models that have a proven track record in the litertue (e.g., Realinho et al., 2022; Ridwan et al., 2024) conerning their abiltiy to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting (CatBoost).
+    However, according to Mduma (2023), the prediction of student dropout is a particularly challanging issues for education researchers, this is due in large part to class imblance. According to Mduma (2023), many real world datasets concerning studnet dropout are largly skewed towards the reatined or enrolled classes. Many scholars pay particuliar attention to feature enigineering methods when using machine learning methodologies to address the issue of predicting student attrition. However, Mduma (2023) asserted that class imbalance presents limtations concerning model accuracy and generalizabiltiy and thus framed their study aorund that issue. Thus, in this capstone project, I focus on the appropriate data preprocessing methods, feature engineering methods, and methods to adequatly address class imbalnce. Further, I specifically use machine learning models that have a proven track record in the literature (e.g., Realinho et al., 2022; Ridwan et al., 2024) concerning their abiltiy to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagorical Boosting (CatBoost).
 
     
 ## Research Questions
@@ -43,11 +44,11 @@ editor:
 
 -   ***Methods***
   
-    As the main research question of my study centers around comparing multi-class machine learning classifiers and addressing class imblance, to accuratly predict student dropout in a higher education setting, methods correlate directly to those used by (e.g., Mduma, 2023; Realinho et al., 2022). The methods outlined by Realinho et al. (2022), builds on previous work concerning predicitng student dropout by implementing a multi-class approach. While, the methods outlined by Mduma (2023) specifically use five varied data balancing technques paried with machine learning clssifiers to determine which pairing most accurately predcited student drop out. Thus the remainder of this methods section is broken down into to parts, 1. Multi-Class Methods and 2. Data Balancing Methods. In the final report for this capstone project, a detailed account of how these methods are incorparted into my project along with full machine learnining pipeline methods will be given.
+    As the main research question of my study centers around comparing multi-class machine learning classifiers and addressing class imblance, to accuratly predict student dropout in a higher education setting. The methods I intend to use correlate directly to those used by (e.g., Mduma, 2023; Realinho et al., 2022). The methods outlined by Realinho et al. (2022), builds on previous work concerning predicitng student dropout by implementing a multi-class approach. While, the methods outlined by Mduma (2023) specifically use five varied data balancing techniques paired with machine learning clssifiers to determine which pairing most accurately predcited student drop out. Thus, the remainder of this methods section is broken down into to parts, 1. Multi-Class Methods and 2. Data Balancing Methods. In the final report for this capstone project, I will provide a detailed account of how these methods are incorparted into my project along with an account of the full machine learnining pipeline methods I use.
     
 -   **The Multi-Class Methods**
     
-      The study conducted by Realinho et al. (2022) stemmed from varied sources and were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2. the system used for teaching and learning (internal data), 3. annual data from  the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
+      The study conducted by Realinho et al. (2022) used data that stemmed from varied sources which were then compiled into one data set. According to Realinho et al. (2022), the sources of data were; 1. the institutions Academic Management System (internal data), 2. the system used for teaching and learning (internal data), 3. annual data from the General Directorate of Higher Education (DGES) for admissions data through the National Competition for Access to Higher Education (CNAES) (external data), and 4. the Contemporary Portugal Database (PORDATA) used for macroeconomic data also (external).The data consited of undergraduate studnets enrolled in seventeen different academic programs for example,  journalism,  education, nursing, and management. According to Realinho et al. (2022), once all data sources were compiled into the final data set used in the study, it consited of (n = 4,424) cases and (n = 35) features. 
    
     The feautres fell into four main catagories; demographic, socioeconomic, macroeconomic, and academic. The target variable (i.e., dropout, enrolled, or graduating), was multi-class. Concerning data preprocessing, Realinho et al. (2022) used a multi-tool approach. For example, initial data ingestion and preprocessing was done using tools such as Microsoft Access Databases, Microsoft's Visual Studio Basic, Microsoft Windows suit, and code processing and development was done in Python. According to Realinho et al. (2022), detailed data anlysis was done using tools from the Pandas library, Scikit-learn and Bokeh library for visualizations. The output of descritpive statitics were listed for all features in the form of tables that were parsed based on the major feature catagories. In conducting descriptive statistics and assessing collinarity Realinho et al. (2022) did notice that several features, both within and between feature catagories showed high levels of multicolinarity, which they assed by means of a heat map and Pearson correlation coefficent using 0.7 as a cut point.The Pearson correlation coefficient $r$ measures the strength and direction of the linerar relationship between two features. A cut point $|r| \ge 0.07$ is considered a minimal threshold (see formula below).
 $$
@@ -57,15 +58,15 @@ $$
     
     
     Where:
-    * $r$ = The Pearson correlation coefficent, which measures the strength       and direction of the linear relationship between two features
-    * $x_i$ = The observed value of the feature $X$ for the $i$-th               observation
-    * $y_i$ = The observed value of the target $Y$ for the $i$-th                observation
+    * $r$ = The Pearson correlation coefficent, which measures the strength and             direction of the linear relationship between two features
+    * $x_i$ = The observed value of the feature $X$ for the $i$-th                          observation
+    * $y_i$ = The observed value of the target $Y$ for the $i$-th                           observation
     * $\bar{x}$ = The  mean of all values of the feature $X$
     * $\bar{y}$ = The mean of all values of the Target $Y$
     * $n$ = The total number of paired observations
-    * $\sum_{i=1}^{n}$ = The summation over all observations from $i$ = 1        to $n$
-    * $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation       for the feature $X$
-    * $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation       for the target $Y$
+    * $\sum_{i=1}^{n}$ = The summation over all observations from $i$ = 1 to $n$
+    * $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation for the          feature $X$
+    * $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation for the          target $Y$
 
     To assess which features would be most important to the model, and to reduce the number of features Realinho et al. (2022) used the Permutation Feature Importance technique. Permutation Feature importance is calculated by oberving differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
 $$
@@ -75,10 +76,10 @@ $$
     
     Where:
       * $PI_j$ = the permutation importnace score for the feaure $_j$
-      * $E_{\text{base}}$ = the base model error (i.e., the performance            metric) computed on the orginal dataset
-      * $E_{\text{perm}(j)}$ = the model error after random permutation of         the values         of feature $_j$
+      * $E_{\text{base}}$ = the base model error (i.e., the performance                       metric) computed on the orginal dataset
+      * $E_{\text{perm}(j)}$ = the model error after random permutation of the values         of feature $_j$
       * $j$ = the index of the feature being evaluted
-      * $E$ = the prediction error metric used for evaluation (e.g., mean          squared error, log loss or error rate)
+      * $E$ = the prediction error metric used for evaluation (e.g., mean                     squared error, log loss or error rate)
 
     Concerning the target, Realinho et al. (2022) noted that there was significant class imbalnce, for example, the class label "Graduate" at (n = 2,209) represented 50% of the sample, while "Dropout" (n = 1,421) represented 32%, and "Enrolled" (n = 794) represented 18%. Thus, to assess the error when conducting permutation Realinho et al. (2022), used F1-score as their metric, which they asserted is most adequate when dealing with an imbalanced data set. The F1-score measures the accurcy of classification models assessing how well they predict the positive class by balancing both precision and recall. In the context of selecting "important" features, if permutation causes significant decreases in F1-score, then a feature is deemed important (see formula below).
 $$
@@ -86,12 +87,12 @@ F_1 = \frac{2PR}{P + R}
 $$
     
      Where:
-      * $F_1$ = The $F1$-score which is the harmonic mean of precision             and recall
-      * $P$ = Precision, which is the proportion of predicted postives            that are true positives
-      * $R$ = Recall, which is  the ratio of acutal postives that are              correctly predicted
-      * $2$ = The weighting factor that yeilds the harmoic mean and it             penalizes extreme imbalances between $P$ and $R$
+      * $F_1$ = The $F1$-score which is the harmonic mean of precision and recall
+      * $P$ = Precision, which is the proportion of predicted postivesthat are true           positives
+      * $R$ = Recall, which is  the ratio of acutal postives that are                         correctly predicted
+      * $2$ = The weighting factor that yeilds the harmoic mean and it                        penalizes extreme imbalances between $P$ and $R$
 
-      According to Realinho et al. (2022) Permutation Feature Importance was applied to all models suggested by the literature for multi-class prediction, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagotical Boosting (CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their prediction thus improving model accuracy while reducing overfitting (Ho,1995). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the previous tree (Chen & Guestrin, 2016). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (Ke et al., 2017). Finally, CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features (Prokhorenkova et al., 2018). See below for the formulas of all multi-class classifiers used by Realinho et al. (2022) in their study.
+      According to Realinho et al. (2022) Permutation Feature Importance was applied to all models suggested by the literature for multi-class prediction, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagorical Boosting (CatBoost). RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their prediction thus improving model accuracy while reducing overfitting (Ho,1995). XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the previous tree (Chen & Guestrin, 2016). LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets (Ke et al., 2017). Finally, CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features (Prokhorenkova et al., 2018). See below for the formulas of all multi-class classifiers used by Realinho et al. (2022) in their study.
       
 -   **Random Forest Formula**
 $$
@@ -114,7 +115,7 @@ $$
 
     Where:
       * $\hat{y}_i$ = The pridcited output for the observation $i$
-      * $K$ = The number of trees (i.e., the number of boosting                    interations)
+      * $K$ = The number of trees (i.e., the number of boosting                               interations)
       * $f_k(x_i)$ = The prediction from the $k-th$ decision tree
       * $x_i$ =  The feature vector for the obeservation $i$
       * $F$ = The space of all possible decision trees
@@ -127,7 +128,7 @@ $$
     Where:
       * $\hat{y}_i^{(t)}$ = The updated observation $i$ at interation $t$
       * $\hat{y}_i^{(t-1)}$ = The prediction from the previous boosting intertation
-      * $\eta$ = The learning rate while controlng for the contribution of         each new tree
+      * $\eta$ = The learning rate while controlng for the contribution of                    each new tree
       * $f_t(x_i)$ = The prediction of the tree added at interation $t$
       * $x_i$ = The feature vector for observation $i$
       
@@ -143,13 +144,13 @@ $$
       * $f_t(x_i)$ = The predcition from the tree at interation $t$
       * $x_i$ = The input vector including the catgorical variables
 
-    The methods used by Realinho et al. (2022) more than adequatly address their research question. Starting with the data ingestion process, by compiling a data set from both sources native to the universty and external, they assured that features in the data set would afford them the oppurtunity to gain both a macro and micro perspective conerning the phenomena of student dropout and acadmic success. Further, in dealing with class imbalance, by utalizing Permutation Feature Importance, Realinho et al. (2022) assured that only features that contributed to the postive predciton of the class would be inlcuded in their model thus imporvng model fit and accuracy. Finally by incorparting various multi-class calssifieres into their pipeline, Realinho et al. (2022) assured that they would be able to conduct model comparison and select the best model for their data set.  
+    The methods used by Realinho et al. (2022) more than adequatly address their research question. Starting with the data ingestion process, by compiling a data set from both sources native to the universty and external, they assured that features in the data set would afford them the oppurtunity to gain both a macro and micro perspective conerning the phenomena of student dropout and acadmic success. Further, in dealing with class imbalance, by utalizing Permutation Feature Importance, Realinho et al. (2022) assured that only features that contributed to the postive predciton of the class would be included in their model thus improving model fit and accuracy. Finally by incorparting various multi-class calssifieres into their pipeline, Realinho et al. (2022) assured that they would be able to conduct model comparison and select the best model for their data set.  
 
 -   **Data Balancing Methods**
     
-     Mduma (2023) used two publicly available datasets from developing countries to test their methods. The first data set stemmed from Uwezo an non-governmental organization (NGO) in Tazania, and the second datasetwas dervied from india. The Uwezo dataset consisted information on student learning at the country level gathered from thousands of households Mduma (2023). The Uwezo data set consited on (n = 61,340) cases, and concering the classes 98.4% were in the retained class and 1.6% were in the dropout class. The dataset from India concsited of (n = 11, 257) cases of which 95.1% were in the retained class, and 4.9% were in the dropout class (Mduma, 2023). Both datasets consited of festures that spannded demograhics, acadmics and socioeconomic catagories. Mduma (2023), asserted that they condcuted pre-processing of both sets, specifically, they cleaned the sets for missing values by implementing median and zero imputting where necessary.
+     Mduma (2023) used two publicly available datasets from developing countries to test their methods. The first data set stemmed from Uwezo an non-governmental organization (NGO) in Tazania, and the second dataset was dervied from india. The Uwezo dataset consisted information on student learning at the country level gathered from thousands of households Mduma (2023). The Uwezo data set consited on (n = 61,340) cases, and concering the classes 98.4% were in the retained class and 1.6% were in the dropout class. The dataset from India concsited of (n = 11, 257) cases of which 95.1% were in the retained class, and 4.9% were in the dropout class (Mduma, 2023). Both datasets consited of features that spannded demograhics, academics and socioeconomic catagories. Mduma (2023), asserted that they conducted pre-processing of both sets, specifically, they cleaned the sets for missing values by implementing median and zero imputting where necessary.
     
-    According to Mduma (2023), five data balancing techniques were used on the datasets to address the class imbalance; 1. Random Under Sampleing (RUS), 2. Random Over Sampling (ROS), 3. Synthetic Minority Over Sampling (SMOTE), 4. Synthetic Minority Over Sampling with Edited Nearest Neighbors (SMOTE ENN), and 5. Sythentc Minority Over Sampling with TOMEK Links (SMOTE TOMEK). Concerning RUS, this techniques works by randomly removing observations from the majority class until the classes are approximatley equal. ROS, is the oposite of RUS, and works by randomly duplicating the minority class until the classes are approximatly equaly. SMOTE works by generating a new synthetic minority class, which is done by interporlating the minority class using the nearest neighbor until both the minority and majority class match. SMOTE ENN works the same as SMOTE but adds a cleaning step that removes misclassfied classes due to the nearest neighbor step, this reduces statistical noise and overlap. Finally, SMOTE TOMEK also works the same as SMOTE but uses TOMEK  links, which remove pairs of  nearest neighbors instances from the classes the majority class that are in close proximity to eachother. The decision boundry is cleaned thus reducing statistical noise and improving model performance Mduma (2023). The formulas for all class blancing tehcniues incorparted by Mduma (2023) are below.
+    According to Mduma (2023), five data balancing techniques were used on the datasets to address the class imbalance; 1. Random Under Sampling (RUS), 2. Random Over Sampling (ROS), 3. Synthetic Minority Over Sampling (SMOTE), 4. Synthetic Minority Over Sampling with Edited Nearest Neighbors (SMOTE ENN), and 5. Sythentc Minority Over Sampling with TOMEK Links (SMOTE TOMEK). Concerning RUS, this technique works by randomly removing observations from the majority class until the classes are approximatley equal. ROS, is the oposite of RUS, and works by randomly duplicating the minority class until the classes are approximatly equaly. SMOTE works by generating a new synthetic minority class, which is done by interporlating the minority class using the nearest neighbor until both the minority and majority class match. SMOTE ENN works the same as SMOTE but adds a cleaning step that removes missclassfied classes due to the nearest neighbor step, this reduces statistical noise and overlap. Finally, SMOTE TOMEK also works the same as SMOTE but uses TOMEK  links, which remove pairs of  nearest neighbors instances from the majority class that are in close proximity to eachother. The decision boundry is cleaned thus reducing statistical noise and improving model performance Mduma (2023). The formulas for all class balancing techniques incorparted by Mduma (2023) are below.
     
     
 -   **Random Under Sampling Formula**
@@ -214,10 +215,10 @@ $$
       * $D^{*}$ =  The final balanced dataset after overlapping TOMEK links are               removed
       
       
-    In addtion to the five data blancing techniques mentioned above, Mduma (2023), asserted that they also used three seperate classification models (i,e, LR, RF, and MLP) to assess which when paired with a datablancing technique would yeild the most optimal results. Using an experimental methodlogy, the three models were compared and assesed for accuracy in six intances; 1. On the orginal unblanced dataset, 2. on the ROS balnaced dataset, 3. RUS balanced dataset, 4. SMOTE balanced dataset, 5. SMOTE ENN balanced dataset, and 6. SMOTE TOMEK balanced dataset. Concerning model evalution specifically for measures of accuracy, Mduma (2023), asserted that chose 1. Geometric Mean ($G_m$), F-measure ($F_m$), and Adjacent Geometric Mean ($AG_m$). According to Mduma (2023), these measures of model accuracy were choosen as they are particilialry robust against unblanced datasets. The ($G_m$) works by measuring the balance between  sensitivity and specificity and rewards models that perfrom well on both minority and majority classes. The ($F_m$) measures the harmoic mean of precision and recall and rewards models that show a balanced perfromance on the positive class. The ($AG_m$) is an extention of the ($G_m$) and works by adotping class imbalance calculations penalizing poor minority class performance Mduma (2023). Finally, accroding to Mduma (2023), both datasets were split into training, validation and testing sets at 60%, 20% and 20% respectively. For all model formulas and mesures of accuracy formulas used by Mduma (2023) in their study see below.
+    In addtion to the five data blancing techniques mentioned above, Mduma (2023), asserted that they also used three seperate classification models (i,e, LR, RF, and MLP) to assess which when paired with a datablancing technique would yeild the most optimal results. Using an experimental methodlogy, the three models were compared and assesed for accuracy in six intances; 1. On the orginal unbalanced dataset, 2. on the ROS balanced dataset, 3. RUS balanced dataset, 4. SMOTE balanced dataset, 5. SMOTE ENN balanced dataset, and 6. SMOTE TOMEK balanced dataset. Concerning model evaluation specifically for measures of accuracy, Mduma (2023), asserted that they chose 1. Geometric Mean ($G_m$), F-measure ($F_m$), and Adjacent Geometric Mean ($AG_m$). According to Mduma (2023), these measures of model accuracy were choosen as they are particularly robust against unbalanced datasets. The ($G_m$) works by measuring the balance between sensitivity and specificity and rewards models that perfrom well on both minority and majority classes. The ($F_m$) measures the harmonic mean of precision and recall and rewards models that show a balanced perfromance on the positive class. The ($AG_m$) is an extention of the ($G_m$) and works by adotping class imbalance calculations penalizing poor minority class performance Mduma (2023). Finally, accroding to Mduma (2023), both datasets were split into training, validation and testing sets at 60%, 20% and 20% respectively. For all model formulas and measures of accuracy formulas used by Mduma (2023) in their study see below.
     
     
--   **Logestic Regression Formula**
+-   **Logistic Regression Formula**
 $$
 P(y=1 \mid x) = \sigma(w^T x + b)
 $$
@@ -330,7 +331,7 @@ $$
 
 -   ***Dataset Characteristics***
 
-    As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and it is called "Predecting Students' Dropout and Academic Success"(Realinho et al., 2021). Realinho et al. (2021) characterise the dataset as tubular, meant for the social sciences, and spefically classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to Realinho et al. (2021) concist of real, catagorical and integers. According to Realinho et al. (2021) the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three catagories (i.e., dropout, enrolled and graduate). According to Realinho et al. (2021) the dataset was rigorously  preprocessed and consist of no null or missing values. 
+    As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and it is called "Predecting Students' Dropout and Academic Success"(Realinho et al., 2021). Realinho et al. (2021) characterize the dataset as tubular, and state that it is meant for the social sciences, spefically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to Realinho et al. (2021) consist of real, catagorical and integers based feautres. According to Realinho et al. (2021) the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three catagories (i.e., dropout, enrolled and graduate). According to Realinho et al. (2021) the dataset was rigorously  preprocessed and consist of no null or missing values. 
     
 -   ***Dataset Access***
     
@@ -338,6 +339,10 @@ $$
 
 
 ##  Implementation and Experiments
+
+-   **Exploratory Data Analysis**
+    
+    Below I perform some exploritory data analysis (EDA) on the UCI Student Drop Out Dataset. My goal is to gain a deeper understanding of the datasets' features, their realtionship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitaitons concerning the chosen methods.
 
 ```{python}
 import os

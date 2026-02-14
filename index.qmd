@@ -1,46 +1,62 @@
 ---
-title: "Writing a great story for data science projects - Fall 2025 "
-subtitle: "This is a Report Template Quarto"
-author: "Student Name (Advisor: Dr. Cohen)"
+title: "Multi-Class Machine Learning Approaches to Student Dropout"
+subtitle: "A Comparative Study of Classifiers and Data Balancing Techniques"
+author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
 date: '`r Sys.Date()`'
+
 format:
   html:
+    toc: true
+    toc-title: "Table of Contents"
+    toc-location: right
+    toc-depth: 2
+    number-sections: true
     code-fold: true
+
 course: Capstone Projects in Data Science
 bibliography: references.bib # file contains bibtex for references
-#always_allow_html: true # this allows to get PDF with HTML features
+csl: apa.csl
 self-contained: true
-execute: 
+
+execute:
+  echo: true
   warning: false
   message: false
-editor: 
-  markdown: 
+
+editor:
+  markdown:
     wrap: 72
 ---
-
 Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
 to edit)
 
 ::: callout-important
-**Remember:** Your goal is to make your audience understand and care
-about your findings. By crafting a compelling story, you can effectively
-communicate the value of your data science project.
-
-Carefully read this template since it has instructions and tips to
-writing!
-
-Nice report!
+**Placeholder**
 :::
 
 ## Introduction
 
-The introduction should:
+The goal of this capstone project is to test, assess and report the results various multi-class machine learning prediction models on their ability to accuratly predict student dropout in the higher edcation setting. According to @realinho2022 student attrition and academic failure  not only negatively affect the education institutions that students attend, but create greater  societal issues. For example, when students dropout prior to completing a degree program it makes them less competitive concerning the job market, which then leads to economic deficiencies, which can lead to inadequate health care access and subsequent more dire socio-economic issues that often disproportionally affect marginalized demographics [@realinho2022]. 
 
--   Develop a storyline that captures attention and maintains interest.
+According to @aina2022 statistics released by the Organization of Economic Co-Operaton and Development (OECD) state that though the proportion of students enrolling and graduating colleges and universities far exceeds those dropping out, dropout still represents a third of said students. Further, @aina2022  assert that thirty percent of studnets in united States dropout, with many of them being early dropouts (i.e., first year of college). Student dropout is a complex issues and there are many factors that attribute to it [@aina2022]. The factors that attibute to student dropout boarder sociological, economical and psychological domains as such according to @aina2022 scholars approach the phenomina from their respective fields of expertese. There is a need for a more holistic lens when researching the causes of student dropout to better understand the relationships between the factors that attibute to it thus gaining insights on how best to mitigate it through intervention [@aina2022].
 
--   Your audience is your peers
+Machine Learning provides the ability for reseachers to approach student dropout in a holsitic manner specifically becuase models can converge high dimensional data sets [@raschka2022]. Researchers  [e.g.,@realinho2022; @ridwan2024] have utalized machine learning methods to predict student dropout.  However, according to @mduma2023, the prediction of student dropout is a particularly challanging issues for education researchers, this is due in large part to class imblance. According to @mduma2023
+ many real world datasets concerning studnet dropout are largly skewed towards the reatined or enrolled classes. Many scholars pay particuliar attention to feature enigineering methods when using machine learning methodologies to address the issue of predicting student attrition. However, @mduma2023 asserted that class imbalance presents limtations concerning model accuracy and generalizabiltiy and thus framed their study aorund that issue. Thus, in this capstone project, I focus on the appropriate data preprocessing methods, feature engineering methods, and methods to adequatly address class imbalnce. Further, I specifically use machine learning models that have a proven track record in the literature [e.g.,@realinho2022; @ridwan2024] concerning their abiltiy to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagorical Boosting (CatBoost).
 
--   Clearly state the problem or question you're addressing.
+    
+## Research Questions
+  
+Primary Research Question
+    
+RQ1: Which multi-class machine learning classifier achieves the highest predictive performance as meaured by; accuracy, precesion, and F1-score when applied to the ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data))?
+    
+To inform the primary research question of this study I asked the following sub-research questions:
+    
+RQ1a: How do methods of addressing class imbalance affect the predictive performance of multi-class machine learning classfiers?
+    
+RQ1b: How does the performance of gradient boosting models compare to tradtional ensable models in multi-class student attrition prediciton?
+  
+
 
 <!-- -->
 
@@ -49,22 +65,6 @@ The introduction should:
 -   Provide an overview of your approach.
 
 Example of writing including citing references:
-
-*This is an introduction to ..... regression, which is a non-parametric
-estimator that estimates the conditional expectation of two variables
-which is random. The goal of a kernel regression is to discover the
-non-linear relationship between two random variables. To discover the
-non-linear relationship, kernel estimator or kernel smoothing is the
-main method to estimate the curve for non-parametric statistics. In
-kernel estimator, weight function is known as kernel function
-[@efr2008]. Cite this paper [@bro2014principal]. The GEE [@wang2014].
-The PCA [@daffertshofer2004pca]*. Topology can be used in machine
-learning [@adams2021topology]
-
-For Symbolic Regression [@wang2019symbolic] *This is my work and I want
-to add more work...*
-
-Cite new paper [@su2012linear]
 
 ## Methods
 
@@ -159,3 +159,5 @@ ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total))
 -   Discuss the implications of your results.
 
 ## References
+
+

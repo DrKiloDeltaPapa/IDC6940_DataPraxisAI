@@ -1,5 +1,6 @@
 ---
 title: "Multi-Class Machine Learning Approaches to Student Dropout"
+jupyter: idc-venv
 subtitle: "A Comparative Study of Classifiers and Data Balancing Techniques"
 author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
 date: '`r Sys.Date()`'
@@ -19,6 +20,7 @@ csl: apa.csl
 self-contained: true
 
 execute:
+  cwd: .
   echo: true
   warning: false
   message: false
@@ -27,6 +29,7 @@ editor:
   markdown:
     wrap: 72
 ---
+
 Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
 to edit)
 
@@ -41,59 +44,782 @@ The goal of this capstone project is to test, assess and report the results vari
 According to @aina2022 statistics released by the Organization of Economic Co-Operaton and Development (OECD) state that though the proportion of students enrolling and graduating colleges and universities far exceeds those dropping out, dropout still represents a third of said students. Further, @aina2022  assert that thirty percent of studnets in united States dropout, with many of them being early dropouts (i.e., first year of college). Student dropout is a complex issues and there are many factors that attribute to it [@aina2022]. The factors that attibute to student dropout boarder sociological, economical and psychological domains as such according to @aina2022 scholars approach the phenomina from their respective fields of expertese. There is a need for a more holistic lens when researching the causes of student dropout to better understand the relationships between the factors that attibute to it thus gaining insights on how best to mitigate it through intervention [@aina2022].
 
 Machine Learning provides the ability for reseachers to approach student dropout in a holsitic manner specifically becuase models can converge high dimensional data sets [@raschka2022]. Researchers  [e.g.,@realinho2022; @ridwan2024] have utalized machine learning methods to predict student dropout.  However, according to @mduma2023, the prediction of student dropout is a particularly challanging issues for education researchers, this is due in large part to class imblance. According to @mduma2023
- many real world datasets concerning studnet dropout are largly skewed towards the reatined or enrolled classes. Many scholars pay particuliar attention to feature enigineering methods when using machine learning methodologies to address the issue of predicting student attrition. However, @mduma2023 asserted that class imbalance presents limtations concerning model accuracy and generalizabiltiy and thus framed their study aorund that issue. Thus, in this capstone project, I focus on the appropriate data preprocessing methods, feature engineering methods, and methods to adequatly address class imbalnce. Further, I specifically use machine learning models that have a proven track record in the literature [e.g.,@realinho2022; @ridwan2024] concerning their abiltiy to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagorical Boosting (CatBoost).
+ many real world datasets concerning studnet dropout are largly skewed towards the reatined or enrolled classes. Many scholars pay particuliar attention to feature enigineering methods when using machine learning methodologies to address the issue of predicting student attrition. However, @mduma2023 asserted that class imbalance presents limtations concerning model accuracy and generalizabiltiy and thus framed their study aorund that issue. Thus, in this capstone project, I focus on the appropriate data preprocessing methods, feature engineering methods, and methods to adequatly address class imbalance. Further, I specifically use machine learning models that have a proven track record in the literature [e.g.,@realinho2022; @ridwan2024] concerning their abiltiy to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagorical Boosting (CatBoost).
+
 
     
 ## Research Questions
+
+The purpose of this capstone project is to assess and report the results various multi-class machine learning prediction models on their ability to accuratly predict student dropout in the higher edcation setting using the ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)). To inform this capstone project's purpose I asked the following primary and sub-research questions.
   
 Primary Research Question
     
-RQ1: Which multi-class machine learning classifier achieves the highest predictive performance as meaured by; accuracy, precesion, and F1-score when applied to the ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data))?
+**RQ1:** Which multi-class machine learning classifier achieves the highest predictive performance as meaured by; accuracy, precesion, and F1-score when applied to the ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data))?
     
-To inform the primary research question of this study I asked the following sub-research questions:
+**RQ1a:** How do methods of addressing class imbalance affect the predictive performance of multi-class machine learning classfiers?
     
-RQ1a: How do methods of addressing class imbalance affect the predictive performance of multi-class machine learning classfiers?
-    
-RQ1b: How does the performance of gradient boosting models compare to tradtional ensable models in multi-class student attrition prediciton?
+**RQ1b:** How does the performance of gradient boosting models compare to tradtional ensable models in multi-class student attrition prediciton?
   
-
-
-<!-- -->
-
--   Introduce why it is relevant needs.
-
--   Provide an overview of your approach.
-
-Example of writing including citing references:
-
 ## Methods
 
--   Detail the models or algorithms used.
+The main research question of this capstone project centers around comparing multi-class machine learning classifiers and addressing class imblance, to accuratly predict student dropout in a higher education setting. Thus, the methods I use correlate directly to those used by [e.g.,@mduma2023; @realinho2022]. For example, like the dataset used by @realinho2022, the target in this capston's dataset has three catagories (i.e, dropout, enrolled, and gradaute), which requires the use of multi-class classifieres. As is the case with many real world datasets the classes in the ([UCI Student DropoutDataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)) are skewed towards enrolled and graduated. To address the isssue of class imbalance @mduma2023, I use five varied data balancing techniques each paired with mulit-class machine learning classifier to determine which pairing most accurately predcited student dropout. The subsequent sections of these methods are broken down into to parts, 1. Multi-Class Methods and 2. Data Balancing Methods, where I provide a detailed account of how both are incorparted in this capstone's machine learnining pipeline.
 
--   Justify your choices based on the problem and data.
+As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and can be accessed here:([UCI Student DropoutDataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)) [@realinho2022]. @realinho2022 characterize the dataset as tubular, and state that it is meant for the social sciences, spefically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to @realinho2022 consist of real, catagorical and integers based feautres. According to @realinho2022 the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three catagories (i.e., dropout, enrolled and graduate). According to @realinho2022 the dataset was rigorously preprocessed and consist of no null or missing values. 
 
-*The common non-parametric regression model is*
-$Y_i = m(X_i) + \varepsilon_i$*, where* $Y_i$ *can be defined as the sum
-of the regression function value* $m(x)$ *for* $X_i$*. Here* $m(x)$ *is
-unknown and* $\varepsilon_i$ *some errors. With the help of this
-definition, we can create the estimation for local averaging i.e.*
-$m(x)$ *can be estimated with the product of* $Y_i$ *average and* $X_i$
-*is near to* $x$*. In other words, this means that we are discovering
-the line through the data points with the help of surrounding data
-points. The estimation formula is printed below [@R-base]:*
+To better understnad the dataset I conducted exploritory data analysis (EDA) on the  ([UCI Student DropoutDataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)). My goal is to gain a deeper understanding of the datasets' features, their realtionship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitaitons concerning the chosen methods [@raschka2022].
 
-$$
-M_n(x) = \sum_{i=1}^{n} W_n (X_i) Y_i  \tag{1}
-$$$W_n(x)$ *is the sum of weights that belongs to all real numbers.
-Weights are positive numbers and small if* $X_i$ *is far from* $x$*.*
+```{python}
+import os
+from pathlib import Path
 
-*Another equation:*
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+from matplotlib.ticker import MaxNLocator
+import seaborn as sns
+from math import ceil
 
-$$
-y_i = \beta_0 + \beta_1 X_1 +\varepsilon_i
-$$
+from sklearn.feature_selection import mutual_info_classif
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, make_scorer
+
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from xgboost import XGBClassifier
+from lightgbm import LGBMClassifier
+from catboost import CatBoostClassifier
+```
+
+```{python}
+from pathlib import Path
+import pandas as pd
+
+# HARD-SET your repo root (this is the path that contains index.qmd and the data/ folder)
+repo_root = Path("/Users/kareempiper/Projects/IDC6940_DataPraxisAI")
+
+data_dir = repo_root / "data"
+train_path = data_dir / "train.csv"
+test_path  = data_dir / "test.csv"
+
+print("Repo root:", repo_root)
+print("Train exists:", train_path.exists(), train_path)
+print("Test exists:", test_path.exists(), test_path)
+
+if not (data_dir.exists() and train_path.exists() and test_path.exists()):
+    raise FileNotFoundError(
+        f"Expected data files not found.\n"
+        f"data_dir: {data_dir} (exists={data_dir.exists()})\n"
+        f"train: {train_path} (exists={train_path.exists()})\n"
+        f"test:  {test_path} (exists={test_path.exists()})"
+    )
+
+train_data = pd.read_csv(train_path)
+test_data  = pd.read_csv(test_path)
+
+print("Train shape:", train_data.shape)
+print("Test shape:", test_data.shape)
+```
+```{python}
+# Show all columns
+pd.set_option('display.max_columns', None)
+train_data.head()
+```
+
+```{python}
+train_data.describe()
+```
+```{python}
+train_data.info()
+```
+```{python}
+test_data.info()
+```
+```{python}
+tg_cnts = train_data.Target.value_counts()
+tg_cnts_sum = tg_cnts.sum()
+tg_cnts_pct = (tg_cnts / tg_cnts_sum) * 100
+
+# Plot
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+
+plt.bar(tg_cnts.index, tg_cnts_pct, color=colors)
+plt.xlabel('Categories')
+plt.ylabel('Percentage')
+plt.title('Target Distribution')
+
+# Percentages on bars
+for i, pct in enumerate(tg_cnts_pct):
+    plt.text(i, pct + 1, f'{pct:.1f}%', ha='center', va='bottom')
+
+plt.show()
+```
+```{python}
+# Feature Cardinality Check
+feature_count = (
+    train_data.drop(columns=['Target'])
+    .nunique()
+    .reset_index()
+    .rename(columns={'index': 'feature', 0: 'unique_count'})
+    .sort_values(by='unique_count')
+)
+
+feature_count
+```
+
+```{python}
+# Target Distribution by Gender
+crosstab_gender = pd.crosstab(train_data['Gender'], train_data['Target'])
+crosstab_gender = crosstab_gender.div(crosstab_gender.sum(axis=1), axis=0) * 100
+
+# Plot
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+ax_gender = crosstab_gender.plot(kind='bar', stacked=True, color=colors)
+plt.xlabel('Gender (0 = Female, 1 = Male)')
+plt.ylabel('Percentage')
+plt.title('Distribution of Target Based on Gender')
+plt.legend(title='Target')
+plt.xticks(rotation=0)
+
+for p in ax_gender.patches:
+    width = p.get_width()
+    height = p.get_height()
+    x, y = p.get_xy()
+    ax_gender.annotate(
+        f'{height:.1f}%',
+        (x + width / 2, y + height / 2),
+        ha='center',
+        va='center',
+        fontsize=10,
+        color='white'
+    )
+
+plt.show()
+```
+
+```{python}
+# Create a crosstab to count the occurrences of each Target value for each Scholarship status
+crosstab_ss = pd.crosstab(train_data['Scholarship holder'], train_data['Target'])
+
+# Normalize the crosstab counts to percentages
+crosstab_ss = crosstab_ss.div(crosstab_ss.sum(axis=1), axis=0) * 100
+
+# Plot the data
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+ax_ss = crosstab_ss.plot(kind='bar', stacked=True, color=colors)
+plt.xlabel('Scholarship (0 = No Scholarship, 1 = Scholarship Holder)')
+plt.ylabel('Percentage')
+plt.title('Distribution of Target Based on Scholarship Holder')
+plt.legend(title='Target')
+plt.xticks(rotation=0)
+
+# Annotate the percentage labels on each bar
+for p in ax_ss.patches:
+    width = p.get_width()
+    height = p.get_height()
+    x, y = p.get_xy()
+    ax_ss.annotate(
+        f'{height:.1f}%',
+        (x + width / 2, y + height / 2),
+        ha='center',
+        va='center',
+        fontsize=10,
+        color='white'
+    )
+
+plt.show()
+```
+
+```{python}
+# Create a crosstab to count the occurrences of each Target value for each Scholarship status
+crosstab_ss = pd.crosstab(train_data['Scholarship holder'], train_data['Target'])
+
+# Normalize the crosstab counts to percentages
+crosstab_ss = crosstab_ss.div(crosstab_ss.sum(axis=1), axis=0) * 100
+
+# Plot the data
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+ax_ss = crosstab_ss.plot(kind='bar', stacked=True, color=colors)
+plt.xlabel('Scholarship (0 = No Scholarship, 1 = Scholarship Holder)')
+plt.ylabel('Percentage')
+plt.title('Distribution of Target Based on Scholarship Holder')
+plt.legend(title='Target')
+plt.xticks(rotation=0)
+
+# Annotate the percentage labels on each bar
+for p in ax_ss.patches:
+    width = p.get_width()
+    height = p.get_height()
+    x, y = p.get_xy()
+    ax_ss.annotate(
+        f'{height:.1f}%',
+        (x + width / 2, y + height / 2),
+        ha='center',
+        va='center',
+        fontsize=10,
+        color='white'
+    )
+
+plt.show()
+```
+
+```{python}
+# Create a crosstab to count the occurrences of each Target value for each Debtor status
+crosstab_debtor = pd.crosstab(train_data['Debtor'], train_data['Target'])
+
+# Normalize the crosstab counts to percentages
+crosstab_debtor = crosstab_debtor.div(crosstab_debtor.sum(axis=1), axis=0) * 100
+
+# Plot the data
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+ax_debtor = crosstab_debtor.plot(kind='bar', stacked=True, color=colors)
+plt.xlabel('Debtor (0 = No Debt, 1 = Debtor)')
+plt.ylabel('Percentage')
+plt.title('Distribution of Target Based on Debt Holder')
+plt.legend(title='Target')
+plt.xticks(rotation=0)
+
+# Annotate the percentage labels on each bar
+for p in ax_debtor.patches:
+    width = p.get_width()
+    height = p.get_height()
+    x, y = p.get_xy()
+    ax_debtor.annotate(
+        f'{height:.1f}%',
+        (x + width / 2, y + height / 2),
+        ha='center',
+        va='center',
+        fontsize=10,
+        color='white'
+    )
+
+plt.show()
+```
+
+```{python}
+### Age Distribution by Target (ECDF)
+
+plt.figure(figsize=(10, 6))
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+plot = sns.ecdfplot(data=train_data, x='Age at enrollment', hue='Target', palette=colors)
+plt.xlabel('Age at enrollment')
+plt.ylabel('Proportion')
+plt.title('Cumulative Distribution of Age by Target')
+plot.xaxis.set_major_locator(ticker.MaxNLocator(integer=True))
+
+mean_value = train_data['Age at enrollment'].mean()
+plt.axvline(mean_value, color='grey', linestyle='--', label=f'Mean: {mean_value:.1f}')
+
+plt.legend(title='Target')
+plt.show()
+```
+
+```{python}
+### Approved 2nd Semester Units by Target (ECDF)
+
+plt.figure(figsize=(10, 6))
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+plot = sns.ecdfplot(
+    data=train_data,
+    x='Curricular units 2nd sem (approved)',
+    hue='Target',
+    palette=colors
+)
+
+plt.xlabel('Curricular units 2nd sem (approved)')
+plt.ylabel('Proportion')
+plt.title('Cumulative Distribution of Curricular Units 2nd Sem (approved) by Target')
+plot.xaxis.set_major_locator(ticker.MaxNLocator(integer=True))
+
+mean_value = train_data['Curricular units 2nd sem (approved)'].mean()
+plt.axvline(mean_value, color='grey', linestyle='--', label=f'Mean: {mean_value:.1f}')
+
+plt.legend(title='Target')
+plt.show()
+```
+
+```{python}
+### 2nd Semester Grade Distribution by Target (ECDF)
+
+plt.figure(figsize=(10, 6))
+colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
+plot = sns.ecdfplot(
+    data=train_data,
+    x='Curricular units 2nd sem (grade)',
+    hue='Target',
+    palette=colors
+)
+
+plt.xlabel('Curricular units 2nd sem (grade)')
+plt.ylabel('Proportion')
+plt.title('Cumulative Distribution of Curricular Units 2nd Sem (grade) by Target')
+
+mean_value = train_data['Curricular units 2nd sem (grade)'].mean()
+plt.axvline(mean_value, color='grey', linestyle='--', label=f'Mean: {mean_value:.1f}')
+
+plt.legend(title='Target')
+plt.show()
+```
+
+```{python}
+### Identification of Categorical Features
+
+# Identify categorical columns based on low cardinality
+cat_cols = [
+    col for col in train_data.columns
+    if col != 'Target' and train_data[col].nunique() <= 8
+]
+
+# Convert to categorical dtype (for CatBoost compatibility later)
+for col in cat_cols:
+    train_data[col] = train_data[col].astype('category')
+    test_data[col] = test_data[col].astype('category')
+
+print("Categorical columns:")
+print(cat_cols)
+
+```
+
+```{python}
+# Categorical feature distributions
+n_cols = 4
+n_rows = int(np.ceil(len(cat_cols) / n_cols))
+
+fig, axs = plt.subplots(n_rows, n_cols, figsize=(11, 2.2 * n_rows))
+axs = np.array(axs).ravel()
+
+# Define a cyberpunk color palette
+cyberpunk_palette = sns.color_palette('magma', n_colors=8)
+
+for ax, col in zip(axs, cat_cols):
+    vc = train_data[col].value_counts(normalize=True).sort_index()
+    # Use the color palette for bars, cycling through it if more categories than colors
+    ax.bar(vc.index.astype(str), vc, color=cyberpunk_palette[:len(vc)])
+    ax.set_title(col, fontsize=10)
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x:.0%}'))
+    ax.tick_params(axis='x', labelrotation=45)
+
+# Turn off any unused axes
+for ax in axs[len(cat_cols):]:
+    ax.set_visible(False)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+### Continuous Feature Distributions
+
+# Float feature distributions
+float_cols = [
+    col for col in train_data.columns
+    if col != 'Target' and train_data[col].dtype == 'float64'
+]
+
+n_cols = 3
+n_rows = int(np.ceil(len(float_cols) / n_cols))
+
+fig, axs = plt.subplots(n_rows, n_cols, figsize=(11, 2.5 * n_rows))
+axs = np.array(axs).ravel()
+
+for ax, col in zip(axs, float_cols):
+    ax.hist(train_data[col], bins=50, density=True, color='#00FFFF') # Neon blue
+    ax.set_title(col, fontsize=10)
+
+# Turn off unused axes
+for ax in axs[len(float_cols):]:
+    ax.axis('off')
+
+plt.suptitle('Float Variables Distribution', fontsize=13, y=1.02)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+# Integer feature distributions
+int_cols = [
+    col for col in train_data.columns
+    if col != 'Target' and train_data[col].dtype == 'int64'
+]
+
+n_cols = 4
+n_rows = int(np.ceil(len(int_cols) / n_cols))
+
+fig, axs = plt.subplots(n_rows, n_cols, figsize=(11, 2.2 * n_rows))
+axs = np.array(axs).ravel()
+
+for ax, col in zip(axs, int_cols):
+    vc = train_data[col].value_counts(normalize=True).sort_index()
+    ax.bar(vc.index, vc, color='#00FF00') # Lime green
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x:.0%}'))
+    ax.set_title(col, fontsize=10)
+
+# Turn off unused axes
+for ax in axs[len(int_cols):]:
+    ax.axis('off')
+
+plt.suptitle('Integer Variables Distribution', fontsize=13, y=1.02)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+### Spearman Correlation Analysis
+
+# Select numeric features only (exclude Target)
+numeric_cols = train_data.select_dtypes(include=['int64', 'float64']).columns
+numeric_cols = [col for col in numeric_cols if col != 'Target']
+
+plt.figure(figsize=(20, 15))
+sns.heatmap(
+    train_data[numeric_cols].corr(method='spearman'),
+    cmap='magma',
+    annot=True,
+    fmt='.1f',
+    linewidths=0.5
+)
+plt.title('Spearman Correlation Matrix (Numeric Features)')
+plt.show()
+```
+
+The ([UCI Student DropoutDataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)) does depict significant class imblance with the Graduate class reprsenting 49.9%, (n = 2,209) of the distribution followed by the Dropout Catagory class at 32.1%, (n = 1,421) and finally the Enrolled class at 17.9%, (n = 794). I observed several meaniful relationships accross the feature groups (i.e., demographic, financial and academic). For example, demographic and financial feautres displayed strong correlations to the target. When I ran the crosstab on the gender feature, it showed that males were more likely to dropout and females more likely to graduate. Those students who held scholarships also showed higher graduation rates compared to non-scholarship students, and were less likely to drop out. Further, those students who were in financial distress as indicated by be coded as debtors had lower graduation rates than those coded as non-debters. Concerning academic features, second-semester grades and approved curricular units showed clear dispersion between the target classes, which may indicate importance pertaining to class prediction.
+
+As mentioned the dataset does display significant class imblance. This class imbalance if left un-checked can lead to model bias towards the majority class. I also noticed that many of the catagorical features were encoded as intergers which may lead to false interpretation when conducting correlation analysis if not addressed. Another limitation that this data presents is its lack of temporal features. As the data represents a snapshot in time, models may not be able to capture the full complexity of predicting student dropout due to the lack of dynamic changes over time. Finally, as this data stems from a single institution, the findings may present limitation concerning genralizability. Though I am not as concerned with this as the purpose of this study is to test which model and data balancing techniques when paired has the highest accuracy.
+
+In the following paragraphs subsequet I explain the full machine learning pipeline to test and evaluate the multi-class classifiers and class blancing techniqies. Experimentation was conductedin google colabs using a jupter notebook. The first step in the pipeline was splitting the dataset into training and testing sets using a 80:20 train_test_split and stratification [@raschka2022]. All numeric and catagorical features were  preprocessed by imputation and one-hot encoding [@raschka2022].
+    
+After the data was preporcessed I implemented the class imbalancing techniques into the pipeline (i.e., RUS, ROS,SMOTE, SMOTE-ENN and SMOTE-Tomek) on the traing set. Once the dataset is blanaced, it will be used to train the multi-class classifiers (i.e., RF, XGBoost, LightGBM, and CatBoost). All models were evaluted with multi-class metrics however F1-score was the primary metric. Finally the best model was selected and evalauted by a confusion matrix and finally permuation feature importance was  used to identify those factors that best predict student dropout and academic success.
 
 ## Analysis and Results
+
+**Multi-Class Approach **
+    
+In conducting descriptive statistics and assessing collinarity Realinho et al. (2022) did notice that several features, both within and between feature catagories showed high levels of multicolinarity, which they assed by means of a heat map and Pearson correlation coefficent using 0.7 as a cut point.The Pearson correlation coefficient $r$ measures the strength and direction of the linerar relationship between two features. A cut point $|r| \ge 0.07$ is considered a minimal threshold (see formula below).
+
+-   **Pearson Correlation Coefficient Formula**
+
+$$
+r = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}
+{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}} \, \sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}}
+$$
+
+
+Where:
+
+* $r$ = The Pearson correlation coefficent, which measures the strength and                  direction of the linear relationship between two features
+* $x_i$ = The observed value of the feature $X$ for the $i$-th                               observation
+* $y_i$ = The observed value of the target $Y$ for the $i$-th                                observation
+* $\bar{x}$ = The  mean of all values of the feature $X$
+* $\bar{y}$ = The mean of all values of the Target $Y$
+* $n$ = The total number of paired observations
+* $\sum_{i=1}^{n}$ = The summation over all observations from $i$ = 1 to $n$
+* $\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^{2}}$ = the standard deviation for the               feature $X$
+* $\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^{2}}$ = the standard deviation for the               target $Y$
+
+To assess which features would be most important to the model, and to reduce the number of features in the final model I used the Permutation Feature Importance technique [@realinho2022]. Permutation Feature importance is calculated by oberving differences in model error (i.e., decreases or increases) when feature values are permutated. If premutating feature values causes big differences  in the model error, the feature is important to the overal model (see formula below).
+
+-   **Permuation Feature Importance Formula**
+
+$$
+PI_j = E_{\text{perm}(j)} - E_{\text{base}}
+$$
+Where:
+
+* $PI_j$ = the permutation importnace score for the feaure $_j$
+* $E_{\text{base}}$ = the base model error (i.e., the performance                            metric) computed on the orginal dataset
+* $E_{\text{perm}(j)}$ = the model error after random permutation of the values              of feature $_j$
+* $j$ = the index of the feature being evaluted
+* $E$ = the prediction error metric used for evaluation (e.g., mean                          squared error, log loss or error rate)
+      
+To assess the error when conducting permutation I used F1-score as the metric, which accoridng to @realinho2022, is most adequate when dealing with an imbalanced data set. The F1-score measures the accurcy of classification models assessing how well they predict the positive class by balancing both precision and recall. In the context of selecting "important" features, if permutation causes significant decreases in F1-score, then a feature is deemed important (see formula below).
+
+-   **F1-Score Formula**
+
+$$
+F_1 = \frac{2PR}{P + R}
+$$
+    
+    
+Where:
+
+* $F_1$ = The $F1$-score which is the harmonic mean of precision and recall
+* $P$ = Precision, which is the proportion of predicted postivesthat are true                positives
+* $R$ = Recall, which is  the ratio of acutal postives that are                              correctly predicted
+* $2$ = The weighting factor that yeilds the harmoic mean and it                             penalizes extreme imbalances between $P$ and $R$ @realinho2022
+
+I applied Permutation Feature Importance to all of the multi-class predictors, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Catagorical Boosting (CatBoost) [@realinho2022]. CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features [@prokhorenkova2018]. 
+      
+RF is considred an ensemble learning method that builds upon many decision trees and then aggregates their prediction thus improving model accuracy while reducing overfitting [@ho1995].
+
+-   **Random Forest Fromula**
+
+$$
+\hat{y} = \frac{1}{B}\sum_{b=1}^{B} T_b(x)
+$$
+
+Where:
+
+* $\hat{y}$ = The final predicted out of the RF model
+* $B$ = The total number of decision trees in the RF
+* $T_b(x)$ = The prediction of $b$-th decision tree for input $x$
+* $x$ = The feauture vector (i.e., the feature observation)
+* $\sum_{b=1}^{B}$ = The aggregation accross all trees
+    
+XGBoost operates on the premise of gradient boosting and builds trees in a sequential manner where each new tree corrects the errors of the previous tree [@chen2016].
+
+-   **Extreme Gradient Boosting Formula**
+
+$$
+\hat{y}_i = \sum_{k=1}^{K} f_k(x_i), 
+\quad f_k \in \mathcal{F}
+$$
+
+Where:
+
+* $\hat{y}_i$ = The pridcited output for the observation $i$
+* $K$ = The number of trees (i.e., the number of boosting                               interations)
+* $f_k(x_i)$ = The prediction from the $k-th$ decision tree
+* $x_i$ =  The feature vector for the obeservation $i$
+* $F$ = The space of all possible decision trees
+
+LightGBM also operates using a gradient boosting method but uses a histogram-based tree framework while it learns to scale large datasets [@ke2017].
+
+-   **Light Gradient Boosting Machine Formula**
+
+$$
+\hat{y}_i^{(t)} = \hat{y}_i^{(t-1)} + \eta f_t(x_i)
+$$
+
+Where:
+
+* $\hat{y}_i^{(t)}$ = The updated observation $i$ at interation $t$
+* $\hat{y}_i^{(t-1)}$ = The prediction from the previous boosting intertation
+* $\eta$ = The learning rate while controlng for the contribution of                    each new tree
+* $f_t(x_i)$ = The prediction of the tree added at interation $t$
+* $x_i$ = The feature vector for observation $i$
+ 
+CatBoost also uses a gradient boosting method but is specfically designed to handle catagorical features [@prokhorenkova2018].   
+
+-   **Catagorical Boosting Formula**
+
+$$
+\hat{y}_i = \sum_{t=1}^{T} \eta f_t(x_i)
+$$
+
+Where:
+
+* $\hat{y}_i$ = The predicted output for observation $i$
+* $T$ = The total number of trees (i.e., boosting interations)
+* $\eta$ = The learning rate
+* $f_t(x_i)$ = The predcition from the tree at interation $t$
+* $x_i$ = The input vector including the catgorical variables
+
+**Data Balancing**
+    
+To address class imbalance I implemented  five data balancing techniques on the dataset; 1. Random Under Sampling (RUS), 2. Random Over Sampling (ROS), 3. Synthetic Minority Over Sampling (SMOTE), 4. Synthetic Minority Over Sampling with Edited Nearest Neighbors (SMOTE ENN), and 5. Sythentc Minority Over Sampling with TOMEK Links (SMOTE TOMEK) [@mduma2023].
+    
+Concerning RUS, this technique works by randomly removing observations from the majority class until the classes are approximatley equal. 
+
+**Random Under Sampling Formula**
+
+$$
+\alpha_{us} = \frac{N_{m}}{N_{rM}}
+$$
+
+Where:
+
+* $\alpha_{us}$ = The under sampling ratio
+* $N_m$ = The number of class samples in the minority 
+* $N_{rM}$ = The number of majority class samples after under sampling
+      
+ROS, is the oposite of RUS, and works by randomly duplicating the minority class until the classes are approximatly equaly.
+
+**Random Over Sampling Formula**
+
+$$
+\alpha_{os} = \frac{N_{r m}}{N_{m}}
+$$
+
+Where:
+     
+* $\alpha_{os}$ = Is the oversampling ration
+* $N_m$ = The orginal number of the minority class samples
+* $N_{rM}$ = The number of samples in the minority class after over-sampling
+      
+SMOTE works by generating a new synthetic minority class, which is done by interporlating the minority class using the nearest neighbor until both the minority and majority class match.
+
+**Synthetic Minority Oversampling Formula**
+
+$$
+x_{\text{new}} = x_i + \lambda \left(x_{nn} - x_i\right)
+$$
+
+Where:
+
+* $x_{new}$ = The newly generated synthtic minority class sample
+* $x_i$ = The original minority class instance
+* $x_{nn}$ = Is on of the $k$-nearest neighbors of $x_i$
+* $\lambda$ = Is the random interporlation where 0 $\le$ $\lambda$ $\le$ 1
+      * $k$ = The total number of nearest neighbors considered
+      
+SMOTE ENN works the same as SMOTE but adds a cleaning step that removes missclassfied classes due to the nearest neighbor step, this reduces statistical noise and overlap.
+
+**Synthetic Minority Oversampling with Edited Nearest Neighbors Formula**
+$$
+D^{*} = \text{ENN}\bigl(\text{SMOTE}(D)\bigr)
+$$
+
+Where:
+
+* $D$ = The original imbalanced dataset
+* $SMOTE(D)$ = The dataset after synthetic minority over samples are generated
+* $ENN(.)$ = The rule that edits the nearest neighbors that may be missclassfied             or ambigious
+* $D^{*}$ = The final cleaned and balanced dataset
+      
+SMOTE TOMEK also works the same as SMOTE but uses TOMEK  links, which remove pairs of  nearest neighbors instances from the majority class that are in close proximity to eachother.
+
+**Synthetic Minority Oversampling with TOMEK Links Formula**
+
+$$
+D^{*} = D_{\text{SMOTE}} \setminus TL
+$$
+
+Where:
+
+* $D_SMOTE$ = The dataset after minority synthetic over sampling
+* $TL$ = The TOMEK link sets between the minority and majority classes
+* $\backslash$ = The removal operator (i.e.,set subtraction)
+* $D^{*}$ =  The final balanced dataset after overlapping TOMEK links are                    removed
+      
+By implementing the above data balancing techniques I ensured that the decision boundry was cleaned thus reducing statistical noise and improving model performance [@mduma2023]. The five data blancing techniques were paired to each of the multi-class classifiers to assess which  pair yeilded the most optimal results [@mduma2023]. For example, I assesed accuracy in six intances; 1. On the orginal unbalanced dataset, 2. on the ROS balanced dataset, 3. RUS balanced dataset, 4. SMOTE balanced dataset, 5. SMOTE ENN balanced dataset, and 6. SMOTE TOMEK balanced dataset. Concerning model evaluation specifically for measures of accuracy, I chose 1. Geometric Mean ($G_m$), F-measure ($F_m$), and Adjacent Geometric Mean ($AG_m$). According to @mduma2023, these measures of model accuracy are particularly robust against unbalanced datasets. The ($G_m$) works by measuring the balance between sensitivity and specificity and rewards models that perfrom well on both minority and majority classes. The ($F_m$) measures the harmonic mean of precision and recall and rewards models that show a balanced perfromance on the positive class. The ($AG_m$) is an extention of the ($G_m$) and works by adotping class imbalance calculations penalizing poor minority class performance [@mduma,2023].
+    
+    
+-   **Logistic Regression Formula**
+
+$$
+P(y=1 \mid x) = \sigma(w^T x + b)
+$$
+
+Where The Sigmoid (i.e., the activation function) is:
+ 
+$$
+\sigma(z) = \frac{1}{1 + e^{-z}}
+$$
+
+Where:
+    
+* $P(y = 1 | x)$ = The probality of a class 1 given the input vector $x$
+* $\sigma(.)$ = The sigmiod or the logestic function
+* $w$ = The weight vector
+* ${w^T x}$ = The dot product between the weights and the features
+* $x$ = The input fature vector
+* $b$ = The bias or intercept term
+* $z$ = Is the ${w^T x}$ + $b$  which = the linear predictor
+* $e$ = Euler's number which is the base of the logarithim
+      
+    
+-   **Multilayer Perceptron Formula**
+
+$$
+a^{(l)} = \sigma\left(W^{(l)} a^{(l-1)} + b^{(l)}\right)
+$$
+
+Where:
+      
+* $a^{(l)}$ = The activation vector or output of layer $l$
+* $W^{(l)}$ = The weight matrix for layer $l$ which maps inputs from preious                 layers
+* $a^{(l-1)}$ = The acti activation layer from the previous vector ($l$ - 1)
+* $b^{(l)}$ = The bias vector of layer $l$
+* $\sigma(.) = The activation function applied element wise (e.g., sigmoid,             ReLU or tanh)
+* $l$ = The index representing the current layer in the network
+      
+-   **Geometric Mean Formula**
+
+$$
+G_m = \sqrt{\text{TPR} \times \text{TNR}}
+$$
+
+Where:
+
+* $G_m$ = The geometric mean score
+* $TPR$ = The true positive rate of (i.e.,sensitivity or recall)
+* $TNR$ = The true negative rate (i.e, specificity)
+    
+And:
+    
+$$
+\text{TPR} = \frac{TP}{TP + FN}
+$$
+$$
+\text{TNR} = \frac{TN}{TN + FP}
+$$
+
+Where:
+
+* $TP$ = True Positive
+* $TN$ = True Negative
+* $FP$ = False Positive
+* $FN$ = False Negative
+      
+      
+-   **F-Measure Formula**
+
+$$
+F_m = \frac{2PR}{P + R}
+$$
+
+Where:
+
+* $F_m$ = The F-measure or the F1-Score
+* $P$ = Precision
+* $R$ = Recall
+
+
+And:
+
+$$
+P = \frac{TP}{TP + FP}
+$$
+$$
+R = \frac{TP}{TP + FN}
+$$
+
+Where:
+
+* $TP$ = True Positive
+* $FN$ = False Negative
+* $FP$ = False Positive
+      
+      
+-   **Adjusted Geometric Mean Formula**
+
+$$
+AG_m = \sqrt{\text{TPR} \times \text{TNR} \times (1 - IR)}
+$$
+
+Where:
+
+* $AG_m$ = The adjusted geometric mean
+* $TPR$ = The true positive rate (i.e., recall)
+* $TNR$ = The true negative rate (i.e., specificity)
+* $IR$ = The imbalance ratio
+    
+And:
+
+$$
+IR = \frac{N_{\text{min}}}{N_{\text{maj}}}
+$$
+
+Where:
+
+* $IR$ = The imbalanced ratio
+* $N_{min}$ = The number of samples in the minority class
+* $N_{maj}$ = The number of samples in the majority class
+
+
+
 
 ### Data Exploration and Visualization
 

@@ -3,7 +3,7 @@ title: "Multi-Class Machine Learning Approaches to Student Dropout"
 jupyter: idc-venv
 subtitle: "A Comparative Study of Classifiers and Data Balancing Techniques"
 author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
-date: '`r Sys.Date()`'
+date: today
 
 format:
   html:

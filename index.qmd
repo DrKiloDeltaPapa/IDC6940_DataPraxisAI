@@ -70,6 +70,7 @@ As mentioned previously the dataset I am using stems from the UC Irvine Machine 
 To better understand the dataset I conducted exploratory data analysis (EDA) on the  ([UCI Student Dropout  Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)). My goal was to gain a deeper understanding of the datasets' features, their relationship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitations concerning the chosen methods [@raschka2022].
 
 ```{python}
+#| output: false
 # --- Install (run once in Colab / fresh venv) ---
 # !pip install -q catboost lightgbm imbalanced-learn xgboost seaborn
 
@@ -154,13 +155,16 @@ test_data  = pd.read_csv(test_path)
 print("Train shape:", train_data.shape)
 print("Test shape:", test_data.shape)
 ```
+
 ```{python}
+#| output: false
 # Show all columns
 pd.set_option('display.max_columns', None)
 train_data.head()
 ```
 
 ```{python}
+#| output: false
 train_data.describe()
 ```
 #### Table 1: Descriptive Statistics for Selected Numerical Features
@@ -178,11 +182,15 @@ train_data.describe()
 
 
 ```{python}
+#| output: false
 train_data.info()
 ```
+
 ```{python}
+#| output: false
 test_data.info()
 ```
+
 ```{python}
 tg_cnts = train_data.Target.value_counts()
 tg_cnts_sum = tg_cnts.sum()
@@ -203,6 +211,7 @@ for i, pct in enumerate(tg_cnts_pct):
 plt.show()
 ```
 ```{python}
+#| output: false
 # Feature Cardinality Check
 feature_count = (
     train_data.drop(columns=['Target'])
@@ -437,7 +446,6 @@ for col in cat_cols:
 
 print("Categorical columns:")
 print(cat_cols)
-
 ```
 
 ```{python}
@@ -886,6 +894,7 @@ def evaluate_multiclass(y_true, y_pred, class_names):
 ```
 
 ```{python}
+#| output: false
 # Here I train and compare my models and balanacing methods
 
 all_results = []
@@ -1044,6 +1053,7 @@ importances = pd.DataFrame({
 }).sort_values(by="importance_mean", ascending=False)
 
 importances.head(20)
+
 ```
 
 ```{python}

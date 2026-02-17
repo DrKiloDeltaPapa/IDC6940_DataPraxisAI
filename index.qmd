@@ -1,6 +1,6 @@
 ---
 title: "Multi-Class Machine Learning Approaches to Student Dropout"
-jupyter: venv
+jupyter: idc-venv
 subtitle: "A Comparative Study of Classifiers and Data Balancing Techniques"
 author: "Kareem D. Piper (Advisor: Dr.Shusen Pu)"
 date: '`r Sys.Date()`'
@@ -65,7 +65,7 @@ The purpose of this capstone project is to assess and report the results various
 
 The main research question of this capstone project centers around comparing multi-class machine learning classifiers and addressing class imbalance, to accurately predict student dropout in a higher education setting. Thus, the methods I use correlate directly to those used by [e.g.,@mduma2023; @realinho2022]. For example, like the dataset used by @realinho2022, the target in this capstone's dataset has three categories (i.e, dropout, enrolled, and graduate), which requires the use of multi-class classifiers. As is the case with many real world datasets the classes in the ([UCI Student DropoutDataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)) are skewed towards enrolled and graduated. To address the issue of class imbalance @mduma2023, I use five varied data balancing techniques each paired with multi-class machine learning classifier to determine which pairing most accurately predicted student dropout. The subsequent sections of these methods are broken down into to parts, 1. Multi-Class Methods and 2. Data Balancing Methods, where I provide a detailed account of how both are incorporated in this capstone's machine learning pipeline.
 
-As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and can be accessed here:([UCI Student DropoutDataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)) [@realinho2022]. @realinho2022 characterize the dataset as tubular, and state that it is meant for the social sciences, specifically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to @realinho2022 consist of real, categorical and integers based features. According to @realinho2022 the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three categories (i.e., dropout, enrolled and graduate). According to @realinho2022 the dataset was rigorously preprocessed and consist of no null or missing values. 
+As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and can be accessed here:([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)) [@realinho2022]. @realinho2022 characterize the dataset as tubular, and state that it is meant for the social sciences, specifically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to @realinho2022 consist of real, categorical and integers based features. According to @realinho2022 the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three categories (i.e., dropout, enrolled and graduate). According to @realinho2022 the dataset was rigorously preprocessed and consist of no null or missing values. 
 
 To better understand the dataset I conducted exploratory data analysis (EDA) on the  ([UCI Student Dropout  Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)). My goal was to gain a deeper understanding of the datasets' features, their relationship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitations concerning the chosen methods [@raschka2022].
 
@@ -131,7 +131,7 @@ from pathlib import Path
 import pandas as pd
 
 # HARD-SET your repo root (this is the path that contains index.qmd and the data/ folder)
-repo_root = Path("/home/locutus/projects/IDC6940_DataPraxisAI")
+repo_root = Path("/Users/kareempiper/Projects/IDC6940_DataPraxisAI")
 data_dir = repo_root / "data"
 train_path = data_dir / "train.csv"
 test_path  = data_dir / "test.csv"
@@ -163,6 +163,20 @@ train_data.head()
 ```{python}
 train_data.describe()
 ```
+#### Table 1: Descriptive Statistics for Selected Numerical Features
+
+| Statistic          | Age at Enrollment | Admission Grade | Curricular Units 2nd Sem (Grade) | Unemployment Rate | Inflation Rate | GDP     |
+|:-------------------|:------------------|:----------------|:---------------------------------|:------------------|:---------------|:--------|
+| Count              | 3539.0            | 3539.0          | 3539.0                           | 3539.0            | 3539.0         | 3539.0  |
+| Mean               | 23.3              | 126.88          | 11.23                            | 11.5              | 1.23           | 1.76    |
+| Std                | 6.13              | 14.53           | 2.94                             | 2.62              | 1.63           | 2.33    |
+| Min                | 17.0              | 95.0            | 0.0                              | 7.6               | -0.8           | -4.06   |
+| 25%                | 19.0              | 117.8           | 10.33                            | 9.4               | 0.3            | 0.58    |
+| 50%                | 21.0              | 126.0           | 12.0                             | 11.1              | 1.4            | 1.74    |
+| 75%                | 25.0              | 134.9           | 13.0                             | 13.9              | 2.6            | 3.26    |
+| Max                | 70.0              | 190.0           | 18.0                             | 16.2              | 3.7            | 3.51    |
+
+
 ```{python}
 train_data.info()
 ```
@@ -201,6 +215,28 @@ feature_count = (
 feature_count
 ```
 
+#### Table 2: Unique Value Counts per Feature (Top and Bottom)
+
+| Feature                                          | Unique Count |
+|:-------------------------------------------------|:-------------|
+| Daytime/evening attendance                       | 2            |
+| Displaced                                        | 2            |
+| Debtor                                           | 2            |
+| Educational special needs                        | 2            |
+| International                                    | 2            |
+| Scholarship holder                               | 2            |
+| Gender                                           | 2            |
+| Tuition fees up to date                          | 2            |
+| Marital status                                   | 6            |
+| Application order                                | 8            |
+| ...                                              | ...          |
+| Age at enrollment                                | 46           |
+| Previous qualification (grade)                   | 99           |
+| Admission grade                                  | 591          |
+| Curricular units 2nd sem (grade)                 | 674          |
+| Curricular units 1st sem (grade)                 | 683          |
+
+
 ```{python}
 # Target Distribution by Gender
 crosstab_gender = pd.crosstab(train_data['Gender'], train_data['Target'])
@@ -230,6 +266,13 @@ for p in ax_gender.patches:
 
 plt.show()
 ```
+#### Table 3: Target Distribution by Gender (Percentages)
+
+| Gender | Dropout | Enrolled | Graduate |
+|:-------|:--------|:---------|:---------|
+| 0      | 25.28   | 16.80    | 57.92    |
+| 1      | 44.80   | 20.06    | 35.13    |
+
 
 ```{python}
 # Create a crosstab to count the occurrences of each Target value for each Scholarship status
@@ -264,38 +307,13 @@ for p in ax_ss.patches:
 plt.show()
 ```
 
-```{python}
-# Create a crosstab to count the occurrences of each Target value for each Scholarship status
-crosstab_ss = pd.crosstab(train_data['Scholarship holder'], train_data['Target'])
+#### Table 4: Target Distribution by Scholarship Holder Status (Percentages)
 
-# Normalize the crosstab counts to percentages
-crosstab_ss = crosstab_ss.div(crosstab_ss.sum(axis=1), axis=0) * 100
+| Scholarship Holder | Dropout | Enrolled | Graduate |
+|:-------------------|:--------|:---------|:---------|
+| 0                  | 38.64   | 20.08    | 41.29    |
+| 1                  | 12.86   | 11.63    | 75.50    |
 
-# Plot the data
-colors = ['#00FFFF', '#FF00FF', '#00FF00']  # Neon blue, magenta, lime green
-ax_ss = crosstab_ss.plot(kind='bar', stacked=True, color=colors)
-plt.xlabel('Scholarship (0 = No Scholarship, 1 = Scholarship Holder)')
-plt.ylabel('Percentage')
-plt.title('Distribution of Target Based on Scholarship Holder')
-plt.legend(title='Target')
-plt.xticks(rotation=0)
-
-# Annotate the percentage labels on each bar
-for p in ax_ss.patches:
-    width = p.get_width()
-    height = p.get_height()
-    x, y = p.get_xy()
-    ax_ss.annotate(
-        f'{height:.1f}%',
-        (x + width / 2, y + height / 2),
-        ha='center',
-        va='center',
-        fontsize=10,
-        color='white'
-    )
-
-plt.show()
-```
 
 ```{python}
 # Create a crosstab to count the occurrences of each Target value for each Debtor status
@@ -329,6 +347,14 @@ for p in ax_debtor.patches:
 
 plt.show()
 ```
+
+#### Table 5: Target Distribution by Debtor Status (Percentages)
+
+| Debtor | Dropout | Enrolled | Graduate |
+|:-------|:--------|:---------|:---------|
+| 0      | 28.19   | 17.97    | 53.84    |
+| 1      | 64.01   | 17.74    | 18.25    |
+
 
 ```{python}
 ### Age Distribution by Target (ECDF)
@@ -516,6 +542,7 @@ plt.title('Spearman Correlation Matrix (Numeric Features)')
 plt.show()
 ```
 
+
 The ([UCI Student Dropout Dataset](https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data)) does depict significant class imbalance with the Graduate class representing 49.9%, (n = 2,209) of the distribution followed by the Dropout Category class at 32.1%, (n = 1,421) and finally the Enrolled class at 17.9%, (n = 794). I observed several meaningful relationships across the feature groups (i.e., demographic, financial and academic). For example, demographic and financial features displayed strong correlations to the target. When I ran the crosstab on the gender feature, it showed that males were more likely to dropout and females more likely to graduate. Those students who held scholarships also showed higher graduation rates compared to non-scholarship students, and were less likely to drop out. Further, those students who were in financial distress as indicated by being coded as debtors had lower graduation rates than those coded as non-debtors. Concerning academic features, second-semester grades and approved curricular units showed clear dispersion between the target classes, which may indicate importance pertaining to class prediction.
 
 As mentioned the dataset does display significant class imbalance. This class imbalance if left un-checked can lead to model bias towards the majority class [@mduma202]. I also noticed that many of the categorical features were encoded as integers which may lead to false interpretation when conducting correlation analysis if not addressed @raschka2022]. Another limitation that this data presents is its lack of temporal features. As the data represents a snapshot in time, models may not be able to capture the full complexity of predicting student dropout due to the lack of dynamic changes over time. Finally, as this data stems from a single institution, the findings may present limitation concerning generalization. Though I am not as concerned with this as the purpose of this study is to test which model and data balancing techniques when paired has the highest accuracy.In the following paragraphs I explain the full machine learning pipeline that I employed to test and evaluate the multi-class classifiers as well as the class balancing techniques that accompanied them. 
@@ -588,7 +615,7 @@ $$
 Where:
 
 * $\hat{y}_i$ = The predicted output for the observation $i$
-* $K$ = The number of trees (i.e., the number of boosting              iterations)
+* $K$ = The number of trees (i.e., the number of boosting iterations)
 * $f_k(x_i)$ = The prediction from the $k-th$ decision tree
 * $x_i$ =  The feature vector for the observation $i$
 * $F$ = The space of all possible decision trees
@@ -792,6 +819,11 @@ preprocessor = ColumnTransformer(
 ```
 
 ```{python}
+from imblearn.under_sampling import RandomUnderSampler
+from imblearn.over_sampling import RandomOverSampler, SMOTE
+from imblearn.combine import SMOTEENN, SMOTETomek
+from imblearn.pipeline import Pipeline as ImbPipeline
+
 # Here I define samplers for imbalance experiments
 
 samplers = {
@@ -891,6 +923,17 @@ for sampler_name, sampler in samplers.items():
 results_df = pd.DataFrame(all_results).sort_values(by="f1_macro", ascending=False)
 results_df.head(15)
 ```
+
+#### Table 6: Comparative Performance of Models with Different Sampling Techniques (Macro F1-Score Sorted)
+
+| Sampler    | Model        | Accuracy | Precision (macro) | Recall (macro) | F1-Macro | F1-Weighted |
+|:-----------|:-------------|:---------|:------------------|:---------------|:---------|:------------|
+| SMOTETomek | XGBoost      | 0.7782   | 0.7273            | 0.7052         | 0.7131   | 0.7708      |
+| SMOTETomek | LightGBM     | 0.7768   | 0.7281            | 0.7037         | 0.7124   | 0.7692      |
+| SMOTETomek | RandomForest | 0.7684   | 0.7152            | 0.7037         | 0.7086   | 0.7655      |
+| SMOTE      | XGBoost      | 0.7768   | 0.7215            | 0.7008         | 0.7079   | 0.7686      |
+| None       | XGBoost      | 0.7811   | 0.7270            | 0.6991         | 0.7070   | 0.7699      |
+
 
 ```{python}
 # Now I will select the best pipeline and show confusion matrix

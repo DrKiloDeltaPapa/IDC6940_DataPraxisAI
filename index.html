@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kareem D. Piper (Advisor: Dr.Shusen Pu)">
-<meta name="dcterms.date" content="2026-02-17">
+<meta name="dcterms.date" content="2026-02-22">
 
 <title>Multi-Class Machine Learning Approaches to Student Dropout</title>
 <style>
@@ -2388,7 +2388,8 @@ window.Quarto = {
   <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions"><span class="header-section-number">2</span> Research Questions</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">3</span> Methods</a></li>
   <li><a href="#analysis-and-results" id="toc-analysis-and-results" class="nav-link" data-scroll-target="#analysis-and-results"><span class="header-section-number">4</span> Analysis and Results</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">5</span> Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6</span> References</a></li>
   </ul>
 </nav>
 </div>
@@ -2414,7 +2415,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 17, 2026</p>
+      <p class="date">February 22, 2026</p>
     </div>
   </div>
   
@@ -2460,7 +2461,7 @@ Important
 <p>The main research question of this capstone project centers around comparing multi-class machine learning classifiers and addressing class imbalance, to accurately predict student dropout in a higher education setting. Thus, the methods I use correlate directly to those used by <span class="citation" data-cites="mduma2023 realinho2022">(e.g., <a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. For example, like the dataset used by <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span>, the target in this capstone’s dataset has three categories (i.e, dropout, enrolled, and graduate), which requires the use of multi-class classifiers. As is the case with many real world datasets the classes in the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student DropoutDataset</a>) are skewed towards enrolled and graduated. To address the issue of class imbalance <span class="citation" data-cites="mduma2023">Mduma (<a href="#ref-mduma2023" role="doc-biblioref">2023</a>)</span>, I use five varied data balancing techniques each paired with multi-class machine learning classifier to determine which pairing most accurately predicted student dropout. The subsequent sections of these methods are broken down into to parts, 1. Multi-Class Methods and 2. Data Balancing Methods, where I provide a detailed account of how both are incorporated in this capstone’s machine learning pipeline.</p>
 <p>As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and can be accessed here:(<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>) <span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> characterize the dataset as tubular, and state that it is meant for the social sciences, specifically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> consist of real, categorical and integers based features. According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three categories (i.e., dropout, enrolled and graduate). According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> the dataset was rigorously preprocessed and consist of no null or missing values.</p>
 <p>To better understand the dataset I conducted exploratory data analysis (EDA) on the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>). My goal was to gain a deeper understanding of the datasets’ features, their relationship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitations concerning the chosen methods <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
-<div id="a549236b" class="cell" data-execution_count="1">
+<div id="a2d07d41" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Install (run once in Colab / fresh venv) ---</span></span>
@@ -2518,7 +2519,7 @@ Important
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.combine <span class="im">import</span> SMOTEENN, SMOTETomek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="a9da546c" class="cell" data-execution_count="2">
+<div id="92da9d45" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -2556,7 +2557,7 @@ Train shape: (3539, 37)
 Test shape: (885, 37)</code></pre>
 </div>
 </div>
-<div id="81a40c4a" class="cell" data-execution_count="3">
+<div id="37cddeeb" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show all columns</span></span>
@@ -2564,7 +2565,7 @@ Test shape: (885, 37)</code></pre>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="d9160c2c" class="cell" data-execution_count="4">
+<div id="581b9dca" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>train_data.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2668,19 +2669,19 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="147f290c" class="cell" data-execution_count="5">
+<div id="79525062" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="d8c33c9a" class="cell" data-execution_count="6">
+<div id="5f54e4b5" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>test_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="b3334338" class="cell" data-execution_count="7">
+<div id="2b0d9951" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tg_cnts <span class="op">=</span> train_data.Target.value_counts()</span>
@@ -2709,7 +2710,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="9f473993" class="cell" data-execution_count="8">
+<div id="5fdd90a3" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature Cardinality Check</span></span>
@@ -2801,7 +2802,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="7fdcc50a" class="cell" data-execution_count="9">
+<div id="c78ddd10" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Target Distribution by Gender</span></span>
@@ -2867,7 +2868,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="6c99b48f" class="cell" data-execution_count="10">
+<div id="67fa1c03" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Scholarship status</span></span>
@@ -2936,7 +2937,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="e17b1c6c" class="cell" data-execution_count="11">
+<div id="2a98eeea" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Debtor status</span></span>
@@ -3005,7 +3006,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="5c4caf04" class="cell" data-execution_count="12">
+<div id="ee8a69d0" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Age Distribution by Target (ECDF)</span></span>
@@ -3032,7 +3033,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="eb535365" class="cell" data-execution_count="13">
+<div id="49ecb5fc" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Approved 2nd Semester Units by Target (ECDF)</span></span>
@@ -3065,7 +3066,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="c5f0b088" class="cell" data-execution_count="14">
+<div id="27cbc318" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 2nd Semester Grade Distribution by Target (ECDF)</span></span>
@@ -3097,7 +3098,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="73122fd9" class="cell" data-execution_count="15">
+<div id="9d8f8db0" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Identification of Categorical Features</span></span>
@@ -3121,7 +3122,7 @@ Test shape: (885, 37)</code></pre>
 [&#39;Marital status&#39;, &#39;Application order&#39;, &#39;Daytime/evening attendance&#39;, &#39;Displaced&#39;, &#39;Educational special needs&#39;, &#39;Debtor&#39;, &#39;Tuition fees up to date&#39;, &#39;Gender&#39;, &#39;Scholarship holder&#39;, &#39;International&#39;]</code></pre>
 </div>
 </div>
-<div id="f2f407b9" class="cell" data-execution_count="16">
+<div id="82d39453" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical feature distributions</span></span>
@@ -3156,7 +3157,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="bbbc14a5" class="cell" data-execution_count="17">
+<div id="20ac5913" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Continuous Feature Distributions</span></span>
@@ -3193,7 +3194,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="3d82c737" class="cell" data-execution_count="18">
+<div id="79cc7ea1" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer feature distributions</span></span>
@@ -3231,7 +3232,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="9be7b168" class="cell" data-execution_count="19">
+<div id="25c1c128" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Spearman Correlation Analysis</span></span>
@@ -3260,12 +3261,15 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 <p>The (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>) does depict significant class imbalance with the Graduate class representing 49.9%, (n = 2,209) of the distribution followed by the Dropout Category class at 32.1%, (n = 1,421) and finally the Enrolled class at 17.9%, (n = 794). I observed several meaningful relationships across the feature groups (i.e., demographic, financial and academic). For example, demographic and financial features displayed strong correlations to the target. When I ran the crosstab on the gender feature, it showed that males were more likely to dropout and females more likely to graduate. Those students who held scholarships also showed higher graduation rates compared to non-scholarship students, and were less likely to drop out. Further, those students who were in financial distress as indicated by being coded as debtors had lower graduation rates than those coded as non-debtors. Concerning academic features, second-semester grades and approved curricular units showed clear dispersion between the target classes, which may indicate importance pertaining to class prediction.</p>
-<p>As mentioned the dataset does display significant class imbalance. This class imbalance if left un-checked can lead to model bias towards the majority class <span class="citation" data-cites="mduma202">(<a href="#ref-mduma202" role="doc-biblioref"><strong>mduma202?</strong></a>)</span>. I also noticed that many of the categorical features were encoded as integers which may lead to false interpretation when conducting correlation analysis if not addressed <span class="citation" data-cites="raschka2022">Raschka et al. (<a href="#ref-raschka2022" role="doc-biblioref">2022</a>)</span>]. Another limitation that this data presents is its lack of temporal features. As the data represents a snapshot in time, models may not be able to capture the full complexity of predicting student dropout due to the lack of dynamic changes over time. Finally, as this data stems from a single institution, the findings may present limitation concerning generalization. Though I am not as concerned with this as the purpose of this study is to test which model and data balancing techniques when paired has the highest accuracy.In the following paragraphs I explain the full machine learning pipeline that I employed to test and evaluate the multi-class classifiers as well as the class balancing techniques that accompanied them.</p>
+<p>As mentioned the dataset does display significant class imbalance. This class imbalance if left un-checked can lead to model bias towards the majority class <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>. I also noticed that many of the categorical features were encoded as integers which may lead to false interpretation when conducting correlation analysis if not addressed <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Another limitation that this data presents is its lack of temporal features. As the data represents a snapshot in time, models may not be able to capture the full complexity of predicting student dropout due to the lack of dynamic changes over time. Finally, as this data stems from a single institution, the findings may present limitation concerning generalization. Though I am not as concerned with this as the purpose of this study is to test which model and data balancing techniques when paired has the highest accuracy.In the following paragraphs I explain the full machine learning pipeline that I employed to test and evaluate the multi-class classifiers as well as the class balancing techniques that accompanied them.</p>
+<p>Following the exploratory data analysis, I began to prepare the dataset for analysis. As is consistent with prior research using machine learning to predict student dropout <span class="citation" data-cites="barramuno2022 mun2023 kok2024">(e.g., <a href="#ref-barramuno2022" role="doc-biblioref">Barramuno et al., 2022</a>; <a href="#ref-kok2024" role="doc-biblioref">Kok et al., 2024</a>; <a href="#ref-mun2023" role="doc-biblioref">Mun &amp; Jo, 2023</a>)</span>. For example, I separated the feature matrix (X) from the target (Y). The target was cast as a string type to prevent ordinal interpretation and to ensure consistent label processing. Next, I used LabelEcoder to transform the categories of the target (i.e., “DropOut”, “Enrolled”, and “Graduate”) into numerical categories (i.e., ‘Dropout’: 0, ‘Enrolled’: 1, and ‘Graduate’ : 2) <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The dataset was then partitioned into training subset and a validation subset using a train_test_split of 80:20 and stratification to preserve the the original class distribution across both sets <span class="citation" data-cites="mduma2023 pek2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>. Stratification used by researchers <span class="citation" data-cites="mduma2023 pek2023">(e.g., <a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>, is particularly important to predicting student dropout when class imbalance presents a limitation as class imbalance if left unchecked can lead to bias.</p>
+<p>Next, I established a structured machine learning pipeline using CoumnTransfromer which ensured reproducibility and prevented data leakage <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Categorical features which were identified by ‘object’ and ‘categorical’ as well as variables with low cardinality (i.e., ≤ 8 unique values) were preprocessed using SimpleImputer followed by OneHotEcoder converting all nominal variables with binary classification to ensure capability with classification algorithms <span class="citation" data-cites="namoun2020 andradegiron2023">(<a href="#ref-andradegiron2023" role="doc-biblioref">Andrade-Giron et al., 2023</a>; <a href="#ref-namoun2020" role="doc-biblioref">Namoun &amp; Alshanqiti, 2020</a>)</span>. Though the dataset according to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> had no missing values, as a precaution and sanity check I addressed any potential missing values in the numerical features using the SimpleImpyter median technique. By embedding preprocessing into the pipeline ensured that all transformations were learnt from the training data thus reducing data leakage enhancing the potential for generalization.</p>
+<p>This study employs a systematic experimental framework to evaluate the effect of class imbalance mitigation techniques paired with multi-class classifiers using a machine learning pipeline. In comparing multiple resampling techniques and gradient boosting architectures all while ensuring rigorous validation methods enabled rigorous model robustness, minority class sensitivity and generalization performance <span class="citation" data-cites="delen2024 kok2024 ridwan2024">(e.g., <a href="#ref-delen2024" role="doc-biblioref">Delen et al., 2024</a>; <a href="#ref-kok2024" role="doc-biblioref">Kok et al., 2024</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span>. The established framework provided the foundation for all model analyses and interpretive model evaluations conducted in the following Analysis and Results section <span class="citation" data-cites="mduma2023 pek2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>.</p>
 </section>
 </section>
 <section id="analysis-and-results" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="analysis-and-results"><span class="header-section-number">4</span> Analysis and Results</h2>
-<p>All model pipeline and experimentation was conducted in Google Colab using a jupyter notebook[link]. The first step was to encode the target into numeric class labels (i.e., ‘Dropout’: 0, ‘Enrolled’: 1, and ‘Graduate’ : 2). Next, I split the dataset into training and validation sets using a 80:20 train_test_split and stratification <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. All numeric and categorical features were preprocessed by imputation and one-hot encoding <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
+<p>All model pipeline and experimentation was conducted in Google Colab using a jupyter notebook. As mentioned previously I encode the target into numeric class labels (i.e., ‘Dropout’: 0, ‘Enrolled’: 1, and ‘Graduate’ : 2). Next, I split the dataset into training and validation sets using a 80:20 train_test_split and stratification <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. All numeric and categorical features were preprocessed by imputation and one-hot encoding <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
 <p>After the data was pre-processed I implemented the class imbalancing techniques into the pipeline (i.e., RUS, ROS,SMOTE, SMOTE-ENN and SMOTE-Tomek) on the training set. Each data balancing technique was paired with a multi-class classifiers (i.e., RF, XGBoost, LightGBM, and CatBoost). All models were evaluated with multi-class metrics however F1-score was the primary metric <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.The effect of all model-balancing combinations were compared, and finally once the best model pipeline was selected I conduced a detailed evaluation using a confusion matrix and permutation feature importance <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.</p>
 <p>Permutation Feature importance is calculated by observing differences in model error (i.e., decreases or increases) when feature values are permutated<span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. If premutating feature values causes big differences in the model error, the feature is important to the overall model (see formula below).</p>
 <ul>
@@ -3429,7 +3433,7 @@ D^{*} = D_{\text{SMOTE}} \setminus TL
 <p>In this project, the macro-averaged F1-Score was calculated by computing the F1-Score independently for each class and then taking the unweighted mean. The weighted-averaged F1-Score was calculated by computing the F1-Score for each class and then averaging them by the number of true instances for each class <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
 <section id="modeling-and-results" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="modeling-and-results"><span class="header-section-number">4.1</span> Modeling and Results</h3>
-<div id="28b72df2" class="cell" data-execution_count="20">
+<div id="08ff2ab9" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining X,y, and Encoding Multiclass Target</span></span>
@@ -3454,7 +3458,7 @@ D^{*} = D_{\text{SMOTE}} \setminus TL
 Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;: 2}</code></pre>
 </div>
 </div>
-<div id="1ab60cd6" class="cell" data-execution_count="21">
+<div id="a193f085" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stratified Train/Validation Split</span></span>
@@ -3472,7 +3476,7 @@ Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;:
 <pre><code>Train shape: (2831, 36) Val shape: (708, 36)</code></pre>
 </div>
 </div>
-<div id="770e5bda" class="cell" data-execution_count="22">
+<div id="ba94ef75" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Indentifying Feature Types and Building the Pipeline</span></span>
@@ -3507,7 +3511,7 @@ Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;:
 Numeric cols: 26</code></pre>
 </div>
 </div>
-<div id="0ff35fe2" class="cell" data-execution_count="23">
+<div id="c875acdc" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.under_sampling <span class="im">import</span> RandomUnderSampler</span>
@@ -3527,7 +3531,7 @@ Numeric cols: 26</code></pre>
 <span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="183e9ab2" class="cell" data-execution_count="24">
+<div id="986c5084" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I define my models</span></span>
@@ -3561,7 +3565,7 @@ Numeric cols: 26</code></pre>
 <span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="b03e470a" class="cell" data-execution_count="25">
+<div id="1fb81f22" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is an evaluation helper for multiclass metrics</span></span>
@@ -3580,7 +3584,7 @@ Numeric cols: 26</code></pre>
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="2c93df74" class="cell" data-execution_count="26">
+<div id="bbcbd85d" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I train and compare my models and balanacing methods</span></span>
@@ -3692,7 +3696,7 @@ Numeric cols: 26</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="ecb48226" class="cell" data-execution_count="27">
+<div id="4becfe9f" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now I will select the best pipeline and show confusion matrix</span></span>
@@ -3758,7 +3762,7 @@ weighted avg       0.77      0.78      0.77       708
 </div>
 </div>
 </div>
-<div id="6320efa1" class="cell" data-execution_count="28">
+<div id="50a5c571" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CatBoost (Native Catagorical + Class Weights)</span></span>
@@ -3835,7 +3839,7 @@ weighted avg       0.75      0.76      0.76       708
 </div>
 </div>
 </div>
-<div id="10dbdbe2" class="cell" data-execution_count="29">
+<div id="a6bbe46a" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now like Realinho et al. (2022):Permutation Feature Importance (Macro F1)</span></span>
@@ -3867,7 +3871,7 @@ weighted avg       0.75      0.76      0.76       708
 <span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>importances.head(<span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div class="cell-output cell-output-display" data-execution_count="59">
 <div>
 
 
@@ -4007,7 +4011,7 @@ weighted avg       0.75      0.76      0.76       708
 </div>
 </div>
 </div>
-<div id="6e4e17cb" class="cell" data-execution_count="30">
+<div id="e4807bd1" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Model Evaluation (on the validation set)</span></span>
@@ -4064,25 +4068,34 @@ weighted avg       0.77      0.78      0.77       708
 </div>
 </section>
 </section>
-<section id="conclusion" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4.2</span> Conclusion</h3>
+</section>
+<section id="conclusion" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">5</span> Conclusion</h2>
 <p>The initial exploratory data analysis as well as the results of preliminary modeling provided important insights into the datasets predictive structure and feasibility concerning the use multi-class machine learning approaches. Of all of the features in the dataset, <em>Curricular units 2nd semester (approved)</em> emerged as the most informative predictor of the target as indicated by the highest mutual information score. This particular finding indicates that students’ academic performance in the second semester is key to determining student outcomes which aligns to prior research concerning the importance of academic progression indicators <span class="citation" data-cites="realinho2022 ridwan2024">(e.g., <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span>.</p>
 <p>The feature <em>Curricular units 2nd semester (grade)</em> showed a generally consistent pattern across both the training and testing datasets as measured by distribution analysis <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.This observation is critical as it shows that the models trained on the training set can also effectively generalize on unseen data <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Further, this consistency reduces any risk of shift in distribution and supports and validates the cross-validation techniques used in this project <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The Spearman Rank Correlation Heatmap afforded for a visual representation concerning the relationship features and the target which helped identify any issues with multicollinearity <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
 <p>Cross-validation was conducted across all of the classifiers used in this project (i.e., RF, XGBoost and LightGBM and CATBoost). Initially, there were issues with datatype. However, the datatype issues were resolved by implementing the appropriate preprocessing for example by label encoding the all categorical features. The adjustments made in the preprocessing step allowed for evaluation consistency across all classifiers and comparable performance metrics <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The bar plot provided a visual reference for summarizing the mean cross-validation accuracies and gave insights into the model performance.</p>
 <p>In conclusion, based on these findings, future research should focus more on feature importance. In particular, future studies should pay attention to <em>Curricular units 2nd semester (approved)</em> concerning the model pipeline. Though beyond the scope of this study, a deeper analysis of cross-validation results could be used to select the top performing features. Once those features that are not top predictors are pruned, hyperparameter tuning can be conducted to improve model prediction accuracy <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span> . Hyperparameter tuning incorporated with the established pipeline in this study (i.e.,XGBoost and SMOTE Tomek pipeline) could prove to be an effective strategy for accurately predicting student attrition.</p>
 </section>
-</section>
-<section id="references" class="level2 unnumbered" data-number="5">
+<section id="references" class="level2 unnumbered" data-number="6">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">5 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">6 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-aina2022" class="csl-entry" role="listitem">
 Aina, C., Baici, E., Casalone, G., &amp; Pastore, F. (2022). The determinants of university dropout: A review of the socio-economic literature. <em>Socio-Economic Planning Sciences</em>, <em>79</em>, 101102. <a href="https://doi.org/10.1016/j.seps.2021.101102">https://doi.org/10.1016/j.seps.2021.101102</a>
 </div>
+<div id="ref-andradegiron2023" class="csl-entry" role="listitem">
+Andrade-Giron, D. et al. (2023). Predicting student dropout based on machine learning and deep learning: A systematic review. <em>ICST Transactions on Scalable Information Systems</em>, <em>10</em>(5), 1–11. <a href="https://doi.org/10.4108/eetsis.3586">https://doi.org/10.4108/eetsis.3586</a>
+</div>
+<div id="ref-barramuno2022" class="csl-entry" role="listitem">
+Barramuno, M., Meza-Narvaez, C., &amp; Galvez-Garcia, G. (2022). Prediction of student attrition risk using machine learning. <em>Journal of Applied Research in Higher Education</em>, <em>14</em>(3), 974–986. <a href="https://doi.org/10.1108/JARHE-02-2021-0073">https://doi.org/10.1108/JARHE-02-2021-0073</a>
+</div>
 <div id="ref-chen2016" class="csl-entry" role="listitem">
 Chen, T., &amp; Guestrin, C. (2016). XGBoost: A scalable tree boosting system. <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, 785–794. <a href="https://doi.org/10.1145/2939672.2939785">https://doi.org/10.1145/2939672.2939785</a>
+</div>
+<div id="ref-delen2024" class="csl-entry" role="listitem">
+Delen, D., Davazdahemami, B., &amp; Rasouli Dezfouli, E. (2024). Predicting and mitigating freshman student attrition: A local-explainable machine learning framework. <em>Information Systems Frontiers</em>, <em>26</em>(2), 641–662. <a href="https://doi.org/10.1007/s10796-023-10397-3">https://doi.org/10.1007/s10796-023-10397-3</a>
 </div>
 <div id="ref-ho1995" class="csl-entry" role="listitem">
 Ho, T. K. (1995). Random decision forests. <em>Proceedings of the Third International Conference on Document Analysis and Recognition</em>, <em>1</em>, 278–282. <a href="https://doi.org/10.1109/ICDAR.1995.598994">https://doi.org/10.1109/ICDAR.1995.598994</a>
@@ -4090,8 +4103,20 @@ Ho, T. K. (1995). Random decision forests. <em>Proceedings of the Third Internat
 <div id="ref-ke2017" class="csl-entry" role="listitem">
 Ke, G., Meng, Q., Finley, T., Wang, T., Chen, W., Ma, W., Ye, Q., &amp; Liu, T.-Y. (2017). LightGBM: A highly efficient gradient boosting decision tree. <em>Advances in Neural Information Processing Systems</em>, <em>30</em>, 3147–3155.
 </div>
+<div id="ref-kok2024" class="csl-entry" role="listitem">
+Kok, C. L., Ho, C. K., Chen, L., Koh, Y. Y., &amp; Tian, B. (2024). A novel predictive modeling for student attrition utilizing machine learning and sustainable big data analytics. <em>Applied Sciences</em>, <em>14</em>(21), 9633. <a href="https://doi.org/10.3390/app14219633">https://doi.org/10.3390/app14219633</a>
+</div>
 <div id="ref-mduma2023" class="csl-entry" role="listitem">
 Mduma, N. (2023). Data balancing techniques for predicting student dropout using machine learning. <em>Data</em>, <em>8</em>(3), 49. <a href="https://doi.org/10.3390/data8030049">https://doi.org/10.3390/data8030049</a>
+</div>
+<div id="ref-mun2023" class="csl-entry" role="listitem">
+Mun, J., &amp; Jo, M. (2023). Applying machine learning-based models to prevent university student dropouts. <em>Journal of Educational Evaluation</em>, <em>36</em>(2), 289–313. <a href="https://doi.org/10.31158/JEEV.2023.36.2.289">https://doi.org/10.31158/JEEV.2023.36.2.289</a>
+</div>
+<div id="ref-namoun2020" class="csl-entry" role="listitem">
+Namoun, A., &amp; Alshanqiti, A. (2020). Predicting student performance using data mining and learning analytics techniques: A systematic literature review. <em>Applied Sciences</em>, <em>11</em>(1), 237. <a href="https://doi.org/10.3390/app11010237">https://doi.org/10.3390/app11010237</a>
+</div>
+<div id="ref-pek2023" class="csl-entry" role="listitem">
+Pek, R. Z., Ozyer, S. T., Elhage, T., Ozyer, T., &amp; Alhajj, R. (2023). The role of machine learning in identifying student at-risk and minimizing failure. <em>IEEE Access</em>, <em>11</em>, 1224–1243. <a href="https://doi.org/10.1109/ACCESS.2022.3232984">https://doi.org/10.1109/ACCESS.2022.3232984</a>
 </div>
 <div id="ref-prokhorenkova2018" class="csl-entry" role="listitem">
 Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., &amp; Gulin, A. (2018). CatBoost: Unbiased boosting with categorical features. <em>Advances in Neural Information Processing Systems</em>, <em>31</em>, 6638–6648.

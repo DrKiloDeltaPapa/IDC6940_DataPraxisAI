@@ -1,117 +1,372 @@
 ---
-title: "Present a great story for data science projects"
-subtitle: "This is a Slide Template"
-author: "Students names (Advisor: Dr. Cohen)"
-date: '`r Sys.Date()`'
+title: "Multi-Class Machine Learning Approaches to Student Dropout"
+subtitle: "A Comparative Study of Classifiers and Data Balancing Techniques"
+author: "Kareem D. Piper (Advisor: Dr. Shusen Pu)"
+date: today
 format:
-  revealjs
+  revealjs:
+    slide-number: true
+    toc: true
+    toc-title: "Agenda"
+    center: true
+    incremental: false
+    theme: blood
+    transition: slide
+    background-transition: fade
+    include-after-body: 
+      - text: |
+          <style>
+          .reveal { background-color: #000000; }
+          .reveal section { color: #ffffff; }
+          /* Title slide styling */
+          .reveal .title { color: #00FFFF; text-shadow: 0 0 15px #00FFFF; font-size: 1.8em; }
+          .reveal .subtitle { color: #FF00FF; text-shadow: 0 0 10px #FF00FF; font-style: italic; }
+          .reveal .author, .reveal .date { color: #00FF00; margin-top: 20px; }
+          /* General heading styling */
+          .reveal h1, .reveal h2, .reveal h3 { color: #00FFFF; text-shadow: 0 0 10px #00FFFF; }
+          .reveal a { color: #FF00FF; }
+          .reveal .progress { color: #00FF00; }
+          /* Table styling for dark mode */
+          table { border-collapse: collapse; width: 100%; color: white; border: 1px solid #00FFFF; }
+          th { background-color: #1a1a1a; color: #00FFFF; }
+          td, th { border: 1px solid #333; padding: 10px; text-align: left; }
+          </style>
 course: Capstone Projects in Data Science
-bibliography: references.bib # file contains bibtex for references
-#always_allow_html: true # this allows to get PDF with HTML features
+bibliography: references.bib
 self-contained: true
-execute: 
+execute:
+  cwd: .
+  echo: false
   warning: false
   message: false
-editor: 
+editor:
   markdown: 
     wrap: 72
 ---
 
-::: callout-important
-**Remember:** Your goal is to make your audience understand and care
-about your findings. By crafting a compelling story, you can effectively
-communicate the value of your data science project.
+```{python}
+#| label: setup
+#| include: false
+# Core libraries
+import numpy as np
+import pandas as pd
 
-Carefully read this template since it has instructions and tips to
-writing!
+# Visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
+import matplotlib.ticker as ticker
+from matplotlib.ticker import MaxNLocator
 
-More information about `revealjs`:
-<https://quarto.org/docs/reference/formats/presentations/revealjs.html>
-:::
+# Scikit-learn utilities
+from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
 
-## Introduction  {.smaller}
+# Metrics
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    classification_report,
+    confusion_matrix,
+    make_scorer
+)
 
--   Develop a storyline that captures attention and maintains interest.
+# Models
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+from lightgbm import LGBMClassifier
+from catboost import CatBoostClassifier
 
--   Your audience is your peers
-
--   Clearly state the problem or question you're addressing.
-
--   Introduce why it is relevant needs.
-
--   Provide an overview of your approach.
-
-In kernel estimator, weight function is known as kernel function
-[@efr2008]. Cite this paper [@bro2014principal]. The GEE [@wang2014].
-The PCA [@daffertshofer2004pca]\*
-
-## Methods
-
--   Detail the models or algorithms used.
-
--   Justify your choices based on the problem and data.
+# Imbalance handling
+from imblearn.pipeline import Pipeline as ImbPipeline
+from imblearn.under_sampling import RandomUnderSampler
+from imblearn.over_sampling import RandomOverSampler, SMOTE
+from imblearn.combine import SMOTEENN, SMOTETomek
 
 
+# Cyberpunk Plotting Setup
+plt.style.use('dark_background')
+neon_cyan = '#00FFFF'
+neon_magenta = '#FF00FF'
+neon_lime = '#00FF00'
+colors = [neon_cyan, neon_magenta, neon_lime]
 
-## Data Exploration and Visualization
+# Data Loading
+from pathlib import Path
+import pandas as pd
 
--   Describe your data sources and collection process.
+# HARD-SET your repo root (this is the path that contains index.qmd and the data/ folder)
+repo_root = Path("/Users/kareempiper/Projects/IDC6940_DataPraxisAI")
+data_dir = repo_root / "data"
+train_path = data_dir / "train.csv"
+test_path  = data_dir / "test.csv"
 
--   Present initial findings and insights through visualizations.
+print("Repo root:", repo_root)
+print("Train exists:", train_path.exists(), train_path)
+print("Test exists:", test_path.exists(), test_path)
 
--   Highlight unexpected patterns or anomalies.
+if not (data_dir.exists() and train_path.exists() and test_path.exists()):
+    raise FileNotFoundError(
+        f"Expected data files not found.\n"
+        f"data_dir: {data_dir} (exists={data_dir.exists()})\n"
+        f"train: {train_path} (exists={train_path.exists()})\n"
+        f"test:  {test_path} (exists={test_path.exists()})"
+    )
 
-## Data Exploration and Visualization {.smaller}
+train_data = pd.read_csv(train_path)
+test_data  = pd.read_csv(test_path)
 
-A study was conducted to determine how...
+print("Train shape:", train_data.shape)
+print("Test shape:", test_data.shape)
 
-```{r, warning=FALSE, echo=F, message=FALSE}
-# loading packages 
-library(tidyverse)
-library(knitr)
-library(ggthemes)
-library(ggrepel)
-library(dslabs)
+# Strip extra spaces from column names
+train_data.columns = train_data.columns.str.strip()
+test_data.columns = test_data.columns.str.strip()
+
+# Drop id columns if present
+train_data.drop(columns=['id'], inplace=True, errors='ignore')
+test_data.drop(columns=['id'], inplace=True, errors='ignore')
 ```
 
-```{r, warning=FALSE, echo=F}
-# Load Data
-#kable(head(murders))
 
-ggplot1 = murders %>% ggplot(mapping = aes(x=population/10^6, y=total)) 
+## Introduction {.smaller}
 
-  ggplot1 + geom_point(aes(col=region), size = 4) +
-  geom_text_repel(aes(label=abb)) +
-  scale_x_log10() +
-  scale_y_log10() +
-  geom_smooth(formula = "y~x", method=lm,se = F)+
-  xlab("Populations in millions (log10 scale)") + 
-  ylab("Total number of murders (log10 scale)") +
-  ggtitle("US Gun Murders in 2010") +
-  scale_color_discrete(name = "Region")+
-      theme_bw()
-  
+-  The Problem: Student attrition is more than just a metric; it is a catalyst for societal issues. When a student drops out, they face a less competitive job market, leading to economic deficiencies and reduced healthcare access [@realinho2022].
+
+-  The Scale: While many graduate, 30% of US students dropout—frequently in their first year. It is a "silent crisis" in higher education [@aina2022].
+
+-  The Question: Can we move beyond simple statistics to a holistic lens? We need to understand the relationship between sociological, economic, and psychological factors to intervene effectively.
+
+-  The Methodology: By using Machine Learning, we can converge these high-dimensional factors into a predictive "early warning system" [@raschka2022].
+
+
+## Research Questions {.smaller}
+
+#### Primary Question (RQ1)
+
+-  Which multi-class machine learning classifier achieves the highest predictive performance (Accuracy, Precision, F1-score) on the UCI Student Dropout Dataset?
+
+#### Sub-Questions
+
+-   RQ1a: How do data balancing techniques (SMOTE, RUS) affect performance across skewed classes?
+
+-   RQ1b: How do Gradient Boosting models compare to traditional ensembles in this high-dimensional space?
+
+
+## Methods : The Dataset 
+
+-   Source: UCI Irvine Machine Learning Repository [@realinho2022].
+
+-   Dataset Characteristics: Tubular dataset meant for social sciences and classification-based projects [@realinho2022].
+
+-   Shape: $n = 4,424$ cases and $n = 36$ features.
+
+-   Target Classes: Dropout, Enrolled, and Graduate.
+
+-   Feature Types: Real, categorical, and integer-based features representing demographic, financial, and academic domains.
+
+
+## Methods: Class Imbalance Challenge
+
+
+```{python}
+#| label: plot-target-dist
+fig1, ax1 = plt.subplots(figsize=(8,5))
+tg_cnts = train_data.Target.value_counts()
+tg_cnts_pct = (tg_cnts / tg_cnts.sum()) * 100
+ax1.bar(tg_cnts.index, tg_cnts_pct, color=colors, edgecolor='white', linewidth=0.5)
+ax1.set_ylabel('Percentage')
+ax1.set_title('Target Distribution: Class Imbalance', color=neon_cyan)
+for i, pct in enumerate(tg_cnts_pct):
+    ax1.text(i, pct + 1, f'{pct:.1f}%', ha='center', va='bottom', color='white', fontweight='bold')
+plt.show()
+```
+
+-   Graduate: 49.9% | Dropout: 32.1% | Enrolled: 17.9%.
+
+-   Why it matters: Skewed data leads to model bias towards the majority (Graduate) class.
+
+
+## EDA: Descriptive Statistics
+
+#### Table 1: Descriptive Statistics for Selected Numerical Features
+
+| Statistic          | Age at Enrollment | Admission Grade | Curricular Units 2nd Sem (Grade) | Unemployment Rate | Inflation Rate | GDP     |
+|:-------------------|:------------------|:----------------|:---------------------------------|:------------------|:---------------|:--------|
+| Count              | 3539.0            | 3539.0          | 3539.0                           | 3539.0            | 3539.0         | 3539.0  |
+| Mean               | 23.3              | 126.88          | 11.23                            | 11.5              | 1.23           | 1.76    |
+| Std                | 6.13              | 14.53           | 2.94                             | 2.62              | 1.63           | 2.33    |
+| Min                | 17.0              | 95.0            | 0.0                              | 7.6               | -0.8           | -4.06   |
+| 25%                | 19.0              | 117.8           | 10.33                            | 9.4               | 0.3            | 0.58    |
+| 50%                | 21.0              | 126.0           | 12.0                             | 11.1              | 1.4            | 1.74    |
+| 75%                | 25.0              | 134.9           | 13.0                             | 13.9              | 2.6            | 3.26    |
+| Max                | 70.0              | 190.0           | 18.0                             | 16.2              | 3.7            | 3.51    |
+
+- **Observation:** High variance in Age and Admission grades suggests a diverse student population with varying levels of academic readiness.
+
+---
+
+## EDA: Feature Cardinality
+
+- **Why:** Identifying low-cardinality features allows for efficient **One-Hot Encoding** in the pipeline [@namoun2020].
+
+## EDA: Unique Value Table
+
+**Table 2: Unique Value Counts (Binary & Categorical)**
+
+| Feature | Unique Count | Feature Type |
+|:---|:---|:---|
+| Daytime/evening attendance | 2 | Binary |
+| Debtor | 2 | Binary |
+| Scholarship holder | 2 | Binary |
+| Gender | 2 | Binary |
+| Marital status | 6 | Categorical |
+| Application order | 8 | Categorical |
+---
+
+##  EDA: Correlation Analysis
+
+- **Spearman Correlation Matrix:** Conducted to identify non-linear relationships between numeric features.
+- **Key Link:** Strong positive correlation observed between 1st and 2nd-semester curricular units (Approved and Grade).
+- **Red Flag:** Categorical features encoded as integers require careful interpretation to avoid false correlation signals [@raschka2022].
+
+## EDA: Spearman Rank Correlation Plot
+
+```{python}
+#Select numeric features only (exclude Target)
+numeric_cols = train_data.select_dtypes(include=['int64', 'float64']).columns
+numeric_cols = [col for col in numeric_cols if col != 'Target']
+
+plt.figure(figsize=(20, 15))
+sns.heatmap(
+    train_data[numeric_cols].corr(method='spearman'),
+    cmap='magma',
+    annot=True,
+    fmt='.1f',
+    linewidths=0.5
+)
+plt.title('Spearman Correlation Matrix (Numeric Features)')
+plt.show()
+```
+
+##  EDA: Categorical Distributions
+
+- **What:** Visualized via bar charts to identify the frequency of specific student attributes.
+- **Key Finding:** Features like "Displaced" and "Tuition fees up to date" show significant splits across the target classes.
+- **Why:** These distributions inform the model's ability to distinguish between a student who is likely to graduate versus one at risk of dropping out.
+
+## EDA: Catagorical Distributions Plot
+
+```{python}
+### Identification of Categorical Features
+
+# Identify categorical columns based on low cardinality
+cat_cols = [
+    col for col in train_data.columns
+    if col != 'Target' and train_data[col].nunique() <= 8
+]
+
+# Convert to categorical dtype (for CatBoost compatibility later)
+for col in cat_cols:
+    train_data[col] = train_data[col].astype('category')
+    test_data[col] = test_data[col].astype('category')
+
+print("Categorical columns:")
+print(cat_cols)
+```
+
+```{python}
+# Categorical feature distributions
+n_cols = 4
+n_rows = int(np.ceil(len(cat_cols) / n_cols))
+
+fig, axs = plt.subplots(n_rows, n_cols, figsize=(11, 2.2 * n_rows))
+axs = np.array(axs).ravel()
+
+# Define a cyberpunk color palette
+cyberpunk_palette = sns.color_palette('magma', n_colors=8)
+
+for ax, col in zip(axs, cat_cols):
+    vc = train_data[col].value_counts(normalize=True).sort_index()
+    # Use the color palette for bars, cycling through it if more categories than colors
+    ax.bar(vc.index.astype(str), vc, color=cyberpunk_palette[:len(vc)])
+    ax.set_title(col, fontsize=10)
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f'{x:.0%}'))
+    ax.tick_params(axis='x', labelrotation=45)
+
+# Turn off any unused axes
+for ax in axs[len(cat_cols):]:
+    ax.set_visible(False)
+plt.tight_layout()
+plt.show()
 
 ```
 
-## Modeling and Results
 
--   Explain your data preprocessing and cleaning steps.
+## Methods: Data Preparation and Preprocessing
 
--   Present your key findings in a clear and concise manner.
+-   The following steps and strategies were implemented to prepare the UCI Student Dropout dataset for analysis, ensuring model robustness and preventing data leakage.
 
--   Use visuals to support your claims.
+-   Further, I established a structured machine learning pipeline using `ColumnTransformer` to ensure reproducibility and prevent data leakage [@raschka2022].
 
--   **Tell a story about what the data reveals.**
+## Preprocessing Table 1
 
-```{r}
+**Table 3: Preprocessing Workflow (The What & Why)**
 
-```
+| Step | Technique | Purpose (The Why) |
+|:---|:---|:---|
+| **Separation** | Feature Matrix ($X$) vs Target ($Y$) | Isolates predictors from the objective. |
+| **Casting** | Target as String type | Prevents ordinal interpretation; ensures consistent processing. |
+| **Label Encoding** | `LabelEncoder` | Transforms "Dropout", "Enrolled", "Graduate" into (0, 1, 2) [@raschka2022]. |
+| **Partitioning** | 80/20 Stratified Split | Ensures original class distribution is preserved in training/validation [@pek2023]. |
 
-## Conclusion
+## Preprocessing Table 2
 
--   Summarize your key findings.
+**Table 4: Preprocessing Workflow (The What & Why)**
 
--   Discuss the implications of your results.
+| Feature Type | Strategy | Reason (The Why) |
+|:---|:---|:---|
+| **Numerical** | `SimpleImputer` (Median) | Addresses potential missing values using the median technique as a precaution and sanity check without skewing distribution [@andradegiron2023]. |
+| **Categorical** | `OneHotEncoder` | Converts nominal variables into binary classification to ensure capability with classification algorithms [@namoun2020]. |
+| **Cardinality** | Threshold $\le 8$ | Variables with low cardinality are identified for one-hot encoding to ensure nominal variables are addressed [@andradegiron2023]. |
 
-## References
+- **Why:** Embedding preprocessing into the pipeline ensures that all transformations are learnt from the training data, enhancing the potential for generalization and reducing data leakage [@raschka2022].
+
+
+## Methods: Class Imbalance Techniques and Machine Learning Classifiers
+
+## Class Imbalancing Technqies Table
+
+**Table 5: Class Imbalance Techniques (The What & Why)**
+
+| Technique    | Category      | Purpose (The Why)                                                                   |
+|:-------------|:--------------|:------------------------------------------------------------------------------------|
+| RUS          | Under-sampling| Reduces majority class instances to match the minority class.                       |
+| ROS          | Over-sampling | Replicates minority class instances to balance the distribution.                    |
+| SMOTE        | Synthetic     | Creates new synthetic minority examples to increase minority representation.        |
+| SMOTE-ENN    | Hybrid        | Over-samples the minority class then cleans noisy data points using Edited Nearest Neighbors. |
+| SMOTE-Tomek  | Hybrid        | Removes overlapping class boundaries by identifying and removing Tomek links.       |
+
+
+## Machine Learning Classfieres Table
+
+**Table 6: Models Used in the Study**
+
+| Model        | Category           |
+|:-------------|:-------------------|
+| RandomForest | Ensemble (Bagging) |
+| XGBoost      | Gradient Boosting  |
+| LightGBM     | Gradient Boosting  |
+| CatBoost     | Gradient Boosting  |
+
+
+## Analysis and Results
+
+
+
+
+## Conclusions

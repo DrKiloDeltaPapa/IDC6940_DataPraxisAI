@@ -30,12 +30,10 @@ editor:
     wrap: 72
 ---
 
-Slides: [slides.html](slides.html){target="_blank"} ( Go to `slides.qmd`
-to edit)
+<a href="slides.html" target="_blank">Slides</a>
 
-::: callout-important
-**Placeholder**
-:::
+
+
 
 ## Introduction
 

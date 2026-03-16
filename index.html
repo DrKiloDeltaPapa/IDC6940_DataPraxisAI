@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kareem D. Piper (Advisor: Dr. Shusen Pu)">
-<meta name="dcterms.date" content="2026-03-13">
+<meta name="dcterms.date" content="2026-03-16">
 
 <title>Multi-Class Machine Learning Approaches to Student Dropout</title>
 <style>
@@ -2415,7 +2415,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 13, 2026</p>
+      <p class="date">March 16, 2026</p>
     </div>
   </div>
   
@@ -2430,25 +2430,25 @@ window.Quarto = {
 <p><a href="slides.html" target="_blank">Slides</a></p>
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>The goal of this capstone project is to test, assess and report the results various multi-class machine learning prediction models on their ability to accurately predict student dropout in the higher education setting. According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> student attrition and academic failure not only negatively affect the education institutions that students attend, but create greater societal issues. For example, when students dropout prior to completing a degree program it makes them less competitive concerning the job market, which then leads to economic deficiencies, which can lead to inadequate health care access and subsequent more dire socio-economic issues that often disproportionately affect marginalized demographics <span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>.</p>
-<p>According to <span class="citation" data-cites="aina2022">Aina et al. (<a href="#ref-aina2022" role="doc-biblioref">2022</a>)</span> statistics released by the Organization of Economic Co-Operation and Development (OECD) state that though the proportion of students enrolling and graduating colleges and universities far exceeds those dropping out, dropout still represents a third of said students. Further, <span class="citation" data-cites="aina2022">Aina et al. (<a href="#ref-aina2022" role="doc-biblioref">2022</a>)</span> assert that thirty percent of students in united States dropout, with many of them being early dropouts (i.e., first year of college). Student dropout is a complex issues and there are many factors that attribute to it <span class="citation" data-cites="aina2022">(<a href="#ref-aina2022" role="doc-biblioref">Aina et al., 2022</a>)</span>. The factors that attribute to student dropout boarder sociological, economical and psychological domains as such according to <span class="citation" data-cites="aina2022">Aina et al. (<a href="#ref-aina2022" role="doc-biblioref">2022</a>)</span> scholars approach the phenomena from their respective fields of expertise. There is a need for a more holistic lens when researching the causes of student dropout to better understand the relationships between the factors that attribute to it thus gaining insights on how best to mitigate it through intervention <span class="citation" data-cites="aina2022">(<a href="#ref-aina2022" role="doc-biblioref">Aina et al., 2022</a>)</span>.</p>
-<p>Machine Learning provides the ability for researchers to approach student dropout in a holistic manner specifically because models can converge high dimensional data sets <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Researchers <span class="citation" data-cites="realinho2022 ridwan2024">(e.g., <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span> have utilized machine learning methods to predict student dropout. However, according to <span class="citation" data-cites="mduma2023">Mduma (<a href="#ref-mduma2023" role="doc-biblioref">2023</a>)</span>, the prediction of student dropout is a particularly challenging issues for education researchers, this is due in large part to class imbalance. According to <span class="citation" data-cites="mduma2023">Mduma (<a href="#ref-mduma2023" role="doc-biblioref">2023</a>)</span> many real world datasets concerning student dropout are largely skewed towards the retained or enrolled classes. Many scholars pay particular attention to feature engineering methods when using machine learning methodologies to address the issue of predicting student attrition. However, <span class="citation" data-cites="mduma2023">Mduma (<a href="#ref-mduma2023" role="doc-biblioref">2023</a>)</span> asserted that class imbalance presents limitations concerning model accuracy and generalization and thus framed their study around that issue.</p>
-<p>This capstone project, focuses on the appropriate data preprocessing methods, feature engineering methods, and methods to adequately address class imbalance. Further, I specifically use machine learning models that have a proven track record in the literature <span class="citation" data-cites="realinho2022 ridwan2024">(e.g., <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span> concerning their ability to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Categorical Boosting (CatBoost).</p>
+<p>The goal of this capstone project is to test, assess and report the results of various multi-class machine learning prediction models on their ability to accurately predict student dropout in the higher education setting. According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span>, student attrition and academic failure not only negatively affect the education institutions that students attend, but also create greater societal issues. For example, when students drop out prior to completing a degree program, it makes them less competitive in the job market, which then leads to economic deficiencies, which can lead to inadequate health care access and subsequent more dire socio-economic issues that often disproportionately affect marginalized demographics <span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>.</p>
+<p>According to <span class="citation" data-cites="aina2022">Aina et al. (<a href="#ref-aina2022" role="doc-biblioref">2022</a>)</span>, statistics released by the Organization of Economic Co-Operation and Development (OECD) state that though the proportion of students enrolling and graduating from colleges and universities far exceeds those dropping out, dropout still represents a third of said students. Further, <span class="citation" data-cites="aina2022">Aina et al. (<a href="#ref-aina2022" role="doc-biblioref">2022</a>)</span> assert that thirty percent of students in United States dropout, with many of them being early dropouts (i.e., first year of college). Student dropout is a complex issues and there are many factors that attribute to it <span class="citation" data-cites="aina2022">(<a href="#ref-aina2022" role="doc-biblioref">Aina et al., 2022</a>)</span>. The factors that contribute to student dropout boarder sociological, economic, and psychological domains, as such according to <span class="citation" data-cites="aina2022">Aina et al. (<a href="#ref-aina2022" role="doc-biblioref">2022</a>)</span> scholars approach the phenomena from their respective fields of expertise. There is a need for a more holistic lens when researching the causes of student dropout to better understand the relationships among the factors that contribute to it, thereby gaining insights on how best to mitigate it through intervention <span class="citation" data-cites="aina2022">(<a href="#ref-aina2022" role="doc-biblioref">Aina et al., 2022</a>)</span>.</p>
+<p>Machine Learning provides the ability for researchers to approach student dropout in a holistic manner specifically because models can converge high dimensional data sets <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Researchers <span class="citation" data-cites="realinho2022 ridwan2024">(e.g., <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span> have utilized machine learning methods to predict student dropout. However, according to <span class="citation" data-cites="mduma2023">Mduma (<a href="#ref-mduma2023" role="doc-biblioref">2023</a>)</span>, the prediction of student dropout is a particularly challenging issue for education researchers, due in large part to class imbalance. According to <span class="citation" data-cites="mduma2023">Mduma (<a href="#ref-mduma2023" role="doc-biblioref">2023</a>)</span> many real world datasets concerning student dropout are largely skewed towards the retained or enrolled classes. Many scholars pay particular attention to feature engineering methods when using machine learning methodologies to address the issue of predicting student attrition. However, <span class="citation" data-cites="mduma2023">Mduma (<a href="#ref-mduma2023" role="doc-biblioref">2023</a>)</span> asserted that class imbalance presents limitations concerning model accuracy and generalization and thus framed their study around that issue.</p>
+<p>This capstone project focuses on the appropriate data preprocessing methods, feature engineering methods, and methods to adequately address class imbalance. Further, I specifically use machine learning models that have a proven track record in the literature <span class="citation" data-cites="realinho2022 ridwan2024">(e.g., <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span> concerning their ability to address multi-class datasets, for example Random Forest(RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM) and Categorical Boosting (CatBoost).</p>
 </section>
 <section id="research-questions" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="research-questions"><span class="header-section-number">2</span> Research Questions</h2>
-<p>The purpose of this capstone project is to assess and report the results various multi-class machine learning prediction models on their ability to accurately predict student dropout in the higher education setting using the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>). To inform this capstone project’s purpose I asked the following primary and sub-research questions.</p>
+<p>The purpose of this capstone project is to assess and report the results of various multi-class machine learning prediction models on their ability to accurately predict student dropout in the higher education setting using the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>). To inform this capstone project’s purpose, I asked the following primary and sub-research questions.</p>
 <p><strong>Primary Research Question</strong></p>
 <p><strong>RQ1:</strong> Which multi-class machine learning classifier achieves the highest predictive performance as measured by; accuracy, precision, and F1-score when applied to the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>)?</p>
-<p><strong>RQ1a:</strong> How do methods of addressing class imbalance affect the predictive performance of multi-class machine learning classfiers?</p>
-<p><strong>RQ1b:</strong> How does the performance of gradient boosting models compare to tradtional ensable models in multi-class student attrition prediciton?</p>
+<p><strong>RQ1a:</strong> How do methods of addressing class imbalance affect the predictive performance of multi-class machine learning classifiers?</p>
+<p><strong>RQ1b:</strong> How does the performance of gradient boosting models compare to traditional ensable models in multi-class student attrition prediction?</p>
 </section>
 <section id="methods" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="methods"><span class="header-section-number">3</span> Methods</h2>
-<p>The main research question of this capstone project centers around comparing multi-class machine learning classifiers and addressing class imbalance, to accurately predict student dropout in a higher education setting. Thus, the methods I use correlate directly to those used by <span class="citation" data-cites="mduma2023 realinho2022">(e.g., <a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. For example, like the dataset used by <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span>, the target in this capstone’s dataset has three categories (i.e, dropout, enrolled, and graduate), which requires the use of multi-class classifiers. As is the case with many real world datasets the classes in the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student DropoutDataset</a>) are skewed towards enrolled and graduated. To address the issue of class imbalance <span class="citation" data-cites="mduma2023">Mduma (<a href="#ref-mduma2023" role="doc-biblioref">2023</a>)</span>, I use five varied data balancing techniques each paired with multi-class machine learning classifier to determine which pairing most accurately predicted student dropout. The subsequent sections of these methods are broken down into to parts, 1. Multi-Class Methods and 2. Data Balancing Methods, where I provide a detailed account of how both are incorporated in this capstone’s machine learning pipeline.</p>
-<p>As mentioned previously the dataset I am using stems from the UC Irvine Machine Learning Repository and can be accessed here:(<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>) <span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> characterize the dataset as tubular, and state that it is meant for the social sciences, specifically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> consist of real, categorical and integers based features. According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> the dataset was created specifically to help researchers interested in studying the factors that contribute to student dropout or academic failure in higher education using machine learning methods. There target has three categories (i.e., dropout, enrolled and graduate). According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> the dataset was rigorously preprocessed and consist of no null or missing values.</p>
-<p>To better understand the dataset I conducted exploratory data analysis (EDA) on the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>). My goal was to gain a deeper understanding of the datasets’ features, their relationship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitations concerning the chosen methods <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
-<div id="a44362f1" class="cell" data-execution_count="1">
+<p>The main research question of this capstone project centers around comparing multi-class machine learning classifiers and addressing class imbalance, to accurately predict student dropout in a higher education setting. Thus, the methods I use correlate directly to those used by <span class="citation" data-cites="mduma2023 realinho2022">(e.g., <a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. For example, like the dataset used by <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span>, the target in this capstone’s dataset has three categories (i.e, dropout, enrolled, and graduate), which requires the use of multi-class classifiers. As is the case with many real world datasets the classes in the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student DropoutDataset</a>) are skewed towards enrolled and graduated. To address the issue of class imbalance I used five varied data balancing techniques each paired with multi-class machine learning classifier to determine which pairing most accurately predicted student dropout <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.</p>
+<p>As mentioned previously the dataset I used in this study stems from the UC Irvine Machine Learning Repository and can be accessed here:(<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>) <span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> characterize the dataset as tubular, and state that it is meant for the social sciences, specifically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> consist of real, categorical and integers based features. According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> the dataset was created specifically to help researchers who are interested in studying which factors contribute to student dropout or academic failure in higher education using machine learning methods. There target has three categories (i.e., dropout, enrolled and graduate). According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> the dataset was rigorously preprocessed and consist of no null or missing values.</p>
+<p>To better understand the dataset I conducted exploratory data analysis (EDA) on the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>). My goal was to gain a deeper understanding of the datasets’ features, their relationship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitations concerning the chosen methods <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The full EDA code can be found in this (<a href="https://github.com/DrKiloDeltaPapa/IDC6940_DataPraxisAI/blob/main/IDC6940_DataPraxisAI_Capstone.ipynb">Jupyter Notebook</a>).</p>
+<div id="0d06384a" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Install (run once in Colab / fresh venv) ---</span></span>
@@ -2506,7 +2506,7 @@ window.Quarto = {
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.combine <span class="im">import</span> SMOTEENN, SMOTETomek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="8c98f794" class="cell" data-execution_count="2">
+<div id="63edd9bd" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -2544,7 +2544,7 @@ Train shape: (3539, 37)
 Test shape: (885, 37)</code></pre>
 </div>
 </div>
-<div id="23021541" class="cell" data-execution_count="3">
+<div id="c8f45f43" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show all columns</span></span>
@@ -2552,7 +2552,7 @@ Test shape: (885, 37)</code></pre>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="f8d1a26b" class="cell" data-execution_count="4">
+<div id="0a8a908f" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>train_data.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2656,19 +2656,19 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="31238713" class="cell" data-execution_count="5">
+<div id="78da0342" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="46729e26" class="cell" data-execution_count="6">
+<div id="9dd4f151" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>test_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="7be084a9" class="cell" data-execution_count="7">
+<div id="98d187de" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tg_cnts <span class="op">=</span> train_data.Target.value_counts()</span>
@@ -2697,7 +2697,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="14b4a396" class="cell" data-execution_count="8">
+<div id="a72c1484" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature Cardinality Check</span></span>
@@ -2789,7 +2789,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="4bd26df1" class="cell" data-execution_count="9">
+<div id="01e8880e" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Target Distribution by Gender</span></span>
@@ -2855,7 +2855,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="d1d0324b" class="cell" data-execution_count="10">
+<div id="22bb45d2" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Scholarship status</span></span>
@@ -2924,7 +2924,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="bd24d1a0" class="cell" data-execution_count="11">
+<div id="ce683a05" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Debtor status</span></span>
@@ -2993,7 +2993,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="2401846f" class="cell" data-execution_count="12">
+<div id="af90a3c9" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Age Distribution by Target (ECDF)</span></span>
@@ -3020,7 +3020,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="5052f1b0" class="cell" data-execution_count="13">
+<div id="fd2080bf" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Approved 2nd Semester Units by Target (ECDF)</span></span>
@@ -3053,7 +3053,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="74a1ba9c" class="cell" data-execution_count="14">
+<div id="d7f319f3" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 2nd Semester Grade Distribution by Target (ECDF)</span></span>
@@ -3085,7 +3085,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="fdf35809" class="cell" data-execution_count="15">
+<div id="659d5a04" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Identification of Categorical Features</span></span>
@@ -3109,7 +3109,7 @@ Test shape: (885, 37)</code></pre>
 [&#39;Marital status&#39;, &#39;Application order&#39;, &#39;Daytime/evening attendance&#39;, &#39;Displaced&#39;, &#39;Educational special needs&#39;, &#39;Debtor&#39;, &#39;Tuition fees up to date&#39;, &#39;Gender&#39;, &#39;Scholarship holder&#39;, &#39;International&#39;]</code></pre>
 </div>
 </div>
-<div id="61f805be" class="cell" data-execution_count="16">
+<div id="33641424" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical feature distributions</span></span>
@@ -3144,7 +3144,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="f17229be" class="cell" data-execution_count="17">
+<div id="1bc4b639" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Continuous Feature Distributions</span></span>
@@ -3181,7 +3181,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="a7a3d8d2" class="cell" data-execution_count="18">
+<div id="088e1c44" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer feature distributions</span></span>
@@ -3219,7 +3219,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="b7ffc08a" class="cell" data-execution_count="19">
+<div id="8cd28fb9" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Spearman Correlation Analysis</span></span>
@@ -3247,20 +3247,20 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<p>The (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>) does depict significant class imbalance with the Graduate class representing 49.9%, (n = 2,209) of the distribution followed by the Dropout Category class at 32.1%, (n = 1,421) and finally the Enrolled class at 17.9%, (n = 794). I observed several meaningful relationships across the feature groups (i.e., demographic, financial and academic). For example, demographic and financial features displayed strong correlations to the target. When I ran the crosstab on the gender feature, it showed that males were more likely to dropout and females more likely to graduate. Those students who held scholarships also showed higher graduation rates compared to non-scholarship students, and were less likely to drop out. Further, those students who were in financial distress as indicated by being coded as debtors had lower graduation rates than those coded as non-debtors. Concerning academic features, second-semester grades and approved curricular units showed clear dispersion between the target classes, which may indicate importance pertaining to class prediction.</p>
-<p>As mentioned the dataset does display significant class imbalance. This class imbalance if left un-checked can lead to model bias towards the majority class <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>. I also noticed that many of the categorical features were encoded as integers which may lead to false interpretation when conducting correlation analysis if not addressed <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Another limitation that this data presents is its lack of temporal features. As the data represents a snapshot in time, models may not be able to capture the full complexity of predicting student dropout due to the lack of dynamic changes over time. Finally, as this data stems from a single institution, the findings may present limitation concerning generalization. Though I am not as concerned with this as the purpose of this study is to test which model and data balancing techniques when paired has the highest accuracy.In the following paragraphs I explain the full machine learning pipeline that I employed to test and evaluate the multi-class classifiers as well as the class balancing techniques that accompanied them.</p>
-<p>Following the exploratory data analysis, I began to prepare the dataset for analysis. As is consistent with prior research using machine learning to predict student dropout <span class="citation" data-cites="barramuno2022 mun2023 kok2024">(e.g., <a href="#ref-barramuno2022" role="doc-biblioref">Barramuno et al., 2022</a>; <a href="#ref-kok2024" role="doc-biblioref">Kok et al., 2024</a>; <a href="#ref-mun2023" role="doc-biblioref">Mun &amp; Jo, 2023</a>)</span>. For example, I separated the feature matrix (X) from the target (Y). The target was cast as a string type to prevent ordinal interpretation and to ensure consistent label processing. Next, I used LabelEcoder to transform the categories of the target (i.e., “DropOut”, “Enrolled”, and “Graduate”) into numerical categories (i.e., ‘Dropout’: 0, ‘Enrolled’: 1, and ‘Graduate’ : 2) <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The dataset was then partitioned into training subset and a validation subset using a train_test_split of 80:20 and stratification to preserve the the original class distribution across both sets <span class="citation" data-cites="mduma2023 pek2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>. Stratification used by researchers <span class="citation" data-cites="mduma2023 pek2023">(e.g., <a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>, is particularly important to predicting student dropout when class imbalance presents a limitation as class imbalance if left unchecked can lead to bias.</p>
-<p>Next, I established a structured machine learning pipeline using CoumnTransfromer which ensured reproducibility and prevented data leakage <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Categorical features which were identified by ‘object’ and ‘categorical’ as well as variables with low cardinality (i.e., ≤ 8 unique values) were preprocessed using SimpleImputer followed by OneHotEcoder converting all nominal variables with binary classification to ensure capability with classification algorithms <span class="citation" data-cites="namoun2020 andradegiron2023">(<a href="#ref-andradegiron2023" role="doc-biblioref">Andrade-Giron et al., 2023</a>; <a href="#ref-namoun2020" role="doc-biblioref">Namoun &amp; Alshanqiti, 2020</a>)</span>. Though the dataset according to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> had no missing values, as a precaution and sanity check I addressed any potential missing values in the numerical features using the SimpleImpyter median technique. By embedding preprocessing into the pipeline ensured that all transformations were learnt from the training data thus reducing data leakage enhancing the potential for generalization.</p>
-<p>This study employs a systematic experimental framework to evaluate the effect of class imbalance mitigation techniques paired with multi-class classifiers using a machine learning pipeline. In comparing multiple resampling techniques and gradient boosting architectures all while ensuring rigorous validation methods enabled rigorous model robustness, minority class sensitivity and generalization performance <span class="citation" data-cites="delen2024 kok2024 ridwan2024">(e.g., <a href="#ref-delen2024" role="doc-biblioref">Delen et al., 2024</a>; <a href="#ref-kok2024" role="doc-biblioref">Kok et al., 2024</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span>. The established framework provided the foundation for all model analyses and interpretive model evaluations conducted in the following Analysis and Results section <span class="citation" data-cites="mduma2023 pek2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>.</p>
+<p>The (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>) does depict significant class imbalance with the Graduate class representing 49.9%, (n = 2,209) of the distribution followed by the Dropout Category class at 32.1%, (n = 1,421) and finally the Enrolled class at 17.9%, (n = 794). I observed several meaningful relationships across the feature groups (i.e., demographic, financial and academic). For example, demographic and financial features displayed strong correlations to the target. When I ran the crosstab on the gender feature, it showed that males were more likely to dropout and females more likely to graduate. Those students who held scholarships also showed higher graduation rates compared to non-scholarship students, and were less likely to drop out. Further, those students who were in financial distress as indicated by being coded as debtors had lower graduation rates than those coded as non-debtors. Concerning academic features, the <em>second-semester grades</em> and <em>approved curricular units</em> features showed clear dispersion between the target classes, which may indicate importance pertaining to class prediction.</p>
+<p>As mentioned the dataset does display significant class imbalance. This class imbalance if left un-checked can lead to model bias towards the majority class <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>. I also noticed that many of the categorical features were encoded as integers, which may lead to false interpretation when conducting correlation analysis if not addressed properly <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Another limitation that this data presents is its lack of temporal features. As the data represents a snapshot in time, models may not be able to capture the full complexity of predicting student dropout due to the lack of dynamic changes over time. Finally, as this data stems from a single institution, the findings may present limitation concerning generalization. Though I am not as concerned with this as the purpose of this study is to test which model and data balancing technique when paired has the highest accuracy. In the following paragraphs I explain the full machine learning pipeline that I employed to test and evaluate the multi-class classifiers as well as the class balancing techniques that accompanied them.</p>
+<p>Following the EDA, I began to prepare the dataset for analysis. As is consistent with prior research using machine learning to predict student dropout <span class="citation" data-cites="barramuno2022 mun2023 kok2024">(e.g., <a href="#ref-barramuno2022" role="doc-biblioref">Barramuno et al., 2022</a>; <a href="#ref-kok2024" role="doc-biblioref">Kok et al., 2024</a>; <a href="#ref-mun2023" role="doc-biblioref">Mun &amp; Jo, 2023</a>)</span>. For example, I separated the feature matrix (X) from the target (Y). The target was cast as a string type to prevent ordinal interpretation and to ensure consistent label processing. Next, I used LabelEcoder to transform the categories of the target (i.e., “DropOut”, “Enrolled”, and “Graduate”) into numerical categories (i.e., ‘Dropout’: 0, ‘Enrolled’: 1, and ‘Graduate’ : 2) <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The dataset was then partitioned into training subset and a validation subset using a train_test_split of 80:20 and stratification to preserve the the original class distribution across both sets <span class="citation" data-cites="mduma2023 pek2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>. Stratification is used by researchers <span class="citation" data-cites="mduma2023 pek2023">(e.g., <a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>, to maintain balance among the target classes when splitting, and is particularly important to predicting student dropout when class imbalance presents a limitation, as class imbalance, if left unchecked, can lead to bias.</p>
+<p>Next, I established a structured machine learning pipeline using ColumnTransfromer which ensured reproducibility and prevented data leakage <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Categorical features which were identified by ‘object’ and ‘categorical’ as well as variables with low cardinality (i.e., ≤ 8 unique values) were preprocessed using SimpleImputer followed by OneHotEcoder converting all nominal variables with binary classification to ensure compatibility with classification algorithms <span class="citation" data-cites="namoun2020 andradegiron2023">(<a href="#ref-andradegiron2023" role="doc-biblioref">Andrade-Giron et al., 2023</a>; <a href="#ref-namoun2020" role="doc-biblioref">Namoun &amp; Alshanqiti, 2020</a>)</span>. Though the dataset, according to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> had no missing values, as a precaution and sanity check I addressed any potential missing values in the numerical features using the SimpleImputer median technique. By embedding preprocessing into the pipeline, I ensured that all transformations were learnt from the training data thus reducing data leakage and enhancing the potential for generalization.</p>
+<p>This study employs a systematic experimental framework to evaluate the effects of class- imbalance mitigation techniques paired with multi-class classifiers within a machine learning pipeline. In comparing multiple resampling techniques and gradient boosting architectures, while ensuring rigorous validation methods that enabled robustness, minority class sensitivity, and generalization performance <span class="citation" data-cites="delen2024 kok2024 ridwan2024">(e.g., <a href="#ref-delen2024" role="doc-biblioref">Delen et al., 2024</a>; <a href="#ref-kok2024" role="doc-biblioref">Kok et al., 2024</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span>. This established framework provided the foundation for all model analyses and interpretive model evaluations conducted in the following Analysis and Results section <span class="citation" data-cites="mduma2023 pek2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-pek2023" role="doc-biblioref">Pek et al., 2023</a>)</span>.</p>
 </section>
 </section>
 <section id="analysis-and-results" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="analysis-and-results"><span class="header-section-number">4</span> Analysis and Results</h2>
-<p>All model pipeline and experimentation was conducted in Google Colab using a jupyter notebook. As mentioned previously I encode the target into numeric class labels (i.e., ‘Dropout’: 0, ‘Enrolled’: 1, and ‘Graduate’ : 2). Next, I split the dataset into training and validation sets using a 80:20 train_test_split and stratification <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. All numeric and categorical features were preprocessed by imputation and one-hot encoding <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
-<p>After the data was pre-processed I implemented the class imbalancing techniques into the pipeline (i.e., RUS, ROS,SMOTE, SMOTE-ENN and SMOTE-Tomek) on the training set. Each data balancing technique was paired with a multi-class classifiers (i.e., RF, XGBoost, LightGBM, and CatBoost). All models were evaluated with multi-class metrics however F1-score was the primary metric <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.The effect of all model-balancing combinations were compared, and finally once the best model pipeline was selected I conduced a detailed evaluation using a confusion matrix and permutation feature importance <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.</p>
-<p>Permutation Feature importance is calculated by observing differences in model error (i.e., decreases or increases) when feature values are permutated<span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. If premutating feature values causes big differences in the model error, the feature is important to the overall model (see formula below).</p>
+<p>All model pipeline and experimentation was conducted in Google Colab using a (<a href="https://github.com/DrKiloDeltaPapa/IDC6940_DataPraxisAI/blob/main/IDC6940_DataPraxisAI_Capstone.ipynb">Jupyter Notebook</a>). As mentioned previously I encoded the target into numeric class labels (i.e., ‘Dropout’: 0, ‘Enrolled’: 1, and ‘Graduate’ : 2). Next, I split the dataset into training and validation sets using a 80:20 train_test_split and stratification <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. All numeric and categorical features were preprocessed by imputation and one-hot encoding <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
+<p>After the data was pre-processed I implemented the class-imbalancing techniques into the pipeline, that is, Random Under Sampling (RUS), Random Over Sampling (ROS), Synthetic Minority Over Sampling (SMOTE), Synthetic Minority Over Sampling with Edited Nearest Neighbors (SMOTE-ENN), and Synthetic Minority Over Sampling with Tomek Links (SMOTE-Tomek), on the training set. Each data balancing technique was paired with a multi-class classifiers, that is, Random Forest (RF), Extreme Gradient Boosting (XGBoost), Light Gradient Boosting Machine (LightGBM), and Categorical Boosting (CatBoost). I explain in more detail what comprises each of these class-imbalanacing techniques and multi-class classifiers in the formulas sections below. All models were evaluated with multi-class metrics however F1-score was the primary metric <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>. The effect of all model-balancing combinations were compared, and finally once the best model pipeline was selected I conduced a detailed evaluation using a confusion matrix and permutation feature importance <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.</p>
+<p>Permutation Feature importance is calculated by observing differences in model error (i.e., decreases or increases) when the feature values are permutated <span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. If premutating feature values causes big differences in the model error, the feature is important to the overall model (see formula below).</p>
 <ul>
-<li><strong>Permuation Feature Importance Formula</strong></li>
+<li><strong>Permutation Feature Importance Formula</strong></li>
 </ul>
 <p><span class="math display">\[
 PI_j = E_{\text{perm}(j)} - E_{\text{base}}
@@ -3349,8 +3349,8 @@ F_1 = \frac{2PR}{P + R}
 <li><span class="math inline">\(x_i\)</span> = The input vector including the catgorical variables</li>
 </ul>
 <p><strong>Data Balancing</strong></p>
-<p>To address class imbalance I implemented five data balancing techniques on the dataset; 1. Random Under Sampling (RUS), 2. Random Over Sampling (ROS), 3. Synthetic Minority Over Sampling (SMOTE), 4. Synthetic Minority Over Sampling with Edited Nearest Neighbors (SMOTE ENN), and 5. Sythentc Minority Over Sampling with TOMEK Links (SMOTE TOMEK) <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.</p>
-<p>Concerning RUS, this technique works by randomly removing observations from the majority class until the classes are approximatley equal.</p>
+<p>As mentioned previously, to address the issues of class imbalance, I implemented five data balancing techniques on the dataset; 1. RUS, 2. ROS, 3. SMOTE, 4. SMOTE ENN, and 5. SMOTE TOMEK <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.</p>
+<p>Concerning RUS, this technique works by randomly removing observations from the majority class until the classes are approximately equal.</p>
 <p><strong>Random Under Sampling Formula</strong></p>
 <p><span class="math display">\[
 \alpha_{us} = \frac{N_{m}}{N_{rM}}
@@ -3385,7 +3385,7 @@ x_{\text{new}} = x_i + \lambda \left(x_{nn} - x_i\right)
 <li><span class="math inline">\(\lambda\)</span> = Is the random interpolation where 0 <span class="math inline">\(\le\)</span> <span class="math inline">\(\lambda\)</span> <span class="math inline">\(\le\)</span> 1</li>
 <li><span class="math inline">\(k\)</span> = The total number of nearest neighbors considered</li>
 </ul>
-<p>SMOTE ENN works the same as SMOTE but adds a cleaning step that removes miss-classfied classes due to the nearest neighbor step, this reduces statistical noise and overlap.</p>
+<p>SMOTE ENN works the same as SMOTE but adds a cleaning step that removes miss-classified classes due to the nearest neighbor step, this reduces statistical noise and overlap.</p>
 <p><strong>Synthetic Minority Oversampling with Edited Nearest Neighbors Formula</strong> <span class="math display">\[
 D^{*} = \text{ENN}\bigl(\text{SMOTE}(D)\bigr)
 \]</span></p>
@@ -3408,8 +3408,8 @@ D^{*} = D_{\text{SMOTE}} \setminus TL
 <li><span class="math inline">\(\backslash\)</span> = The removal operator (i.e.,set subtraction)</li>
 <li><span class="math inline">\(D^{*}\)</span> = The final balanced dataset after overlapping TOMEK links are removed.</li>
 </ul>
-<p>By implementing the above data balancing techniques I ensured that the decision boundary was cleaned thus reducing statistical noise and improving model performance <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>. The five data balancing techniques (Random Over Sampler (ROS), Random Under Sampler (RUS), SMOTE, SMOTE ENN, and SMOTE Tomek, in addition to the original unbalanced dataset, were paired with each of the multi-class classifiers (i.e., Random Forest, XGBoost, and LightGBM) to assess which pair yielded the most optimal results. For example, I assessed performance in six instances: 1. On the original unbalanced dataset, 2. on the ROS balanced dataset, 3. on the RUS balanced dataset, 4. on the SMOTE balanced dataset, 5. on the SMOTE ENN balanced dataset, and 6. on the SMOTE TOMEK balanced dataset.</p>
-<p>Concerning model evaluation, specifically for measures of accuracy, I chose metrics that are particularly robust against unbalanced datasets. These included macro-averaged Precision, macro-averaged Recall, and macro-averaged F1-Score (<span class="math inline">\(F1_{\text{macro}}\)</span>). The macro-averaged F1-Score, in particular, was the primary criterion used to identify the best performing model, as it treats each class equally. I also considered overall accuracy and the weighted-averaged F1-Score (<span class="math inline">\(F1_{\text{weighted}}\)</span>) <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Macro-averaged metrics provide a balanced view of model performance across all classes, preventing excellent performance on majority classes from masking poor performance on minority classes.</p>
+<p>By implementing the above data balancing techniques I ensured that the decision boundary was cleaned thus reducing statistical noise and improving model performance <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>. The five data balancing techniques (i.e, ROS, RUS, SMOTE, SMOTE ENN, and SMOTE Tomek), in addition to the original unbalanced dataset, were paired with each of the multi-class classifiers (i.e., RF, XGBoost, and LightGBM) to assess which pair yielded the most optimal results. In other words, I assessed performance in six instances: 1. On the original unbalanced dataset, 2. on the ROS balanced dataset, 3. on the RUS balanced dataset, 4. on the SMOTE balanced dataset, 5. on the SMOTE ENN balanced dataset, and 6. on the SMOTE TOMEK balanced dataset.</p>
+<p>Concerning model evaluation, specifically for measures of accuracy, I chose metrics that are particularly robust against unbalanced datasets. These included macro-averaged Precision, macro-averaged Recall, and macro-averaged F1-Score (<span class="math inline">\(F1_{\text{macro}}\)</span>). The macro-averaged F1-Score, in particular, was the primary criterion used to identify the best performing model, as it treats each class equally. I also considered overall accuracy and the weighted-averaged F1-Score (<span class="math inline">\(F1_{\text{weighted}}\)</span>) <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Macro-averaged metrics provide a balanced view of model performance across all classes, preventing excellent performance on majority classes from masking poor performance on minority classes <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
 <p>As previously mentioned, this project utilized the F1-Score, a specific instance of the F-measure, primarily its macro-averaged and weighted-averaged forms, rather than a single general F-measure <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The fundamental formula for an F1-Score is:</p>
 <p><span class="math display">\[\text{F1-Score} = \frac{2PR}{P + R}\]</span></p>
 <p>Where:</p>
@@ -3420,7 +3420,7 @@ D^{*} = D_{\text{SMOTE}} \setminus TL
 <p>In this project, the macro-averaged F1-Score was calculated by computing the F1-Score independently for each class and then taking the unweighted mean. The weighted-averaged F1-Score was calculated by computing the F1-Score for each class and then averaging them by the number of true instances for each class <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
 <section id="modeling-and-results" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="modeling-and-results"><span class="header-section-number">4.1</span> Modeling and Results</h3>
-<div id="6fdb9baa" class="cell" data-execution_count="20">
+<div id="220103cf" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining X,y, and Encoding Multiclass Target</span></span>
@@ -3445,7 +3445,7 @@ D^{*} = D_{\text{SMOTE}} \setminus TL
 Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;: 2}</code></pre>
 </div>
 </div>
-<div id="3ab6cc71" class="cell" data-execution_count="21">
+<div id="137f8c3b" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stratified Train/Validation Split</span></span>
@@ -3463,7 +3463,7 @@ Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;:
 <pre><code>Train shape: (2831, 36) Val shape: (708, 36)</code></pre>
 </div>
 </div>
-<div id="5d9a9b2a" class="cell" data-execution_count="22">
+<div id="ca573e1f" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Indentifying Feature Types and Building the Pipeline</span></span>
@@ -3498,7 +3498,7 @@ Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;:
 Numeric cols: 26</code></pre>
 </div>
 </div>
-<div id="33339e83" class="cell" data-execution_count="23">
+<div id="9d50c988" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.under_sampling <span class="im">import</span> RandomUnderSampler</span>
@@ -3518,7 +3518,7 @@ Numeric cols: 26</code></pre>
 <span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="465fe22a" class="cell" data-execution_count="24">
+<div id="936d24b5" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I define my models</span></span>
@@ -3552,7 +3552,7 @@ Numeric cols: 26</code></pre>
 <span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="85ab7241" class="cell" data-execution_count="25">
+<div id="fb279799" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is an evaluation helper for multiclass metrics</span></span>
@@ -3571,7 +3571,7 @@ Numeric cols: 26</code></pre>
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="493e935d" class="cell" data-execution_count="26">
+<div id="d8e7cc20" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I train and compare my models and balanacing methods</span></span>
@@ -3683,7 +3683,7 @@ Numeric cols: 26</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="03769387" class="cell" data-execution_count="27">
+<div id="79a132ec" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now I will select the best pipeline and show confusion matrix</span></span>
@@ -3749,7 +3749,7 @@ weighted avg       0.77      0.78      0.77       708
 </div>
 </div>
 </div>
-<div id="07e85ce1" class="cell" data-execution_count="28">
+<div id="3bf58560" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CatBoost (Native Catagorical + Class Weights)</span></span>
@@ -3826,7 +3826,7 @@ weighted avg       0.75      0.76      0.76       708
 </div>
 </div>
 </div>
-<div id="2eb94de1" class="cell" data-execution_count="29">
+<div id="4538bec2" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now like Realinho et al. (2022):Permutation Feature Importance (Macro F1)</span></span>
@@ -3998,7 +3998,7 @@ weighted avg       0.75      0.76      0.76       708
 </div>
 </div>
 </div>
-<div id="4b1314cf" class="cell" data-execution_count="30">
+<div id="acfebb7b" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Model Evaluation (on the validation set)</span></span>
@@ -4060,8 +4060,8 @@ weighted avg       0.77      0.78      0.77       708
 <h2 data-number="5" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">5</span> Conclusion</h2>
 <p>The initial exploratory data analysis as well as the results of preliminary modeling provided important insights into the datasets predictive structure and feasibility concerning the use multi-class machine learning approaches. Of all of the features in the dataset, <em>Curricular units 2nd semester (approved)</em> emerged as the most informative predictor of the target as indicated by the highest mutual information score. This particular finding indicates that students’ academic performance in the second semester is key to determining student outcomes which aligns to prior research concerning the importance of academic progression indicators <span class="citation" data-cites="realinho2022 ridwan2024">(e.g., <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>; <a href="#ref-ridwan2024" role="doc-biblioref">Ridwan et al., 2024</a>)</span>.</p>
 <p>The feature <em>Curricular units 2nd semester (grade)</em> showed a generally consistent pattern across both the training and testing datasets as measured by distribution analysis <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.This observation is critical as it shows that the models trained on the training set can also effectively generalize on unseen data <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Further, this consistency reduces any risk of shift in distribution and supports and validates the cross-validation techniques used in this project <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The Spearman Rank Correlation Heatmap afforded for a visual representation concerning the relationship features and the target which helped identify any issues with multicollinearity <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
-<p>Cross-validation was conducted across all of the classifiers used in this project (i.e., RF, XGBoost and LightGBM and CATBoost). Initially, there were issues with datatype. However, the datatype issues were resolved by implementing the appropriate preprocessing for example by label encoding the all categorical features. The adjustments made in the preprocessing step allowed for evaluation consistency across all classifiers and comparable performance metrics <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The bar plot provided a visual reference for summarizing the mean cross-validation accuracies and gave insights into the model performance.</p>
-<p>In conclusion, based on these findings, future research should focus more on feature importance. In particular, future studies should pay attention to <em>Curricular units 2nd semester (approved)</em> concerning the model pipeline. Though beyond the scope of this study, a deeper analysis of cross-validation results could be used to select the top performing features. Once those features that are not top predictors are pruned, hyperparameter tuning can be conducted to improve model prediction accuracy <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span> . Hyperparameter tuning incorporated with the established pipeline in this study (i.e.,XGBoost and SMOTE Tomek pipeline) could prove to be an effective strategy for accurately predicting student attrition.</p>
+<p>Cross-validation was conducted across all of the classifiers used in this project (i.e., RF, XGBoost and LightGBM and CATBoost). Initially, there were issues with datatype. However, the datatype issues were resolved by implementing the appropriate preprocessing for example by label encoding the all categorical features. The adjustments made in the preprocessing step allowed for evaluation consistency across all classifiers and comparable performance metrics <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The bar plot provided a visual reference for summarizing the mean cross-validation accuracy and gave insights into the model performance.</p>
+<p>In conclusion, based on these findings, future research should focus more on feature importance. In particular, future studies should pay attention to <em>Curricular units 2nd semester (approved)</em> concerning the model pipeline. Though beyond the scope of this study, a deeper analysis of cross-validation results could be used to select the top performing features. Once those features that are not top predictors are pruned, hyperparameter tuning can be conducted to improve model prediction accuracy <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. Hyperparameter tuning incorporated with the established pipeline in this study (i.e.,XGBoost and SMOTE Tomek pipeline) could prove to be an effective strategy for accurately predicting student attrition.</p>
 </section>
 <section id="references" class="level2 unnumbered" data-number="6">
 

@@ -40,13 +40,14 @@ format:
             text-shadow: 0 0 8px #00FFFF;
           }
 
-          /* Title slide */
           .reveal .title {
             font-size: 0.95em !important;
+            line-height: 1.08 !important;
           }
 
           .reveal .subtitle {
             font-size: 0.60em !important;
+            line-height: 1.06 !important;
           }
 
           .reveal .author,
@@ -82,6 +83,13 @@ format:
             font-size: 0.72em;
             color: #cccccc;
             margin-top: 0.3em;
+          }
+
+          .code-note {
+            font-size: 0.70em;
+            color: #cccccc;
+            margin-top: 0.2em;
+            line-height: 1.15;
           }
 
           </style>
@@ -138,7 +146,7 @@ Research questions:
 
 ## Dataset Overview
 
-**Methods**
+**Descriptive Statistics**
 
 - Source: **UCI Machine Learning Repository**
 - Observations: **4,424 students**
@@ -175,6 +183,103 @@ Mixed binary, ordinal, and continuous feature types.
 
 ---
 
+## Exploratory Data Analysis
+
+**Analysis and Results**
+
+EDA focused on:
+
+- feature distributions
+- subgroup outcome differences
+- variable correlations
+
+Academic progression variables emerged as **key predictors**.
+
+---
+
+## Feature Correlations
+
+![](images/plot-spearman-corr.png){height=500px}
+
+Academic progression variables showed the strongest relationships with outcomes.
+
+---
+
+## Demographic Indicators
+
+::: columns
+
+::: column
+![](images/table-gender.png){height=250px}
+![](images/plot-gender-target-dist.png){height=250px}
+:::
+
+::: column
+![](images/table-scholarship.png){height=250px}
+![](images/plot-scholarship-target-dist.png){height=250px}
+:::
+
+:::
+
+<div class="small-note">
+Gender and scholarship status showed moderate associations with student outcomes.
+</div>
+
+---
+
+## Debtor Status and Age Patterns
+
+::: columns
+
+::: column
+![](images/table-debtor.png){height=260px}
+![](images/plot-debtor-target-dist.png){height=260px}
+:::
+
+::: column
+![](images/plot-age-ecdf.png){height=460px}
+:::
+
+:::
+
+<div class="small-note">
+Debtor status and age showed clear differences across groups, especially for dropout outcomes.
+</div>
+
+---
+
+## Academic Progress Indicators
+
+::: columns
+
+::: column
+![](images/plot-grade-ecdf.png){height=460px}
+:::
+
+::: column
+![](images/plot-approved-units-ecdf.png){height=460px}
+:::
+
+:::
+
+Students with stronger academic progress were significantly more likely to **graduate**.
+
+---
+
+## Class Imbalance
+
+Outcome classes were **not evenly distributed**, making accuracy insufficient.
+
+![](images/plot-target-dist.png){height=480px}
+
+Evaluation emphasized:
+
+- Macro F1
+- Recall
+- Precision
+
+---
+
 ## Analytical Framework
 
 Modeling approach:
@@ -198,17 +303,28 @@ Modeling approach:
 
 ---
 
-## Class Imbalance
+## Preprocessing and Pipeline Setup
 
-Outcome classes were **not evenly distributed**, making accuracy insufficient.
+::: columns
 
-![](images/plot-target-dist.png){height=480px}
+::: column
+### Preprocessing
+![](images/preprocessing-pipeline.png){height=280px}
 
-Evaluation emphasized:
+### Pipeline Setup
+![](images/pipeline-setup.png){height=280px}
+:::
 
-- Macro F1
-- Recall
-- Precision
+::: column
+### Feature Typing and Numeric Preprocessing
+![](images/sampling-strategies.png){height=360px}
+:::
+
+:::
+
+<div class="code-note">
+These code snippets show target encoding, identification of feature types, numerical preprocessing, and structured pipeline construction using ColumnTransformer and related preprocessing components.
+</div>
 
 ---
 
@@ -294,82 +410,25 @@ Primary evaluation metric:
 
 ---
 
-## Exploratory Data Analysis
-
-**Analysis and Results**
-
-EDA focused on:
-
-- feature distributions
-- subgroup outcome differences
-- variable correlations
-
-Academic progression variables emerged as **key predictors**.
-
----
-
-## Feature Correlations
-
-![](images/plot-spearman-corr.png){height=500px}
-
-Academic progression variables showed the strongest relationships with outcomes.
-
----
-
-## Demographic Indicators
+## Model Training and Comparison Code
 
 ::: columns
 
 ::: column
-![](images/table-gender.png){height=250px}
-![](images/plot-gender-target-dist.png){height=250px}
+### Model Training
+![](images/model-training.png){height=280px}
 :::
 
 ::: column
-![](images/table-scholarship.png){height=250px}
-![](images/plot-scholarship-target-dist.png){height=250px}
+### Model Comparison
+![](images/model-comparison.png){height=280px}
 :::
 
 :::
 
-<div class="small-note">
-Gender and scholarship status showed moderate associations with student outcomes.
+<div class="code-note">
+These code snippets show how candidate classifiers were trained and compared across model and sampler combinations using consistent evaluation metrics.
 </div>
-
----
-
-## Debtor Status and Age Patterns
-
-::: columns
-
-::: column
-![](images/table-debtor.png){height=260px}
-![](images/plot-debtor-target-dist.png){height=260px}
-:::
-
-::: column
-![](images/plot-age-ecdf.png){height=460px}
-:::
-
-:::
-
----
-
-## Academic Progress Indicators
-
-::: columns
-
-::: column
-![](images/plot-grade-ecdf.png){height=460px}
-:::
-
-::: column
-![](images/plot-approved-units-ecdf.png){height=460px}
-:::
-
-:::
-
-Students with stronger academic progress were significantly more likely to **graduate**.
 
 ---
 
@@ -378,6 +437,28 @@ Students with stronger academic progress were significantly more likely to **gra
 ![](images/table-model-performance.png){height=520px}
 
 Sampling strategies improved **macro-level performance**.
+
+---
+
+## Best Model Selection and Final Training Code
+
+::: columns
+
+::: column
+### Best Model Selection
+![](images/best-model-selection.png){height=280px}
+:::
+
+::: column
+### Final Model Training
+![](images/final-model-training.png){height=280px}
+:::
+
+:::
+
+<div class="code-note">
+These steps identify the strongest model-sampler combination and then refit the selected pipeline for final validation-stage evaluation.
+</div>
 
 ---
 
@@ -395,9 +476,29 @@ Advantages:
 
 ---
 
+## Evaluation Metrics Code
+
+![](images/evaluation-metrics.png){height=500px}
+
+<div class="code-note">
+This section computes the final evaluation metrics, including accuracy, macro precision, macro recall, macro F1, and weighted F1 for the selected pipeline.
+</div>
+
+---
+
 ## Confusion Matrix
 
 ![](images/plot-best-model-confusion-matrix.png){height=500px}
+
+---
+
+## Final Model Evaluation
+
+![](images/final-model-evaluation.png){height=500px}
+
+<div class="code-note">
+This code produces final predictions and visual diagnostics, including the confusion matrix used to assess class-level performance for Dropout, Enrolled, and Graduate outcomes.
+</div>
 
 ---
 

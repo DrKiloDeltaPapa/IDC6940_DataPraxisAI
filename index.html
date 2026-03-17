@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kareem D. Piper (Advisor: Dr. Shusen Pu)">
-<meta name="dcterms.date" content="2026-03-16">
+<meta name="dcterms.date" content="2026-03-17">
 
 <title>Multi-Class Machine Learning Approaches to Student Dropout</title>
 <style>
@@ -2415,7 +2415,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 16, 2026</p>
+      <p class="date">March 17, 2026</p>
     </div>
   </div>
   
@@ -2448,7 +2448,7 @@ window.Quarto = {
 <p>The main research question of this capstone project centers around comparing multi-class machine learning classifiers and addressing class imbalance, to accurately predict student dropout in a higher education setting. Thus, the methods I use correlate directly to those used by <span class="citation" data-cites="mduma2023 realinho2022">(e.g., <a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>; <a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. For example, like the dataset used by <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span>, the target in this capstone’s dataset has three categories (i.e, dropout, enrolled, and graduate), which requires the use of multi-class classifiers. As is the case with many real world datasets the classes in the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student DropoutDataset</a>) are skewed towards enrolled and graduated. To address the issue of class imbalance I used five varied data balancing techniques each paired with multi-class machine learning classifier to determine which pairing most accurately predicted student dropout <span class="citation" data-cites="mduma2023">(<a href="#ref-mduma2023" role="doc-biblioref">Mduma, 2023</a>)</span>.</p>
 <p>As mentioned previously the dataset I used in this study stems from the UC Irvine Machine Learning Repository and can be accessed here:(<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>) <span class="citation" data-cites="realinho2022">(<a href="#ref-realinho2022" role="doc-biblioref">Realinho et al., 2022</a>)</span>. <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> characterize the dataset as tubular, and state that it is meant for the social sciences, specifically for researchers working on classification based projects. There are (n = 4,424) cases and (n = 36) features in the dataset. The feature types according to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> consist of real, categorical and integers based features. According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> the dataset was created specifically to help researchers who are interested in studying which factors contribute to student dropout or academic failure in higher education using machine learning methods. There target has three categories (i.e., dropout, enrolled and graduate). According to <span class="citation" data-cites="realinho2022">Realinho et al. (<a href="#ref-realinho2022" role="doc-biblioref">2022</a>)</span> the dataset was rigorously preprocessed and consist of no null or missing values.</p>
 <p>To better understand the dataset I conducted exploratory data analysis (EDA) on the (<a href="https://www.kaggle.com/datasets/willatran/original-dataset-for-pss4e6-from-uci-ml-repo/data">UCI Student Dropout Dataset</a>). My goal was to gain a deeper understanding of the datasets’ features, their relationship to eachother and the target classes. EDA is a fundamental step in the machine learning pipeline as data may present limitations concerning the chosen methods <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>. The full EDA code can be found in this (<a href="https://github.com/DrKiloDeltaPapa/IDC6940_DataPraxisAI/blob/main/IDC6940_DataPraxisAI_Capstone.ipynb">Jupyter Notebook</a>).</p>
-<div id="0d06384a" class="cell" data-execution_count="1">
+<div id="b37bb851" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Install (run once in Colab / fresh venv) ---</span></span>
@@ -2506,7 +2506,7 @@ window.Quarto = {
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.combine <span class="im">import</span> SMOTEENN, SMOTETomek</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="63edd9bd" class="cell" data-execution_count="2">
+<div id="80fe7402" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -2544,7 +2544,7 @@ Train shape: (3539, 37)
 Test shape: (885, 37)</code></pre>
 </div>
 </div>
-<div id="c8f45f43" class="cell" data-execution_count="3">
+<div id="dd5b34f4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show all columns</span></span>
@@ -2552,7 +2552,7 @@ Test shape: (885, 37)</code></pre>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train_data.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="0a8a908f" class="cell" data-execution_count="4">
+<div id="2a04fbe9" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>train_data.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -2656,19 +2656,19 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="78da0342" class="cell" data-execution_count="5">
+<div id="d900a750" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="9dd4f151" class="cell" data-execution_count="6">
+<div id="1872318f" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>test_data.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="98d187de" class="cell" data-execution_count="7">
+<div id="996a6ac1" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tg_cnts <span class="op">=</span> train_data.Target.value_counts()</span>
@@ -2697,7 +2697,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="a72c1484" class="cell" data-execution_count="8">
+<div id="16d57f59" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature Cardinality Check</span></span>
@@ -2789,7 +2789,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="01e8880e" class="cell" data-execution_count="9">
+<div id="486ef07a" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Target Distribution by Gender</span></span>
@@ -2855,7 +2855,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="22bb45d2" class="cell" data-execution_count="10">
+<div id="1b786a2a" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Scholarship status</span></span>
@@ -2924,7 +2924,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="ce683a05" class="cell" data-execution_count="11">
+<div id="fd87211b" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a crosstab to count the occurrences of each Target value for each Debtor status</span></span>
@@ -2993,7 +2993,7 @@ Test shape: (885, 37)</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="af90a3c9" class="cell" data-execution_count="12">
+<div id="828f4d90" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Age Distribution by Target (ECDF)</span></span>
@@ -3020,7 +3020,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="fd2080bf" class="cell" data-execution_count="13">
+<div id="e943c723" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Approved 2nd Semester Units by Target (ECDF)</span></span>
@@ -3053,7 +3053,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="d7f319f3" class="cell" data-execution_count="14">
+<div id="eda410f9" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 2nd Semester Grade Distribution by Target (ECDF)</span></span>
@@ -3085,7 +3085,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="659d5a04" class="cell" data-execution_count="15">
+<div id="c17f0e74" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Identification of Categorical Features</span></span>
@@ -3109,7 +3109,7 @@ Test shape: (885, 37)</code></pre>
 [&#39;Marital status&#39;, &#39;Application order&#39;, &#39;Daytime/evening attendance&#39;, &#39;Displaced&#39;, &#39;Educational special needs&#39;, &#39;Debtor&#39;, &#39;Tuition fees up to date&#39;, &#39;Gender&#39;, &#39;Scholarship holder&#39;, &#39;International&#39;]</code></pre>
 </div>
 </div>
-<div id="33641424" class="cell" data-execution_count="16">
+<div id="e9158e61" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical feature distributions</span></span>
@@ -3144,7 +3144,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="1bc4b639" class="cell" data-execution_count="17">
+<div id="9efdedc4" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Continuous Feature Distributions</span></span>
@@ -3181,7 +3181,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="088e1c44" class="cell" data-execution_count="18">
+<div id="0970d1d2" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Integer feature distributions</span></span>
@@ -3219,7 +3219,7 @@ Test shape: (885, 37)</code></pre>
 </div>
 </div>
 </div>
-<div id="8cd28fb9" class="cell" data-execution_count="19">
+<div id="42606c48" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Spearman Correlation Analysis</span></span>
@@ -3420,7 +3420,7 @@ D^{*} = D_{\text{SMOTE}} \setminus TL
 <p>In this project, the macro-averaged F1-Score was calculated by computing the F1-Score independently for each class and then taking the unweighted mean. The weighted-averaged F1-Score was calculated by computing the F1-Score for each class and then averaging them by the number of true instances for each class <span class="citation" data-cites="raschka2022">(<a href="#ref-raschka2022" role="doc-biblioref">Raschka et al., 2022</a>)</span>.</p>
 <section id="modeling-and-results" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="modeling-and-results"><span class="header-section-number">4.1</span> Modeling and Results</h3>
-<div id="220103cf" class="cell" data-execution_count="20">
+<div id="082115a7" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining X,y, and Encoding Multiclass Target</span></span>
@@ -3445,7 +3445,7 @@ D^{*} = D_{\text{SMOTE}} \setminus TL
 Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;: 2}</code></pre>
 </div>
 </div>
-<div id="137f8c3b" class="cell" data-execution_count="21">
+<div id="51dd93c2" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stratified Train/Validation Split</span></span>
@@ -3463,7 +3463,7 @@ Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;:
 <pre><code>Train shape: (2831, 36) Val shape: (708, 36)</code></pre>
 </div>
 </div>
-<div id="ca573e1f" class="cell" data-execution_count="22">
+<div id="21f4db64" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Indentifying Feature Types and Building the Pipeline</span></span>
@@ -3498,7 +3498,7 @@ Class mapping: {&#39;Dropout&#39;: 0, &#39;Enrolled&#39;: 1, &#39;Graduate&#39;:
 Numeric cols: 26</code></pre>
 </div>
 </div>
-<div id="9d50c988" class="cell" data-execution_count="23">
+<div id="944a064a" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> imblearn.under_sampling <span class="im">import</span> RandomUnderSampler</span>
@@ -3518,7 +3518,7 @@ Numeric cols: 26</code></pre>
 <span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="936d24b5" class="cell" data-execution_count="24">
+<div id="a065c70c" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I define my models</span></span>
@@ -3552,7 +3552,7 @@ Numeric cols: 26</code></pre>
 <span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="fb279799" class="cell" data-execution_count="25">
+<div id="be870983" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is an evaluation helper for multiclass metrics</span></span>
@@ -3571,7 +3571,7 @@ Numeric cols: 26</code></pre>
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="d8e7cc20" class="cell" data-execution_count="26">
+<div id="6a614e27" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here I train and compare my models and balanacing methods</span></span>
@@ -3683,7 +3683,7 @@ Numeric cols: 26</code></pre>
 </tr>
 </tbody>
 </table>
-<div id="79a132ec" class="cell" data-execution_count="27">
+<div id="0a6ca3ab" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now I will select the best pipeline and show confusion matrix</span></span>
@@ -3749,7 +3749,7 @@ weighted avg       0.77      0.78      0.77       708
 </div>
 </div>
 </div>
-<div id="3bf58560" class="cell" data-execution_count="28">
+<div id="10f13744" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CatBoost (Native Catagorical + Class Weights)</span></span>
@@ -3826,7 +3826,7 @@ weighted avg       0.75      0.76      0.76       708
 </div>
 </div>
 </div>
-<div id="4538bec2" class="cell" data-execution_count="29">
+<div id="3264bbfc" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now like Realinho et al. (2022):Permutation Feature Importance (Macro F1)</span></span>
@@ -3998,7 +3998,7 @@ weighted avg       0.75      0.76      0.76       708
 </div>
 </div>
 </div>
-<div id="acfebb7b" class="cell" data-execution_count="30">
+<div id="ac7b13bb" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Model Evaluation (on the validation set)</span></span>
